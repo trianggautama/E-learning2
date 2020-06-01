@@ -29,3 +29,7 @@ Route::get('/kelas/edit', 'kelasController@edit')->name('kelasEdit');
 //siswa
 Route::get('/siswa/index', 'siswaController@index')->name('siswaIndex');
 Route::get('/siswa/edit', 'siswaController@edit')->name('siswaEdit');
+
+//mapel
+Route::get('/mapel/index', 'mapelController@index')->name('mapelIndex');
+Route::get('/mapel/edit', 'mapelController@edit')->name('mapelEdit');

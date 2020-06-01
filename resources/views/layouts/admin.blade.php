@@ -148,7 +148,7 @@
 				                        </a>
 				                        <ul class="nav nav-children">
 				                            <li>
-				                                <a class="nav-link" href="maps-google-maps.html">
+				                                <a class="nav-link" href="{{Route('mapelIndex')}}">
 				                                    Data Mata Pelajaran
 				                                </a>
 				                            </li>
