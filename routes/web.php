@@ -57,3 +57,8 @@ Route::get('/modul/show', 'modulController@show')->name('modulShow');
 Route::get('/tes/index', 'tesController@index')->name('tesIndex');
 Route::get('/tes/edit', 'tesController@edit')->name('tesEdit');
 Route::get('/tes/show', 'tesController@show')->name('tesShow');
+
+//Soal
+Route::get('/soal/index', 'soalController@index')->name('soalIndex');
+Route::get('/soal/edit', 'soalController@edit')->name('soalEdit');
+Route::get('/soal/show', 'soalController@show')->name('soalShow');

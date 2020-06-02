@@ -170,14 +170,19 @@
 				                            <span>Data Kuis</span>
 				                        </a>
 				                        <ul class="nav nav-children">
+											<li>
+												<a class="nav-link" href="{{Route('soalIndex')}}">
+				                                    Manajemen Soal
+				                                </a>
+                                            </li>
 				                            <li>
-				                                <a>
-				                                    First Level
+												<a class="nav-link" href="{{Route('modulIndex')}}">
+				                                    Tes
 				                                </a>
                                             </li>
                                             <li>
-				                                <a>
-				                                    First Level
+												<a class="nav-link" href="{{Route('modulIndex')}}">
+				                                    Hasil Tes
 				                                </a>
 				                            </li>
 				                        </ul>
