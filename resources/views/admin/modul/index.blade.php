@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Mapel</h2>
+        <h2>Halaman Modul</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Data Mapel</span></li>
+                <li><span>Data Modul</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -21,31 +21,33 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
-                        <button class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> Cetak Data</button>
-                        <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
-                            Data</button>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped mb-0" id="datatable-default">
+                    <table class="table table-bordered table-striped mb-0" id="datatable-default">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Mata Pelajaran</th>
-                                    <th>Keterangan</th>
+                                    <th>Pertemuan</th>
+                                    <th>Judul</th>
+                                    <th>File</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                               <tr>
                                   <td>1</td>
-                                  <td>Mapel a</td>
-                                  <td>-</td>
+                                  <th>Mapel 1</th>
+                                  <td>Pertemuan 2</td>
+                                  <td>Modul 1</td>
+                                  <td> 
+                                      <a href="#" class="btn btn-sm btn-success m-1 "> <i
+                                                class="fa fa-download"></i></a>
+                                </td>
                                   <td>
-                                    <a href="{{Route('mapelShow')}}" class="btn btn-sm btn-warning m-1 "> <i
-                                                class="fa fa-info-circle"></i></a>
-                                            <a href="{{Route('mapelEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
+                                            <a href="{{Route('modulEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
                                                     class="fa fa-edit"></i></a>
                                             <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
@@ -61,7 +63,7 @@
 </section>
 
 <div class="modal fade bd-example-modal-lg" id="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Tambah Data</h5>
@@ -73,12 +75,8 @@
                 <form action="" method="post">
                     @csrf
                     <div class="form-group ">
-                        <label class="">Nama Mata Pelajaran</label>
-                        <input type="text" class="form-control" name="mapel" id="mapel" placeholder="Kelas">
-                    </div>
-                    <div class="form-group ">
-                        <label class="">Keterangan</label>
-                        <textarea class="form-control" name="keterangan" id="keterangan"></textarea>
+                        <label class="">Periode Tahun</label>
+                        <input type="date" class="form-control" name="tahun" id="tahun">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

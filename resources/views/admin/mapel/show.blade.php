@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Mapel</h2>
+        <h2>Detail Mata Pelajaran (Nama Mapel)</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -12,6 +12,7 @@
                     </a>
                 </li>
                 <li><span>Data Mapel</span></li>
+                <li><span>Detail</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -32,20 +33,22 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Mata Pelajaran</th>
-                                    <th>Keterangan</th>
+                                    <th>Pertemuan</th>
+                                    <th>Periode</th>
+                                    <th>Tanggal</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                               <tr>
                                   <td>1</td>
-                                  <td>Mapel a</td>
-                                  <td>-</td>
+                                  <td>Pertemuan 1</td>
+                                  <td>2020</td>
+                                  <td> 1 Januari 2020</td>
                                   <td>
-                                    <a href="{{Route('mapelShow')}}" class="btn btn-sm btn-warning m-1 "> <i
+                                    <a href="{{Route('pertemuanShow')}}" class="btn btn-sm btn-warning m-1 "> <i
                                                 class="fa fa-info-circle"></i></a>
-                                            <a href="{{Route('mapelEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
+                                            <a href="{{Route('pertemuanEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
                                                     class="fa fa-edit"></i></a>
                                             <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
@@ -73,12 +76,12 @@
                 <form action="" method="post">
                     @csrf
                     <div class="form-group ">
-                        <label class="">Nama Mata Pelajaran</label>
+                        <label class="">Nama Pertemuan</label>
                         <input type="text" class="form-control" name="mapel" id="mapel" placeholder="Kelas">
                     </div>
                     <div class="form-group ">
-                        <label class="">Keterangan</label>
-                        <textarea class="form-control" name="keterangan" id="keterangan"></textarea>
+                        <label class="">Tanggal</label>
+                        <input type="date" class="form-control" name="tanggal" id="tanggal">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

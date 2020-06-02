@@ -153,12 +153,12 @@
 				                                </a>
 				                            </li>
 				                            <li>
-				                                <a class="nav-link" href="maps-google-maps-builder.html">
-				                                    Penjadwalan
+				                                <a class="nav-link" href="{{Route('pertemuanIndex')}}">
+				                                    Pertemuan
 				                                </a>
                                             </li>
                                             <li>
-				                                <a class="nav-link" href="maps-google-maps-builder.html">
+				                                <a class="nav-link" href="{{Route('modulIndex')}}">
 				                                    Materi
 				                                </a>
 				                            </li>
@@ -199,6 +199,12 @@
 				                                </a>
 				                            </li>
 				                        </ul>
+									</li>
+									<li>
+				                        <a class="nav-link" href="{{Route('periodeIndex')}}">
+				                            <i class="fas fa-clock" aria-hidden="true"></i>
+				                            <span>Pengeturan Periode </span>
+				                        </a>                        
 				                    </li>
 				                </ul>
 				            </nav>

@@ -4,21 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class mapelController extends Controller
+class pertemuanController extends Controller
 {
+
     public function index(){
 
-        return view('admin.mapel.index');
+        return view('admin.pertemuan.index');
     }
 
     public function edit(){
 
-        return view('admin.mapel.edit');
+        return view('admin.pertemuan.edit');
     }
 
 
     public function show(){
 
-        return view('admin.mapel.show');
+        return view('admin.pertemuan.show');
     }
 }

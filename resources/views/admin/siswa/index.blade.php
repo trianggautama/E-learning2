@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
@@ -22,8 +21,7 @@
                 <div class="card-header">
                     <div class="text-right">
                         <button class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> Cetak Data</button>
-                        <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
-                            Data</button>
+                        <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah Data</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -51,7 +49,7 @@
                                 <td>email@gmail.com</td>
                                 <td>PT.A</td>
                                   <td>
-                                    <a href="" class="btn btn-sm btn-warning m-1 "> <i
+                                    <a href="{{Route('siswaShow')}}" class="btn btn-sm btn-warning m-1 "> <i
                                                 class="fa fa-file"></i></a>
                                             <a href="{{Route('siswaEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
                                                     class="fa fa-edit"></i></a>
