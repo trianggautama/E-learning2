@@ -35,7 +35,7 @@ class kelasController extends Controller
     public function destroy($uuid)
     {
         $data = Kelas::where('uuid', $uuid)->first()->delete();
-        return redirect()->back()->withSuccess('Data berhasil disimpan');
+        return redirect()->back()->withSuccess('Data berhasil dihapus');
     }
 
 }
