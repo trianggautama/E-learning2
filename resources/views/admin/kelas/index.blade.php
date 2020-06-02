@@ -37,18 +37,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Kelas A</td>
-                                  <td>
-                                    <a href="" class="btn btn-sm btn-warning m-1 "> <i
-                                                class="fa fa-file"></i></a>
-                                            <a href="{{Route('kelasEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                @foreach($data as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->nama_kelas}}</td>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-warning m-1 "> <i class="fa fa-file"></i></a>
+                                        <a href="{{Route('kelasEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -68,12 +69,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('kelasStore')}}" method="post">
                     @csrf
                     <div class="form-group ">
                         <label class="">Nama kelas</label>
-                        <input type="text" class="form-control" name="kelas" id="kelas"
-                            placeholder="Kelas">
+                        <input type="text" class="form-control" name="nama_kelas" id="kelas" placeholder="Kelas">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
