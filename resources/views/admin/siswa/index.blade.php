@@ -21,7 +21,8 @@
                 <div class="card-header">
                     <div class="text-right">
                         <button class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> Cetak Data</button>
-                        <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah Data</button>
+                        <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
+                            Data</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -40,23 +41,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>NRP</td>
-                                <td>John Doe</td>
-                                <td>A</td>
-                                <td>Banjarbaru 12 Januari 1980</td>
-                                <td>email@gmail.com</td>
-                                <td>PT.A</td>
-                                  <td>
-                                    <a href="{{Route('siswaShow')}}" class="btn btn-sm btn-warning m-1 "> <i
-                                                class="fa fa-file"></i></a>
-                                            <a href="{{Route('siswaEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                @foreach($data as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->user->nrp}}</td>
+                                    <td>{{$d->user->nama}}</td>
+                                    <td>{{$d->kelas->nama_kelas}}</td>
+                                    <td>{{$d->tempat_lahir}},
+                                        {{carbon\carbon::parse($d->tanggal_lahir)->translatedFormat('d F Y')}}
+                                    </td>
+                                    <td>{{$d->email}}</td>
+                                    <td>{{$d->asal}}</td>
+                                    <td>
+                                        <a href="{{Route('siswaShow',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-file"></i></a>
+                                        <a href="{{Route('siswaEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -76,13 +81,25 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('siswaStore')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group ">
                         <label class="">Kelas</label>
-                        <select name="keals_id" id="kelas_id" class="form-control">
+                        <select name="kelas_id" id="kelas_id" class="form-control">
                             <option value="">-- pilih kelas --</option>
+                            @foreach($kelas as $d)
+                            <option value="{{$d->id}}">{{$d->nama_kelas}}</option>
+                            @endforeach
                         </select>
+                    </div>
+                    <div class="form-group ">
+                        <label class="">Username</label>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                    </div>
+                    <div class="form-group ">
+                        <label class="">Password</label>
+                        <input type="password" class="form-control" name="password" id="password"
+                            placeholder="password">
                     </div>
                     <div class="form-group ">
                         <label class="">NRP</label>
@@ -103,32 +120,31 @@
                         <div class="col-md-6">
                             <div class="form-group ">
                                 <label class="">Tempat Lahir</label>
-                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Siswa">
+                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir"
+                                    placeholder="Tempat lahir">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group ">
                                 <label class="">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" placeholder="Siswa">
+                                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir"
+                                    placeholder="Tanggal lahir">
                             </div>
                         </div>
                     </div>
                     <div class="form-group ">
-                                <label class="">Email</label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Siswa">
-                            </div>
-                            <div class="form-group ">
-                                <label class="">Asal</label>
-                                <input type="text" class="form-control" name="asal" id="asal" placeholder="Siswa">
-                            </div>
-                            <div class="form-group ">
-                                <label class="">Foto</label>
-                                <input type="file" class="form-control" name="foto" id="foto" placeholder="Siswa">
-                            </div>
-                            <div class="form-group ">
-                                <label class="">Password</label>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="password">
-                            </div>
+                        <label class="">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group ">
+                        <label class="">Asal</label>
+                        <input type="text" class="form-control" name="asal" id="asal" placeholder="Asal">
+                    </div>
+                    <div class="form-group ">
+                        <label class="">Foto</label>
+                        <input type="file" class="form-control" name="foto" id="foto" placeholder="Foto">
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
