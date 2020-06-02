@@ -31,6 +31,7 @@ Route::get('/kelas/index', 'kelasController@index')->name('kelasIndex');
 Route::post('/kelas/create', 'kelasController@store')->name('kelasStore');
 Route::get('/kelas/edit/{uuid}', 'kelasController@edit')->name('kelasEdit');
 Route::put('/kelas/edit/{uuid}', 'kelasController@update')->name('kelasUpdate');
+Route::get('/kelas/delete/{uuid}', 'kelasController@destroy')->name('kelasDestroy');
 
 //siswa
 Route::get('/siswa/index', 'siswaController@index')->name('siswaIndex');
