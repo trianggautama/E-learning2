@@ -35,8 +35,11 @@ Route::get('/kelas/delete/{uuid}', 'kelasController@destroy')->name('kelasDestro
 
 //siswa
 Route::get('/siswa/index', 'siswaController@index')->name('siswaIndex');
-Route::get('/siswa/edit', 'siswaController@edit')->name('siswaEdit');
-Route::get('/siswa/show', 'siswaController@show')->name('siswaShow');
+Route::post('/siswa/index', 'siswaController@store')->name('siswaStore');
+Route::get('/siswa/show/{uuid}', 'siswaController@show')->name('siswaShow');
+Route::get('/siswa/edit/{uuid}', 'siswaController@edit')->name('siswaEdit');
+Route::put('/siswa/edit/{uuid}', 'siswaController@update')->name('siswaUpdate');
+Route::get('/siswa/delete/{uuid}', 'siswaController@destroy')->name('siswaDestroy');
 
 //mapel
 Route::get('/mapel/index', 'mapelController@index')->name('mapelIndex');
