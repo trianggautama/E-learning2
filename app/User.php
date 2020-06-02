@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nama', 'username', 'password',
+        'nama', 'nrp', 'username', 'password',
     ];
 
     /**
@@ -35,4 +35,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function siswa()
+    {
+        return $this->hasOne(Siswa::class);
+    }
 }
