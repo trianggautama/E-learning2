@@ -22,7 +22,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                <h4>Data Modul</h4>
+                    <h4>Data Modul</h4>
                     <div class="text-right">
                         <button class="btn btn-sm btn-success" id="tambahModul"><i class="fa fa-plus"></i> Tambah
                             Data</button>
@@ -40,20 +40,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Modul 1</td>
-                                  <td> 
-                                      <a href="#" class="btn btn-sm btn-success m-1 "> <i
+                                @foreach($data->modul as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->judul}}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-success m-1 "> <i
                                                 class="fa fa-download"></i></a>
-                                </td>
-                                  <td>
-                                            <a href="{{Route('modulEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                    </td>
+                                    <td>
+                                        <a href="{{Route('modulEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -61,7 +63,7 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                <h4>Data Ujian (Isi jika ada ujian  pada pertemuan ini)</h4>
+                    <h4>Data Tugas (Isi jika ada ujian pada pertemuan ini)</h4>
                     <div class="text-right">
                         <button class="btn btn-sm btn-success" id="tambahTes"><i class="fa fa-plus"></i> Tambah
                             Data</button>
@@ -73,25 +75,25 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Mapel</th>
+                                    <th>Keterangan</th>
                                     <th>Batas Waktu</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Mapel 1</td>
-                                  <td> 
-                                        3 Januari 2020
-                                  </td>
-                                  <td>
-                                            <a href="{{Route('tesEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                @foreach($data->tugas as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->deskripsi}}</td>
+                                    <td>{{carbon\carbon::parse($d->batas_waktu)->translatedFormat('d F Y')}}</td>
+                                    <td>
+                                        <a href="{{Route('tugasEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -111,11 +113,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('modulStore')}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="uuid" value="{{$data->uuid}}">
                     <div class="form-group ">
                         <label class="">Judul Modul</label>
-                        <input type="text" class="form-control" name="mapel" id="mapel" placeholder="Kelas">
+                        <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul">
                     </div>
                     <div class="form-group ">
                         <label class="">file</label>
@@ -136,19 +139,18 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Data Tes</h5>
+                <h5 class="modal-title">Tambah Data Ujian</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('tugasStore')}}" method="post">
                     @csrf
+                    <input type="hidden" name="uuid" value="{{$data->uuid}}">
                     <div class="form-group ">
-                        <label class="">Periode</label>
-                        <select name="periode_id" id="periode_id" class="form-control">
-                            <option value="">-- ambil dari tabel periode data terakhir</option>
-                        </select>
+                        <label class="">Deskripsi</label>
+                        <input type="text" class="form-control" name="deskripsi" id="deskripsi">
                     </div>
                     <div class="form-group ">
                         <label class="">Batas Waktu</label>

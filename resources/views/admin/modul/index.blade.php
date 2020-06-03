@@ -25,7 +25,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                    <table class="table table-bordered table-striped mb-0" id="datatable-default">
+                        <table class="table table-bordered table-striped mb-0" id="datatable-default">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -37,22 +37,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <th>Mapel 1</th>
-                                  <td>Pertemuan 2</td>
-                                  <td>Modul 1</td>
-                                  <td> 
-                                      <a href="#" class="btn btn-sm btn-success m-1 "> <i
+                                @foreach($data as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->pertemuan->mapel->mapel}}</td>
+                                    <td>{{$d->pertemuan->pertemuan}}</td>
+                                    <td>{{$d->judul}}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-success m-1 "> <i
                                                 class="fa fa-download"></i></a>
-                                </td>
-                                  <td>
-                                            <a href="{{Route('modulEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                    </td>
+                                    <td>
+                                        <a href="{{Route('modulEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

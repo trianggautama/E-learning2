@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Pertemuan</h2>
+        <h2>Halaman Tes</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Edit Data Pertemuan</span></li>
+                <li><span>Edit Data Tugas</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -20,20 +20,26 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    Edit Data Pertemuan
+                    Edit Data Tes
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="" enctype="multipart/form-data" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-group ">
-                            <label class="">Periode Tahun</label>
-                            <input type="date" class="form-control" name="tahun" value="{{$data->tahun}}" id="tahun">
+                            <label class="">Deskripsi</label>
+                            <input type="text" class="form-control" name="deskripsi" value="{{$data->deskripsi}}"
+                                id="deskripsi">
                         </div>
-                        <div class="card-footer text-right">
-                            <a href="{{Route('kelasIndex')}}" type="button" class="btn btn-default">Batal</a>
-                            <button type="submit" class="btn btn-primary">ubah</button>
+                        <div class="form-group ">
+                            <label class="">Batas Waktu</label>
+                            <input type="date" class="form-control" name="batas_waktu" value="{{$data->batas_waktu}}"
+                                id="batas_waktu">
                         </div>
+                </div>
+                <div class="card-footer text-right">
+                    <a href="{{Route('kelasIndex')}}" type="button" class="btn btn-default">Batal</a>
+                    <button type="submit" class="btn btn-primary">ubah</button>
                     </form>
                 </div>
             </div>

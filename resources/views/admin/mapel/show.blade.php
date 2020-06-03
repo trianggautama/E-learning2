@@ -40,20 +40,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Pertemuan 1</td>
-                                  <td>2020</td>
-                                  <td> 1 Januari 2020</td>
-                                  <td>
-                                    <a href="{{Route('pertemuanShow')}}" class="btn btn-sm btn-warning m-1 "> <i
-                                                class="fa fa-info-circle"></i></a>
-                                            <a href="{{Route('pertemuanEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                @foreach($data->pertemuan as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->pertemuan}}</td>
+                                    <td>{{carbon\carbon::parse($d->tahun)->translatedFormat('Y')}}</td>
+                                    <td>{{carbon\carbon::parse($d->tanggal)->translatedFormat('d F Y')}}</td>
+                                    <td>
+                                        <a href="{{Route('pertemuanShow',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
+                                        <a href="{{Route('pertemuanEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -73,11 +75,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('pertemuanStore')}}" method="post">
                     @csrf
+                    <input type="hidden" name="uuid" value="{{$data->uuid}}" id="">
                     <div class="form-group ">
                         <label class="">Nama Pertemuan</label>
-                        <input type="text" class="form-control" name="mapel" id="mapel" placeholder="Kelas">
+                        <input type="text" class="form-control" name="pertemuan" id="pertemuan" placeholder="Pertemuan">
                     </div>
                     <div class="form-group ">
                         <label class="">Tanggal</label>

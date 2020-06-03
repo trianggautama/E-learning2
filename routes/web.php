@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,46 +19,65 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin/index', 'adminController@adminIndex')->name('adminIndex');
+Route::group(['middleware' => ['admin']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/admin/index', 'adminController@adminIndex')->name('adminIndex');
 
 //periode
-Route::get('/periode/index', 'periodeController@index')->name('periodeIndex');
-Route::get('/periode/edit', 'periodeController@edit')->name('periodeEdit');
+    Route::get('/periode/index', 'periodeController@index')->name('periodeIndex');
+    Route::post('/periode/create', 'periodeController@store')->name('periodeStore');
+    Route::get('/periode/edit/{uuid}', 'periodeController@edit')->name('periodeEdit');
+    Route::put('/periode/edit/{uuid}', 'periodeController@update')->name('periodeUpdate');
+    Route::get('/periode/delete/{uuid}', 'periodeController@destroy')->name('periodeDestroy');
 
 //kelas
-Route::get('/kelas/index', 'kelasController@index')->name('kelasIndex');
-Route::get('/kelas/edit', 'kelasController@edit')->name('kelasEdit');
+    Route::get('/kelas/index', 'kelasController@index')->name('kelasIndex');
+    Route::post('/kelas/create', 'kelasController@store')->name('kelasStore');
+    Route::get('/kelas/edit/{uuid}', 'kelasController@edit')->name('kelasEdit');
+    Route::put('/kelas/edit/{uuid}', 'kelasController@update')->name('kelasUpdate');
+    Route::get('/kelas/delete/{uuid}', 'kelasController@destroy')->name('kelasDestroy');
 
 //siswa
-Route::get('/siswa/index', 'siswaController@index')->name('siswaIndex');
-Route::get('/siswa/edit', 'siswaController@edit')->name('siswaEdit');
-Route::get('/siswa/show', 'siswaController@show')->name('siswaShow');
-
+    Route::get('/siswa/index', 'siswaController@index')->name('siswaIndex');
+    Route::post('/siswa/index', 'siswaController@store')->name('siswaStore');
+    Route::get('/siswa/show/{uuid}', 'siswaController@show')->name('siswaShow');
+    Route::get('/siswa/edit/{uuid}', 'siswaController@edit')->name('siswaEdit');
+    Route::put('/siswa/edit/{uuid}', 'siswaController@update')->name('siswaUpdate');
+    Route::get('/siswa/delete/{uuid}', 'siswaController@destroy')->name('siswaDestroy');
 
 //mapel
-Route::get('/mapel/index', 'mapelController@index')->name('mapelIndex');
-Route::get('/mapel/edit', 'mapelController@edit')->name('mapelEdit');
-Route::get('/mapel/show', 'mapelController@show')->name('mapelShow');
+    Route::get('/mapel/index', 'mapelController@index')->name('mapelIndex');
+    Route::post('/mapel/create', 'mapelController@store')->name('mapelStore');
+    Route::get('/mapel/detail/{uuid}', 'mapelController@show')->name('mapelShow');
+    Route::get('/mapel/edit/{uuid}', 'mapelController@edit')->name('mapelEdit');
+    Route::put('/mapel/edit/{uuid}', 'mapelController@update')->name('mapelUpdate');
+    Route::get('/mapel/delete/{uuid}', 'mapelController@destroy')->name('mapelDestroy');
 
 //pertemuan
-Route::get('/pertemuan/index', 'pertemuanController@index')->name('pertemuanIndex');
-Route::get('/pertemuan/edit', 'pertemuanController@edit')->name('pertemuanEdit');
-Route::get('/pertemuan/show', 'pertemuanController@show')->name('pertemuanShow');
-
+    Route::get('/pertemuan/index', 'pertemuanController@index')->name('pertemuanIndex');
+    Route::post('/pertemuan/create', 'pertemuanController@store')->name('pertemuanStore');
+    Route::get('/pertemuan/detail/{uuid}', 'pertemuanController@show')->name('pertemuanShow');
+    Route::get('/pertemuan/edit/{uuid}', 'pertemuanController@edit')->name('pertemuanEdit');
+    Route::put('/pertemuan/edit/{uuid}', 'pertemuanController@update')->name('pertemuanUpdate');
+    Route::get('/pertemuan/delete/{uuid}', 'pertemuanController@destroy')->name('pertemuanDestroy');
 
 //modul
-Route::get('/modul/index', 'modulController@index')->name('modulIndex');
-Route::get('/modul/edit', 'modulController@edit')->name('modulEdit');
-Route::get('/modul/show', 'modulController@show')->name('modulShow');
+    Route::get('/modul/index', 'modulController@index')->name('modulIndex');
+    Route::post('/modul/create', 'modulController@store')->name('modulStore');
+    Route::get('/modul/edit/{uuid}', 'modulController@edit')->name('modulEdit');
+    Route::put('/modul/edit/{uuid}', 'modulController@update')->name('modulUpdate');
+    Route::get('/modul/delete/{uuid}', 'modulController@destroy')->name('modulDestroy');
 
+//tugas
+    Route::get('/tugas/index', 'tugasController@index')->name('tugasIndex');
+    Route::post('/tugas/create', 'tugasController@store')->name('tugasStore');
+    Route::get('/tugas/detail/{uuid}', 'tugasController@show')->name('tugasShow');
+    Route::get('/tugas/edit/{uuid}', 'tugasController@edit')->name('tugasEdit');
+    Route::put('/tugas/edit/{uuid}', 'tugasController@update')->name('tugasUpdate');
+    Route::get('/tugas/delete/{uuid}', 'tugasController@destroy')->name('tugasDestroy');
 
 //Tes
-Route::get('/tes/index', 'tesController@index')->name('tesIndex');
-Route::get('/tes/edit', 'tesController@edit')->name('tesEdit');
-Route::get('/tes/show', 'tesController@show')->name('tesShow');
-
-//Soal
-Route::get('/soal/index', 'soalController@index')->name('soalIndex');
-Route::get('/soal/edit', 'soalController@edit')->name('soalEdit');
-Route::get('/soal/show', 'soalController@show')->name('soalShow');
+    Route::get('/tes/index', 'tesController@index')->name('tesIndex');
+    Route::get('/tes/edit', 'tesController@edit')->name('tesEdit');
+    Route::get('/tes/show', 'tesController@show')->name('tesShow');
+});

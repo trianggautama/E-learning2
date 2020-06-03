@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Mapel</h2>
+        <h2>Halaman Tes</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Data Mapel</span></li>
+                <li><span>Data Tes</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -21,7 +21,6 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
-                        <button class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> Cetak Data</button>
                         <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
                             Data</button>
                     </div>
@@ -32,29 +31,21 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Periode</th>
-                                    <th>Mata Pelajaran</th>
-                                    <th>Keterangan</th>
+                                    <th>Periode tahun</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $d)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{carbon\carbon::parse($d->periode_tahun)->format('Y')}}</td>
-                                    <td>{{$d->mapel}}</td>
-                                    <td>{{$d->deskripsi}}</td>
-                                    <td>
-                                        <a href="{{Route('mapelShow',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
-                                        <a href="{{Route('mapelEdit',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                              <tr>
+                                  <td>1</td>
+                                  <td>2020</td>
+                                  <td>
+                                            <a href="{{Route('mapelEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
+                                                    class="fa fa-edit"></i></a>
+                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                  </td>
+                              </tr>
                             </tbody>
                         </table>
                     </div>
@@ -65,7 +56,7 @@
 </section>
 
 <div class="modal fade bd-example-modal-lg" id="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Tambah Data</h5>
@@ -74,24 +65,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{Route('mapelStore')}}" method="post">
+                <form action="" method="post">
                     @csrf
                     <div class="form-group ">
-                        <label class="">Periode</label>
-                        <select name="periode_id" class="form-control" id="">
-                            <option value="">-- Pilih periode --</option>
-                            @foreach ($periode as $d)
-                            <option value="{{$d->id}}">{{carbon\carbon::parse($d->tahun)->format('Y')}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group ">
-                        <label class="">Nama Mata Pelajaran</label>
-                        <input type="text" class="form-control" name="mapel" id="mapel" placeholder="Mata pelajaran">
-                    </div>
-                    <div class="form-group ">
-                        <label class="">Keterangan</label>
-                        <textarea class="form-control" name="deskripsi" id="keterangan"></textarea>
+                        <label class="">Periode Tahun</label>
+                        <input type="date" class="form-control" name="tahun" id="tahun">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
