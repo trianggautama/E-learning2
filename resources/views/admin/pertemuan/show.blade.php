@@ -22,7 +22,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                <h4>Data Modul</h4>
+                    <h4>Data Modul</h4>
                     <div class="text-right">
                         <button class="btn btn-sm btn-success" id="tambahModul"><i class="fa fa-plus"></i> Tambah
                             Data</button>
@@ -40,20 +40,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Modul 1</td>
-                                  <td> 
-                                      <a href="#" class="btn btn-sm btn-success m-1 "> <i
+                                @foreach($data->modul as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->judul}}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-success m-1 "> <i
                                                 class="fa fa-download"></i></a>
-                                </td>
-                                  <td>
-                                            <a href="{{Route('modulEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
-                                                class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                    </td>
+                                    <td>
+                                        <a href="{{Route('modulEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <a href="{{Route('modulDestroy',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-danger"> <i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -61,7 +63,7 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                <h4>Data Ujian (Isi jika ada ujian  pada pertemuan ini)</h4>
+                    <h4>Data Ujian (Isi jika ada ujian pada pertemuan ini)</h4>
                     <div class="text-right">
                         <button class="btn btn-sm btn-success" id="tambahTes"><i class="fa fa-plus"></i> Tambah
                             Data</button>
@@ -79,19 +81,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Mapel 1</td>
-                                  <td> 
+                                <tr>
+                                    <td>1</td>
+                                    <td>Mapel 1</td>
+                                    <td>
                                         3 Januari 2020
-                                  </td>
-                                  <td>
-                                            <a href="{{Route('tesEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                    </td>
+                                    <td>
+                                        <a href="{{Route('tesEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
+                                                class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -111,11 +113,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('modulStore')}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="uuid" value="{{$data->uuid}}">
                     <div class="form-group ">
                         <label class="">Judul Modul</label>
-                        <input type="text" class="form-control" name="mapel" id="mapel" placeholder="Kelas">
+                        <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul">
                     </div>
                     <div class="form-group ">
                         <label class="">file</label>
