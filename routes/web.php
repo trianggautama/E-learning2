@@ -43,8 +43,11 @@ Route::get('/siswa/delete/{uuid}', 'siswaController@destroy')->name('siswaDestro
 
 //mapel
 Route::get('/mapel/index', 'mapelController@index')->name('mapelIndex');
-Route::get('/mapel/edit', 'mapelController@edit')->name('mapelEdit');
-Route::get('/mapel/show', 'mapelController@show')->name('mapelShow');
+Route::post('/mapel/create', 'mapelController@store')->name('mapelStore');
+Route::get('/mapel/detail/{uuid}', 'mapelController@show')->name('mapelShow');
+Route::get('/mapel/edit/{uuid}', 'mapelController@edit')->name('mapelEdit');
+Route::put('/mapel/edit/{uuid}', 'mapelController@update')->name('mapelUpdate');
+Route::get('/mapel/delete/{uuid}', 'mapelController@destroy')->name('mapelDestroy');
 
 //pertemuan
 Route::get('/pertemuan/index', 'pertemuanController@index')->name('pertemuanIndex');
