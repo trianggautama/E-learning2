@@ -51,8 +51,11 @@ Route::get('/mapel/delete/{uuid}', 'mapelController@destroy')->name('mapelDestro
 
 //pertemuan
 Route::get('/pertemuan/index', 'pertemuanController@index')->name('pertemuanIndex');
-Route::get('/pertemuan/edit', 'pertemuanController@edit')->name('pertemuanEdit');
-Route::get('/pertemuan/show', 'pertemuanController@show')->name('pertemuanShow');
+Route::post('/pertemuan/create', 'pertemuanController@store')->name('pertemuanStore');
+Route::get('/pertemuan/detail/{uuid}', 'pertemuanController@show')->name('pertemuanShow');
+Route::get('/pertemuan/edit/{uuid}', 'pertemuanController@edit')->name('pertemuanEdit');
+Route::put('/pertemuan/edit/{uuid}', 'pertemuanController@update')->name('pertemuanUpdate');
+Route::get('/pertemuan/delete/{uuid}', 'pertemuanController@destroy')->name('pertemuanDestroy');
 
 //modul
 Route::get('/modul/index', 'modulController@index')->name('modulIndex');
