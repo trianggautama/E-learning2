@@ -27,6 +27,16 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group ">
+                            <label class="">Periode</label>
+                            <select name="periode_id" class="form-control" id="">
+                                <option value="">-- Pilih periode --</option>
+                                @foreach ($periode as $d)
+                                <option value="{{$d->id}}" {{$d->id == $data->periode_id ? 'selected' : ''}}>
+                                    {{carbon\carbon::parse($d->tahun)->format('Y')}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group ">
                             <label class="">Nama Mata Pelajaran</label>
                             <input type="text" class="form-control" name="mapel" id="mapel" value="{{$data->mapel}}"
                                 placeholder="Kelas">

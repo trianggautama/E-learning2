@@ -44,7 +44,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$d->pertemuan}}</td>
-                                    <td>-</td>
+                                    <td>{{carbon\carbon::parse($d->tahun)->translatedFormat('Y')}}</td>
                                     <td>{{carbon\carbon::parse($d->tanggal)->translatedFormat('d F Y')}}</td>
                                     <td>
                                         <a href="{{Route('pertemuanShow',['uuid' => $d->uuid])}}"

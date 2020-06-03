@@ -32,6 +32,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Periode</th>
                                     <th>Mata Pelajaran</th>
                                     <th>Keterangan</th>
                                     <th>Aksi</th>
@@ -41,6 +42,7 @@
                                 @foreach($data as $d)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
+                                    <td>{{carbon\carbon::parse($d->periode_tahun)->format('Y')}}</td>
                                     <td>{{$d->mapel}}</td>
                                     <td>{{$d->deskripsi}}</td>
                                     <td>
@@ -74,6 +76,15 @@
             <div class="modal-body">
                 <form action="{{Route('mapelStore')}}" method="post">
                     @csrf
+                    <div class="form-group ">
+                        <label class="">Periode</label>
+                        <select name="periode_id" class="form-control" id="">
+                            <option value="">-- Pilih periode --</option>
+                            @foreach ($periode as $d)
+                            <option value="{{$d->id}}">{{carbon\carbon::parse($d->tahun)->format('Y')}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group ">
                         <label class="">Nama Mata Pelajaran</label>
                         <input type="text" class="form-control" name="mapel" id="mapel" placeholder="Mata pelajaran">

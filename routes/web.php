@@ -24,7 +24,10 @@ Route::get('/admin/index', 'adminController@adminIndex')->name('adminIndex');
 
 //periode
 Route::get('/periode/index', 'periodeController@index')->name('periodeIndex');
-Route::get('/periode/edit', 'periodeController@edit')->name('periodeEdit');
+Route::post('/periode/create', 'periodeController@store')->name('periodeStore');
+Route::get('/periode/edit/{uuid}', 'periodeController@edit')->name('periodeEdit');
+Route::put('/periode/edit/{uuid}', 'periodeController@update')->name('periodeUpdate');
+Route::get('/periode/delete/{uuid}', 'periodeController@destroy')->name('periodeDestroy');
 
 //kelas
 Route::get('/kelas/index', 'kelasController@index')->name('kelasIndex');
