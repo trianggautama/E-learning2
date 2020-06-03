@@ -12,7 +12,7 @@ class modulController extends Controller
 
     public function index()
     {
-        $data = Modul::orderBy('tanggal', 'desc')->get();
+        $data = Modul::orderBy('id', 'desc')->get();
         return view('admin.modul.index', compact('data'));
     }
 
