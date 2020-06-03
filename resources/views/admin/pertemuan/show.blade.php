@@ -51,8 +51,8 @@
                                     <td>
                                         <a href="{{Route('modulEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                        <a href="{{Route('modulDestroy',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-danger"> <i class="fa fa-trash"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                                class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
                                 @endforeach
