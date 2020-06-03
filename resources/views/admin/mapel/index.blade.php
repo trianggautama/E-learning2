@@ -38,19 +38,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Mapel a</td>
-                                  <td>-</td>
-                                  <td>
-                                    <a href="{{Route('mapelShow')}}" class="btn btn-sm btn-warning m-1 "> <i
-                                                class="fa fa-info-circle"></i></a>
-                                            <a href="{{Route('mapelEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                @foreach($data as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->mapel}}</td>
+                                    <td>{{$d->deskripsi}}</td>
+                                    <td>
+                                        <a href="{{Route('mapelShow',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
+                                        <a href="{{Route('mapelEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -70,15 +72,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('mapelStore')}}" method="post">
                     @csrf
                     <div class="form-group ">
                         <label class="">Nama Mata Pelajaran</label>
-                        <input type="text" class="form-control" name="mapel" id="mapel" placeholder="Kelas">
+                        <input type="text" class="form-control" name="mapel" id="mapel" placeholder="Mata pelajaran">
                     </div>
                     <div class="form-group ">
                         <label class="">Keterangan</label>
-                        <textarea class="form-control" name="keterangan" id="keterangan"></textarea>
+                        <textarea class="form-control" name="deskripsi" id="keterangan"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
