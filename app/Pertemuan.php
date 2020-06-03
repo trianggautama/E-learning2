@@ -22,4 +22,9 @@ class Pertemuan extends Model
     {
         return $this->hasMany(Modul::class);
     }
+
+    public function tugas()
+    {
+        return $this->hasMany(Tugas::class);
+    }
 }

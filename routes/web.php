@@ -60,10 +60,17 @@ Route::get('/pertemuan/delete/{uuid}', 'pertemuanController@destroy')->name('per
 //modul
 Route::get('/modul/index', 'modulController@index')->name('modulIndex');
 Route::post('/modul/create', 'modulController@store')->name('modulStore');
-Route::get('/modul/detail/{uuid}', 'modulController@show')->name('modulShow');
 Route::get('/modul/edit/{uuid}', 'modulController@edit')->name('modulEdit');
 Route::put('/modul/edit/{uuid}', 'modulController@update')->name('modulUpdate');
 Route::get('/modul/delete/{uuid}', 'modulController@destroy')->name('modulDestroy');
+
+//tugas
+Route::get('/tugas/index', 'tugasController@index')->name('tugasIndex');
+Route::post('/tugas/create', 'tugasController@store')->name('tugasStore');
+Route::get('/tugas/detail/{uuid}', 'tugasController@show')->name('tugasShow');
+Route::get('/tugas/edit/{uuid}', 'tugasController@edit')->name('tugasEdit');
+Route::put('/tugas/edit/{uuid}', 'tugasController@update')->name('tugasUpdate');
+Route::get('/tugas/delete/{uuid}', 'tugasController@destroy')->name('tugasDestroy');
 
 //Tes
 Route::get('/tes/index', 'tesController@index')->name('tesIndex');

@@ -63,7 +63,7 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h4>Data Ujian (Isi jika ada ujian pada pertemuan ini)</h4>
+                    <h4>Data Tugas (Isi jika ada ujian pada pertemuan ini)</h4>
                     <div class="text-right">
                         <button class="btn btn-sm btn-success" id="tambahTes"><i class="fa fa-plus"></i> Tambah
                             Data</button>
@@ -75,25 +75,25 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Mapel</th>
+                                    <th>Keterangan</th>
                                     <th>Batas Waktu</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($data->tugas as $d)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Mapel 1</td>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->deskripsi}}</td>
+                                    <td>{{carbon\carbon::parse($d->batas_waktu)->translatedFormat('d F Y')}}</td>
                                     <td>
-                                        3 Januari 2020
-                                    </td>
-                                    <td>
-                                        <a href="{{Route('tesEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                class="fa fa-edit"></i></a>
+                                        <a href="{{Route('tugasEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
                                         <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -139,19 +139,18 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Data Tes</h5>
+                <h5 class="modal-title">Tambah Data Ujian</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('tugasStore')}}" method="post">
                     @csrf
+                    <input type="hidden" name="uuid" value="{{$data->uuid}}">
                     <div class="form-group ">
-                        <label class="">Periode</label>
-                        <select name="periode_id" id="periode_id" class="form-control">
-                            <option value="">-- ambil dari tabel periode data terakhir</option>
-                        </select>
+                        <label class="">Deskripsi</label>
+                        <input type="text" class="form-control" name="deskripsi" id="deskripsi">
                     </div>
                     <div class="form-group ">
                         <label class="">Batas Waktu</label>
