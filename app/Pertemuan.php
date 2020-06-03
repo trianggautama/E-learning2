@@ -17,4 +17,9 @@ class Pertemuan extends Model
     {
         return $this->belongsTo(Mapel::class);
     }
+
+    public function modul()
+    {
+        return $this->hasMany(Modul::class);
+    }
 }
