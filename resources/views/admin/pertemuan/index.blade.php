@@ -37,20 +37,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Mapel 1</td>
-                                  <td>Pertemuan 1</td>
-                                  <td>4 Februari 2020</td>
-                                  <td>
-                                  <a href="{{Route('pertemuanShow')}}" class="btn btn-sm btn-warning m-1 "> <i
-                                                    class="fa fa-info-circle"></i></a>
-                                            <a href="{{Route('pertemuanEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                @foreach ($data as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->mapel->mapel}}</td>
+                                    <td>{{$d->pertemuan}}</td>
+                                    <td>{{carbon\carbon::parse($d->tanggal)->translatedFormat('d F Y')}}</td>
+                                    <td>
+                                        <a href="{{Route('pertemuanShow',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
+                                        <a href="{{Route('pertemuanEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
