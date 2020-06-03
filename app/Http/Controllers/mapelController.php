@@ -2,23 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use App\Mapel;
 use Illuminate\Http\Request;
 
 class mapelController extends Controller
 {
-    public function index(){
-
-        return view('admin.mapel.index');
+    public function index()
+    {
+        $data = Mapel::orderBy('id', 'Desc')->get();
+        return view('admin.mapel.index', compact('data'));
     }
 
-    public function edit(){
-
-        return view('admin.mapel.edit');
+    public function store(Request $req)
+    {
+        $data = Mapel::create($req->all());
+        return redirect()->back()->withSuccess('Data berhasil disimpan');
     }
 
-
-    public function show(){
-
-        return view('admin.mapel.show');
+    public function show($uuid)
+    {
+        $data = Mapel::where('uuid', $uuid)->first();
+        return view('admin.mapel.show', compact('data'));
     }
+
+    public function edit($uuid)
+    {
+        $data = Mapel::where('uuid', $uuid)->first();
+        return view('admin.mapel.edit', compact('data'));
+    }
+
+    public function update(Request $req, $uuid)
+    {
+        $data = Mapel::where('uuid', $uuid)->first();
+        $data->fill($req->all())->save();
+        return redirect()->route('mapelIndex')->withSuccess('Data berhasil diubah');
+    }
+
+    public function destroy($uuid)
+    {
+        $data = Mapel::where('uuid', $uuid)->first()->delete();
+        return redirect()->back()->withSuccess('Data berhasil dihapus');
+    }
+
 }
