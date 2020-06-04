@@ -47,4 +47,10 @@ class pertemuanController extends Controller
         $data = Pertemuan::where('uuid', $uuid)->first()->delete();
         return redirect()->back()->withSuccess('Data berhasil dihapus');
     }
+
+    public function siswaIndex()
+    {
+        $data = Pertemuan::orderBy('tanggal', 'desc')->get();
+        return view('siswa.pertemuan.index', compact('data'));
+    }
 }

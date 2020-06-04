@@ -22,6 +22,14 @@ Auth::routes();
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin/index', 'adminController@adminIndex')->name('adminIndex');
+
+//periode
+Route::get('/user/index', 'userController@index')->name('userIndex');
+Route::post('/user/create', 'userController@store')->name('userStore');
+Route::get('/user/edit/{uuid}', 'userController@edit')->name('userEdit');
+Route::put('/user/edit/{uuid}', 'userController@update')->name('userUpdate');
+Route::get('/user/delete/{uuid}', 'userController@destroy')->name('userDestroy');
+
 //periode
     Route::get('/periode/index', 'periodeController@index')->name('periodeIndex');
     Route::post('/periode/create', 'periodeController@store')->name('periodeStore');
@@ -89,4 +97,8 @@ Route::group(['middleware' => ['admin']], function () {
 });
 
 //halaman siswa 
-Route::get('/siswa/index', 'adminController@siswaIndex')->name('siswaIndex');
+Route::get('halaman/siswa/index', 'adminController@siswaIndex')->name('halamanSiswaIndex');
+Route::get('siswa/pertemuan/index', 'pertemuanController@siswaIndex')->name('siswaPertemuanIndex');
+Route::get('siswa/tes/index', 'tesController@siswaIndex')->name('siswaTesIndex');
+Route::get('siswa/input/tes/index', 'tesController@inputTes')->name('inputTes');
+

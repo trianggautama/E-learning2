@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.siswa')
 
 @section('content') 
      <section role="main" class="content-body">
@@ -33,15 +33,11 @@
                            <div class="card-body">
                            <h4 class="mb-3 mt-0">Mata Pelajaran</h4>
 							<ul class="simple-card-list mb-3">
+                                @foreach($mapel as $m)
 								<li class="warning">
-									<h3>488</h3>
-								</li>
-								<li class="warning">
-									<h3>$ 189,000.00</h3>
-								</li>
-								<li class="warning">
-									<h3>16</h3>
-								</li>
+									<a href=""><h3 class="text-white">{{$m->mapel}}</h3></a>
+                                </li>
+                                @endforeach
 							</ul>
                            </div>
                        </div>
@@ -120,27 +116,24 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group ">
                                                             <label class="">Tempat Lahir</label>
-                                                            <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir"
-                                                                value="" >
+                                                            <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" value="{{Auth::user()->siswa->tempat_lahir}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group ">
                                                             <label class="">Tanggal Lahir</label>
-                                                            <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir"
-                                                                value="" placeholder="Tanggal lahir">
+                                                            <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="{{Auth::user()->siswa->tanggal_lahir}}">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
                                                     <label class="">Email</label>
-                                                    <input type="email" class="form-control" name="email" id="email" value="{{Auth::user()->email}}"
+                                                    <input type="email" class="form-control" name="email" id="email" value="{{Auth::user()->siswa->email}}""
                                                         placeholder="Email">
                                                 </div>
                                                 <div class="form-group ">
                                                     <label class="">Asal</label>
-                                                    <input type="text" class="form-control" name="asal" id="asal" value=""
-                                                        placeholder="Asal">
+                                                    <input type="text" class="form-control" name="asal" id="asal" value="{{Auth::user()->siswa->asal}}">
                                                 </div>
                                                 <div class="form-group ">
                                                     <label class="">Foto</label>
@@ -170,29 +163,41 @@
                         <section class="card">
 								<div class="card-body">
 									<div class="thumb-info mb-3">
-										<img src="{{asset('admin/img/!logged-user.jpg')}}" class="rounded img-fluid" alt="John Doe">
+										<img src="{{asset('images/user/'. Auth::user()->foto)}}" class="rounded img-fluid" alt="John Doe">
 										<div class="thumb-info-title">
-											<span class="thumb-info-inner">John Doe</span>
+											<span class="thumb-info-inner">{{Auth::user()->nama}}</span>
                                         </div>
                                     </div>
-                                    <h4 class="mb-3 mt-4 pt-2">Messages</h4>
+                                    <h4 class="mb-3 mt-4 pt-2"> Biodata</h4>
 							<ul class="simple-user-list mb-3">
 								<li>
-									<span class="title">Joseph Doe Junior</span>
-									<span class="message">Lorem ipsum dolor sit.</span>
+									<span class="title">NRP</span>
+									<span class="message">{{Auth::user()->nrp}}</span>
+                                </li>
+                                <li>
+									<span class="title">Jenis Kelamin</span>
+									<span class="message">@if(Auth::user()->siswa->jk == 1 ) Laki-laki @else  Perempuan @endif</span>
 								</li>
 								<li>
-									<span class="title">Joseph Junior</span>
-									<span class="message">Lorem ipsum dolor sit.</span>
+									<span class="title">Tempat, Tinggal Lahir</span>
+									<span class="message">{{Auth::user()->siswa->tempat_lahir}}, {{Auth::user()->siswa->tanggal_lahir}}</span>
 								</li>
 								<li>
-									<span class="title">Joe Junior</span>
-									<span class="message">Lorem ipsum dolor sit.</span>
+									<span class="title">Kelas</span>
+									<span class="message">{{Auth::user()->siswa->kelas->nama_kelas}}</span>
 								</li>
 								<li>
-									<span class="title">Joseph Doe Junior</span>
-									<span class="message">Lorem ipsum dolor sit.</span>
-								</li>
+									<span class="title">Asal</span>
+									<span class="message">{{Auth::user()->siswa->asal}}</span>
+                                </li>
+                                <li>
+									<span class="title">Email</span>
+									<span class="message">{{Auth::user()->siswa->email}}</span>
+                                </li>
+                                <li>
+									<span class="title">Username</span>
+									<span class="message">{{Auth::user()->username}}</span>
+                                </li>
 							</ul>
                                 </div>
                             </section>

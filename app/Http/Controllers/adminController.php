@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mapel;
 use Illuminate\Http\Request;
 
 class adminController extends Controller
@@ -13,6 +14,7 @@ class adminController extends Controller
 
     public function siswaIndex()
     {
-        return view('siswa.index');
+        $mapel = Mapel::all();
+        return view('siswa.index',compact('mapel'));
     }
 }

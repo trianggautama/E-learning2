@@ -9,7 +9,7 @@ class kelasController extends Controller
 {
     public function index()
     {
-        $data = Kelas::orderBy('id', 'Desc')->get();
+        $data = Kelas::all();
         return view('admin.kelas.index', compact('data'));
     }
 

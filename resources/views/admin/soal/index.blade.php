@@ -48,10 +48,8 @@
                                   <td><img src="{{asset('admin/img/!logged-user.jpg')}}" alt="Joseph Doe" class="rounded-circle" width="50px"/></td>
                                   <td>Aktif</td>
                                   <td>
-                                            <a href="{{Route('soalEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
-                                                class="fa fa-trash"></i></button>
+                                    <a href="{{Route('soalEdit')}}" class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                    <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i class="fa fa-trash"></i></button>
                                   </td>
                               </tr>
                             </tbody>

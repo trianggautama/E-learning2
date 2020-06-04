@@ -135,112 +135,38 @@
 
 							<ul class="nav nav-main">
 								<li>
-									<a class="nav-link" href="layouts-default.html">
+									<a class="nav-link" href="{{Route('halamanSiswaIndex')}}">
 										<i class="fas fa-home" aria-hidden="true"></i>
 										<span>Home</span>
 									</a>
 								</li>
 								<li class="nav-parent">
 									<a class="nav-link" href="#">
-										<i class="fas fa-users" aria-hidden="true"></i>
-										<span>Siswa</span>
-									</a>
-									<ul class="nav nav-children">
-										<li>
-											<a class="nav-link" href="{{Route('kelasIndex')}}">
-												Data Kelas
-											</a>
-										</li>
-										<li>
-											<a class="nav-link" href="{{Route('siswaIndex')}}">
-												Data Siswa
-											</a>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-parent">
-									<a class="nav-link" href="#">
 										<i class="fas fa-book" aria-hidden="true"></i>
-										<span>Data Mata Pelajaran</span>
+										<span>Jadwal Keseluruhan</span>
 									</a>
 									<ul class="nav nav-children">
 										<li>
-											<a class="nav-link" href="{{Route('mapelIndex')}}">
-												Data Mata Pelajaran
-											</a>
-										</li>
-										<li>
-											<a class="nav-link" href="{{Route('pertemuanIndex')}}">
+											<a class="nav-link" href="{{Route('siswaPertemuanIndex')}}">
 												Pertemuan
-											</a>
-										</li>
-										<li>
-											<a class="nav-link" href="{{Route('modulIndex')}}">
-												Materi
-											</a>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-parent">
-									<a class="nav-link" href="#">
-										<i class="fas fa-question-circle" aria-hidden="true"></i>
-										<span>Data Kuis</span>
-									</a>
-									<ul class="nav nav-children">
-										<li>
-											<a class="nav-link" href="{{Route('soalIndex')}}">
-												Manajeman Soal
 											</a>
 										</li>
 
 										<li>
-											<a class="nav-link" href="{{Route('pertemuanIndex')}}">
+											<a class="nav-link" href="{{Route('siswaTesIndex')}}">
 												Tes
-											</a>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-parent">
-									<a class="nav-link" href="#">
-										<i class="fas fa-asterisk" aria-hidden="true"></i>
-										<span>Data Kelulusan</span>
-									</a>
-									<ul class="nav nav-children">
-										<li>
-											<a>
-												Data Kelulusan
-											</a>
-										</li>
-										<li>
-											<a>
-												Data Tidak Lulus
 											</a>
 										</li>
 									</ul>
 								</li>
 								<li>
 									<a class="nav-link" href="{{Route('periodeIndex')}}">
-										<i class="fas fa-clock" aria-hidden="true"></i>
-										<span>Pengeturan Periode </span>
+										<i class="fas fa-award" aria-hidden="true"></i>
+										<span>Data kelulusan </span>
 									</a>
 								</li>
 							</ul>
 						</nav>
-
-						<hr class="separator" />
-
-						<div class="sidebar-widget widget-tasks">
-							<div class="widget-header">
-								<h6>Data</h6>
-							</div>
-							<div class="widget-content">
-								<ul class="list-unstyled m-0">
-									<li><a href="{{Route('userIndex')}}">Data user</a></li>
-									<li><a href="#">Data Instruktur</a></li>
-									<li><a href="#">Data Alumni</a></li>
-								</ul>
-							</div>
-						</div>
 					</div>
 
 					<script>
