@@ -51,7 +51,7 @@
                                             class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
                                         <a href="{{Route('pertemuanEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                            <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}','{{$d->pertemuan}}')"> <i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -104,10 +104,11 @@
             $('#status').text('Tambah Data');
             $('#modal').modal('show');
         });
-        function Hapus(uuid) {
+
+        function Hapus(uuid,nama) {
 			Swal.fire({
 			title: 'Anda Yakin?',
-			text: " Menghapus Haul " ,        
+			text: " Menghapus Data  " + nama ,        
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -116,7 +117,7 @@
 			cancelButtonText: 'Batal'
 		}).then((result) => {
 			if (result.value) {
-				url = '';
+				url = "{{Route('pertemuanDestroy','')}}";
 				window.location.href =  url+'/'+uuid ;			
 			}
 		})

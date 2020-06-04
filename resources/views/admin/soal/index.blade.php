@@ -64,7 +64,7 @@
 </section>
 
 <div class="modal fade bd-example-modal-lg" id="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Tambah Data</h5>
@@ -89,23 +89,28 @@
                         <label class="">Soal</label>
                         <textarea name="soal" id="soal" class="form-control"></textarea>
                     </div>
-                    <div class="form-group ">
-                        <label class="">Pilihan A</label>
-                        <input type="text" class="form-control" name="soal" id="soal">
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                            <label class="">Pilihan A</label>
+                            <input type="text" class="form-control" name="soal" id="soal">
+                        </div>
 
-                    <div class="form-group ">
-                        <label class="">Pilihan B</label>
-                        <input type="text" class="form-control" name="soal" id="soal">
-                    </div>
-
-                    <div class="form-group ">
+                        <div class="form-group ">
+                            <label class="">Pilihan B</label>
+                            <input type="text" class="form-control" name="soal" id="soal">
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group ">
                         <label class="">Pilihan C</label>
                         <input type="text" class="form-control" name="soal" id="soal">
                     </div>
                     <div class="form-group ">
                         <label class="">Pilihan D</label>
                         <input type="text" class="form-control" name="soal" id="soal">
+                    </div>
+                        </div>
                     </div>
                     <div class="form-group ">
                         <label class="">gambar Soal</label>

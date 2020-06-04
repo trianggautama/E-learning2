@@ -71,7 +71,16 @@
 						<div class="form-group mb-3">
 							<label>Username</label>
 							<div class="input-group">
-								<input name="username" type="text" class="form-control form-control-lg" />
+								
+                                <input id="username" type="username"
+                                    class="form-control @error('username') is-invalid @enderror" name="username"
+                                    value="{{ old('username') }}" required autocomplete="username" autofocus>
+
+                                @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
 								<span class="input-group-append">
 									<span class="input-group-text">
 										<i class="fas fa-user"></i>
@@ -106,7 +115,6 @@
 								<button type="submit" class="btn btn-warning mt-2">login</button>
 							</div>
 						</div>
-
 						<p class="text-center">Don't have an account yet? <a href="pages-signup.html">Sign Up!</a></p>
 
 					</form>

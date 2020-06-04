@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -22,7 +22,6 @@ Auth::routes();
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin/index', 'adminController@adminIndex')->name('adminIndex');
-
 //periode
     Route::get('/periode/index', 'periodeController@index')->name('periodeIndex');
     Route::post('/periode/create', 'periodeController@store')->name('periodeStore');
@@ -77,7 +76,17 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/tugas/delete/{uuid}', 'tugasController@destroy')->name('tugasDestroy');
 
 //Tes
+    Route::get('/soal/index', 'soalController@index')->name('soalIndex');
+    Route::post('/soal/create', 'soalController@store')->name('soalStore');
+    Route::get('/soal/detail', 'soalController@show')->name('soalShow');
+    Route::get('/soal/edit', 'soalController@edit')->name('soalEdit');
+    Route::put('/soal/edit/{uuid}', 'soalController@update')->name('soalUpdate');
+    Route::get('/soal/delete/{uuid}', 'soalController@destroy')->name('soalDestroy');
+//Tes
     Route::get('/tes/index', 'tesController@index')->name('tesIndex');
     Route::get('/tes/edit', 'tesController@edit')->name('tesEdit');
     Route::get('/tes/show', 'tesController@show')->name('tesShow');
 });
+
+//halaman siswa 
+Route::get('/siswa/index', 'adminController@siswaIndex')->name('siswaIndex');

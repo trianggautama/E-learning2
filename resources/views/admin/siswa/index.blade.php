@@ -54,10 +54,10 @@
                                     <td>{{$d->asal}}</td>
                                     <td>
                                         <a href="{{Route('siswaShow',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-file"></i></a>
+                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
                                         <a href="{{Route('siswaEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                            <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}','{{$d->user->nama}}')"> <i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -163,10 +163,10 @@
             $('#status').text('Tambah Data');
             $('#modal').modal('show');
         });
-        function Hapus(uuid) {
+        function Hapus(uuid,nama) {
 			Swal.fire({
 			title: 'Anda Yakin?',
-			text: " Menghapus Haul " ,        
+			text: " Menghapus Data Kelas " + nama ,        
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -175,7 +175,7 @@
 			cancelButtonText: 'Batal'
 		}).then((result) => {
 			if (result.value) {
-				url = '';
+				url = "{{Route('siswaDestroy','')}}";
 				window.location.href =  url+'/'+uuid ;			
 			}
 		})

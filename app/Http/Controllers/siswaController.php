@@ -84,6 +84,6 @@ class siswaController extends Controller
     public function destroy($uuid)
     {
         $data = siswa::where('uuid', $uuid)->first()->delete();
-        return redirect()->back()->withSuccess('Data berhasil dihapuse');
+        return redirect()->back()->withSuccess('Data berhasil dihapus');
     }
 }

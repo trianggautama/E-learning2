@@ -97,8 +97,15 @@
 										class="fas fa-lock"></i> Lock Screen</a>
 							</li>
 							<li>
-								<a role="menuitem" tabindex="-1" href="pages-signin.html"><i
-										class="fas fa-power-off"></i> Logout</a>
+								<a role="menuitem" tabindex="-1" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
 							</li>
 						</ul>
 					</div>
@@ -181,13 +188,14 @@
 									</a>
 									<ul class="nav nav-children">
 										<li>
-											<a>
-												First Level
+											<a class="nav-link" href="{{Route('soalIndex')}}">
+												Manajeman Soal
 											</a>
 										</li>
+
 										<li>
-											<a>
-												First Level
+											<a class="nav-link" href="{{Route('pertemuanIndex')}}">
+												Tes
 											</a>
 										</li>
 									</ul>

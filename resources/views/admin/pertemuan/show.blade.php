@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Detail pertemuan 1 (Nama Mapel)</h2>
+        <h2>Detail {{$data->pertemuan}} Mata Pelajaran {{$data->mapel->mapel}}</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -24,6 +24,7 @@
                 <div class="card-header">
                     <h4>Data Modul</h4>
                     <div class="text-right">
+                        <a href="{{Route('mapelShow',['uuid'=>$data->mapel->uuid])}}" class="btn btn-sm btn-default"><i class="fa fa-arrow-left">Kembali</i></a>
                         <button class="btn btn-sm btn-success" id="tambahModul"><i class="fa fa-plus"></i> Tambah
                             Data</button>
                     </div>
@@ -45,14 +46,15 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$d->judul}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-success m-1 "> <i
+                                        <a href="{{asset('modul/'.$d->file)}}" class="btn btn-sm btn-success m-1 " target="_blank"> <i
                                                 class="fa fa-download"></i></a>
                                     </td>
                                     <td>
                                         <a href="{{Route('modulEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                            <button class="btn btn-sm btn-danger" onclick="HapusModul('{{$d->uuid}}','{{$d->judul}}')"> <i
                                                 class="fa fa-trash"></i></button>
+                          
                                     </td>
                                 </tr>
                                 @endforeach
@@ -179,10 +181,11 @@
             $('#status').text('Tambah Data');
             $('#modalTes').modal('show');
         });
-        function Hapus(uuid) {
+
+        function HapusModul(uuid,nama) {
 			Swal.fire({
 			title: 'Anda Yakin?',
-			text: " Menghapus Haul " ,        
+			text: " Menghapus Data Modul " + nama ,        
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -191,7 +194,7 @@
 			cancelButtonText: 'Batal'
 		}).then((result) => {
 			if (result.value) {
-				url = '';
+				url = "{{Route('modulDestroy','')}}";
 				window.location.href =  url+'/'+uuid ;			
 			}
 		})
