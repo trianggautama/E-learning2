@@ -47,4 +47,17 @@ class tesController extends Controller
 
         return redirect()->back()->withSuccess('Data berhasil dihapus');
     }
+
+    public function siswaIndex()
+    {
+        $data = Tes::where('status',0)->orderBy('id', 'desc')->get();
+        return view('siswa.tes.index', compact('data'));
+    }
+
+    public function inputTes($uuid)
+    {
+        $data = Tes::where('uuid',$uuid)->firts();
+        return view('siswa.tes.index', compact('data'));
+    }
+
 }

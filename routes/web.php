@@ -101,11 +101,14 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/instruktur/edit', 'instrukturController@edit')->name('instrukturEdit');
     Route::get('/instruktur/show', 'instrukturController@show')->name('instrukturShow');
 
-
 });
 
 //halaman siswa
 Route::get('halaman/siswa/index', 'adminController@siswaIndex')->name('halamanSiswaIndex');
+
 Route::get('siswa/pertemuan/index', 'pertemuanController@siswaIndex')->name('siswaPertemuanIndex');
+Route::get('siswa/pertemuan/detail/{uuid}', 'pertemuanController@siswaShow')->name('siswaPertemuanShow');
+
+
 Route::get('siswa/tes/index', 'tesController@siswaIndex')->name('siswaTesIndex');
-Route::get('siswa/input/tes/index', 'tesController@inputTes')->name('inputTes');
+Route::get('siswa/input/tes/index/{uuid}', 'tesController@inputTes')->name('inputTes');

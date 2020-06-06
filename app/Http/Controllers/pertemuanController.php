@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Mapel;
+use App\Modul;
 use App\Pertemuan;
+use App\Tugas;
 use Illuminate\Http\Request;
 
 class pertemuanController extends Controller
@@ -52,5 +54,13 @@ class pertemuanController extends Controller
     {
         $data = Pertemuan::orderBy('tanggal', 'desc')->get();
         return view('siswa.pertemuan.index', compact('data'));
+    }
+
+    public function siswaShow($uuid)
+    {
+        $data = Pertemuan::where('uuid',$uuid)->first();
+        $modul = Modul::where('pertemuan_id',$data->id)->get();
+        $tugas = Tugas::where('pertemuan_id',$data->id)->get();
+        return view('siswa.pertemuan.show', compact('data','modul','tugas'));
     }
 }

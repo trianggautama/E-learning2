@@ -37,15 +37,17 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($data as $d)
                                <tr>
-                                    <td>1</td>
-                                    <td>MTK</td>
-                                    <td>3 januari 2020</td>
-                                    <td>2020</td>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->mapel->mapel}}</td>
+                                    <td>{{$d->tanggal}}</td>
+                                    <td>{{$d->periode}}</td>
                                     <td> 
                                     <a href="{{Route('inputTes')}}" class="btn btn-sm btn-warning m-1 "> <i class="fa fa-play"></i></a>
                                     </td>
                                </tr>
+                               @endforeach
                             </tbody>
                         </table>
                     </div>

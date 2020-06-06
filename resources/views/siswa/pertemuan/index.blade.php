@@ -44,7 +44,7 @@
                                     <td>{{$d->pertemuan}}</td>
                                     <td>{{carbon\carbon::parse($d->tanggal)->translatedFormat('d F Y')}}</td>
                                     <td>
-                                        <a href="{{Route('pertemuanShow',['uuid' => $d->uuid])}}"
+                                        <a href="{{Route('siswaPertemuanShow',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
                                     </td>
                                 </tr>
