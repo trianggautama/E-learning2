@@ -192,7 +192,11 @@
 												Manajeman Soal
 											</a>
 										</li>
-
+										<li>
+											<a class="nav-link" href="{{Route('tugasIndex')}}">
+												Tugas
+											</a>
+										</li>
 										<li>
 											<a class="nav-link" href="{{Route('tesIndex')}}">
 												Tes
