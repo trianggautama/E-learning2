@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mapel;
 use App\Periode;
+use App\Soal;
 use App\Tes;
 use Illuminate\Http\Request;
 
@@ -49,14 +50,17 @@ class tesController extends Controller
 
     public function siswaIndex()
     {
-        $data = Tes::where('status',0)->orderBy('id', 'desc')->get();
+        $data = Tes::where('status', 0)->orderBy('id', 'desc')->get();
         return view('siswa.tes.index', compact('data'));
     }
 
     public function inputTes($uuid)
     {
-        $data = Tes::where('uuid',$uuid)->firts();
-        return view('siswa.tes.index', compact('data'));
+        $data = Tes::where('uuid', $uuid)->first();
+        $soalData = Soal::where('mapel_id', $data->mapel_id)->get();
+        $soal = $soalData->shuffle();
+        $soal->take(10);
+        return view('siswa.tes.input', compact('data', 'soal'));
     }
 
 }
