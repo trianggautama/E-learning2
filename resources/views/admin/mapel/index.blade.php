@@ -32,8 +32,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Periode</th>
                                     <th>Mata Pelajaran</th>
+                                    <th>Instruktur</th>
                                     <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -42,15 +42,16 @@
                                 @foreach($data as $d)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{carbon\carbon::parse($d->periode_tahun)->format('Y')}}</td>
                                     <td>{{$d->mapel}}</td>
+                                    <td>{{$d->instruktur->user->nama}}</td>
                                     <td>{{$d->deskripsi}}</td>
                                     <td>
                                         <a href="{{Route('mapelShow',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
                                         <a href="{{Route('mapelEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}','{{$d->mapel}}')"> <i
+                                        <button class="btn btn-sm btn-danger"
+                                            onclick="Hapus('{{$d->uuid}}','{{$d->mapel}}')"> <i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -77,11 +78,11 @@
                 <form action="{{Route('mapelStore')}}" method="post">
                     @csrf
                     <div class="form-group ">
-                        <label class="">Periode</label>
-                        <select name="periode_id" class="form-control" id="">
-                            <option value="">-- Pilih periode --</option>
-                            @foreach ($periode as $d)
-                            <option value="{{$d->id}}">{{carbon\carbon::parse($d->tahun)->format('Y')}}</option>
+                        <label class="">Instruktur</label>
+                        <select name="instruktur_id" class="form-control" id="">
+                            <option value="">-- Pilih instruktur --</option>
+                            @foreach ($instruktur as $d)
+                            <option value="{{$d->id}}">{{$d->user->nama}}</option>
                             @endforeach
                         </select>
                     </div>

@@ -10,12 +10,12 @@ class Mapel extends Model
     use Uuid;
 
     protected $fillable = [
-        'periode_id', 'mapel', 'deskripsi',
+        'instruktur_id', 'mapel', 'deskripsi',
     ];
 
-    public function periode()
+    public function instruktur()
     {
-        return $this->belongsTo(Periode::class);
+        return $this->belongsTo(instruktur::class);
     }
 
     public function pertemuan()

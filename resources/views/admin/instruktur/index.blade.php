@@ -41,19 +41,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Instruktur 1</td>
-                                  <td>12313134131</td>
-                                  <td>Banjarbaru, 12-05-1988</td>
-                                  <td>instruktur@gmail.com</td>
-                                  <td><img src="{{asset('admin/img/!logged-user.jpg')}}" alt="Joseph Doe" class="rounded-circle" width="50px"/></td>
-                                  <td>instruktur123</td>
-                                <td>
-                                    <a href="{{Route('instrukturEdit')}}" class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                    <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                @foreach($data as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->nama}}</td>
+                                    <td>{{$d->nrp}}</td>
+                                    <td>{{$d->instruktur->tempat_lahir}},
+                                        {{carbon\carbon::parse($d->tanggal_lahir)->translatedFormat('d F Y')}}
+                                    </td>
+                                    <td>{{$d->instruktur->email}}</td>
+                                    <td><img src="{{asset('admin/img/!logged-user.jpg')}}" alt="Joseph Doe"
+                                            class="rounded-circle" width="50px" /></td>
+                                    <td>{{$d->username}}</td>
+                                    <td>
+                                        <a href="{{Route('instrukturEdit',['uuid' => $d->instruktur->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger"
+                                            onclick="Hapus('{{$d->uuid}}','{{$d->nama}}')"> <i
+                                                class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -73,8 +81,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('instrukturStore')}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="role" value="3">
                     <div class="form-group ">
                         <label class="">Nama</label>
                         <input type="text" class="form-control" name="nama" id="nama">
@@ -84,12 +93,12 @@
                         <input type="text" class="form-control" name="nrp" id="nrp">
                     </div>
                     <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group ">
-                            <label class="">Tempat Lahir</label>
-                            <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir">
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                <label class="">Tempat Lahir</label>
+                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir">
+                            </div>
                         </div>
-                    </div>
                         <div class="col-md-6">
                             <div class="form-group ">
                                 <label class="">Tanggal Lahir</label>

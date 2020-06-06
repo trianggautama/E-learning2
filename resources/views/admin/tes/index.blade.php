@@ -43,9 +43,9 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$d->mapel->mapel}}</td>
-                                    <td>{{carbon\carbon::parse($d->periode->tahun)->translatedFormat('F Y')}}</td>
-                                    <td>{{$d->mapel->instruktur}}</td>
-                                    <td>{{$d->tanggal_ujian}}</td>
+                                    <td>{{carbon\carbon::parse($d->periode->tahun)->translatedFormat('Y')}}</td>
+                                    <td>{{$d->mapel->instruktur->user->nama}}</td>
+                                    <td>{{carbon\carbon::parse($d->tanggal_ujian)->translatedFormat('d F Y')}}</td>
                                     @if ($d->status == 1)
                                     Sudah Terlaksana
                                     @else
@@ -53,7 +53,7 @@
                                     @endif
                                     </td>
                                     <td>
-                                        <a href="{{Route('soalEdit',['uuid' => $d->uuid])}}"
+                                        <a href="{{Route('tesEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
                                         <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
@@ -79,7 +79,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('tesStore')}}" method="post">
                     @csrf
                     <div class="form-group ">
                         <label class="">Mata Pelajaran</label>
@@ -95,7 +95,8 @@
                         <select name="periode_id" id="periode_id" class="form-control">
                             <option value="">-- pilih dari periode --</option>
                             @foreach($periode as $d)
-                            <option value="{{$d->id}}">{{$d->periode}}</option>
+                            <option value="{{$d->id}}">{{carbon\carbon::parse($d->tahun)->translatedFormat('Y')}}
+                            </option>
                             @endforeach
                         </select>
                     </div>

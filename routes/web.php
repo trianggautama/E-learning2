@@ -23,7 +23,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin/index', 'adminController@adminIndex')->name('adminIndex');
 
-//periode
+//user
     Route::get('/user/index', 'userController@index')->name('userIndex');
     Route::post('/user/create', 'userController@store')->name('userStore');
     Route::get('/user/edit/{uuid}', 'userController@edit')->name('userEdit');
@@ -93,19 +93,24 @@ Route::group(['middleware' => ['admin']], function () {
 
 //Tes
     Route::get('/tes/index', 'tesController@index')->name('tesIndex');
-    Route::get('/tes/edit', 'tesController@edit')->name('tesEdit');
+    Route::post('/tes/create', 'tesController@store')->name('tesStore');
     Route::get('/tes/show', 'tesController@show')->name('tesShow');
+    Route::get('/tes/edit/{uuid}', 'tesController@edit')->name('tesEdit');
+    Route::put('/tes/edit/{uuid}', 'tesController@update')->name('tesUpdate');
+    Route::get('/tes/delete/{uuid}', 'tesController@destroy')->name('tesDestroy');
 
 //instruktur
     Route::get('/instruktur/index', 'instrukturController@index')->name('instrukturIndex');
-    Route::get('/instruktur/edit', 'instrukturController@edit')->name('instrukturEdit');
-    Route::get('/instruktur/show', 'instrukturController@show')->name('instrukturShow');
+    Route::post('/instruktur/create', 'instrukturController@store')->name('instrukturStore');
+    Route::get('/instruktur/edit/{uuid}', 'instrukturController@edit')->name('instrukturEdit');
+    Route::put('/instruktur/edit/{uuid}', 'instrukturController@update')->name('instrukturUpdate');
+    Route::get('/instruktur/delete/{uuid}', 'instrukturController@destroy')->name('instrukturDestroy');
 
 });
 
 //halaman siswa
 Route::get('halaman/siswa/index', 'adminController@siswaIndex')->name('halamanSiswaIndex');
-
+Route::put('/halaman/siswa/index', 'siswaController@updateProfileSiswa')->name('updateProfileSiswa');
 Route::get('siswa/pertemuan/index', 'pertemuanController@siswaIndex')->name('siswaPertemuanIndex');
 Route::get('siswa/pertemuan/detail/{uuid}', 'pertemuanController@siswaShow')->name('siswaPertemuanShow');
 

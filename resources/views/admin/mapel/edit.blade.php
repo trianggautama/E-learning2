@@ -28,11 +28,11 @@
                         @method('PUT')
                         <div class="form-group ">
                             <label class="">Periode</label>
-                            <select name="periode_id" class="form-control" id="">
-                                <option value="">-- Pilih periode --</option>
-                                @foreach ($periode as $d)
-                                <option value="{{$d->id}}" {{$d->id == $data->periode_id ? 'selected' : ''}}>
-                                    {{carbon\carbon::parse($d->tahun)->format('Y')}}</option>
+                            <select name="instruktur_id" class="form-control" id="">
+                                <option value="">-- Pilih instruktur --</option>
+                                @foreach ($instruktur as $d)
+                                <option value="{{$d->id}}" {{$d->id == $data->instruktur_id ? 'selected' : ''}}>
+                                    {{$data->instruktur->user->nama}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -6,6 +6,7 @@ use App\Kelas;
 use App\Siswa;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class siswaController extends Controller
@@ -81,9 +82,55 @@ class siswaController extends Controller
 
     }
 
+    public function updateProfileSiswa(Request $req)
+    {
+        $id = Auth::id();
+        $userData = $req->except('password', 'username');
+        $user = user::findOrFail($id)->first();
+        $siswa = Siswa::findOrFail($user->siswa->id);
+        $user->fill($userData)->save();
+        if (isset($req->password)) {
+            $user->password = Hash::make($req->password);
+        } else {
+            $user->password = $user->password;
+        }
+
+        if (isset($req->username)) {
+            $user->password = $req->password;
+        }
+
+        if ($req->foto != null) {
+            $img = $req->file('foto');
+            $FotoExt = $img->getClientOriginalExtension();
+            $FotoName = $user->id;
+            $foto = $FotoName . '.' . $FotoExt;
+            $img->move('images/user', $foto);
+            $user->foto = $foto;
+        } else {
+            $user->foto = $user->foto;
+        }
+
+        $siswa->tempat_lahir = $req->tempat_lahir;
+        $siswa->tanggal_lahir = $req->tanggal_lahir;
+        $siswa->email = $req->email;
+        $siswa->asal = $req->asal;
+
+        $siswa->update();
+        $user->update();
+
+        return redirect()->back()->withSuccess('Profile berhasil diubah');
+
+    }
+
     public function destroy($uuid)
     {
-        $data = siswa::where('uuid', $uuid)->first()->delete();
+        $data = user::where('uuid', $uuid)->first();
+        if (File::exists(public_path('user/' . $data->foto))) {
+            File::delete(public_path('user/' . $data->foto));
+        }
+
+        $data->delete();
+
         return redirect()->back()->withSuccess('Data berhasil dihapus');
     }
 }

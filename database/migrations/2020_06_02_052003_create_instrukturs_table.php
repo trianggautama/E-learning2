@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMapelsTable extends Migration
+class CreateInstruktursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateMapelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mapels', function (Blueprint $table) {
+        Schema::create('instrukturs', function (Blueprint $table) {
             $table->id();
             $table->string('uuid', 36);
-            $table->foreignId('instruktur_id')->constrained()->onDelete('restrict');
-            $table->string('mapel', 50);
-            $table->text('deskripsi');
+            $table->foreignId('user_id')->onDelete('restrict');
+            $table->string('tempat_lahir', 50);
+            $table->date('tanggal_lahir');
+            $table->string('email', 100);
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateMapelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mapels');
+        Schema::dropIfExists('instrukturs');
     }
 }
