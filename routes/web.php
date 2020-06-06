@@ -96,10 +96,18 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/tes/edit', 'tesController@edit')->name('tesEdit');
     Route::get('/tes/show', 'tesController@show')->name('tesShow');
 
-//Tes
+//instruktur
     Route::get('/instruktur/index', 'instrukturController@index')->name('instrukturIndex');
     Route::get('/instruktur/edit', 'instrukturController@edit')->name('instrukturEdit');
     Route::get('/instruktur/show', 'instrukturController@show')->name('instrukturShow');
+
+//Soal
+    Route::get('/tugas/index', 'tugasController@index')->name('tugasIndex');
+    Route::post('/tugas/create', 'tugasController@store')->name('tugasStore');
+    Route::get('/tugas/detail', 'tugasController@show')->name('tugasShow');
+    Route::get('/tugas/edit/{uuid}', 'tugasController@edit')->name('tugasEdit');
+    Route::put('/tugas/edit/{uuid}', 'tugasController@update')->name('tugasUpdate');
+    Route::get('/tugas/delete/{uuid}', 'tugasController@destroy')->name('tugasDestroy');
 
 });
 
