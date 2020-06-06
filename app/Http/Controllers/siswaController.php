@@ -86,7 +86,7 @@ class siswaController extends Controller
     {
         $id = Auth::id();
         $userData = $req->except('password', 'username');
-        $user = user::findOrFail($id)->first();
+        $user = user::findOrFail($id);
         $siswa = Siswa::findOrFail($user->siswa->id);
         $user->fill($userData)->save();
         if (isset($req->password)) {
