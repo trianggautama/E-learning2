@@ -18,116 +18,46 @@
     </header>
     <div class="row">
         <div class="col-lg-12">
+            @foreach($soal as $s)
             <div class="card">
                 <div class="card-body">
                    <div class="row">
                        <div class="col-md-1">
-                            <h3><b>1.</b></h3>
+                            <h3><b>{{$loop->iteration}}</b></h3>
                        </div>
                        <div class="col-md-11">
-                           <img src="{{asset('admin/img/previews/preview-big-icons.jpg')}}" alt="" width="200px">
-                           <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum nesciunt consequuntur iusto atque, tempora corporis ab! Magnam, expedita? Accusamus voluptate libero voluptas, tenetur ullam quam? Reiciendis minus quo blanditiis ut ?</p>
+                           <img src="{{asset('soal/'.$s->gambar)}}" alt="" width="200px">
+                           <p class="text-justify">{{$s->soal}}</p>
+                           <input type="text" name="soal_id" value="{{$s->id}}">
                            <div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-										Option one is this and that—be sure to include why it's great
+									<input type="radio" name="optionsRadios.{{$s->id}}" id="optionsRadios1" value="option1" >
+										{{$s->a}}
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-										Option two can be something else and selecting it will deselect option one
+									<input type="radio" name="optionsRadios.{{$s->id}}" id="optionsRadios2" value="option2">
+                                    {{$s->b}}
 								</label>
                             </div>
                             <div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-										Option one is this and that—be sure to include why it's great
+									<input type="radio" name="optionsRadios.{{$s->id}}" id="optionsRadios1" value="option1" >
+                                    {{$s->c}}
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-										Option two can be something else and selecting it will deselect option one
+									<input type="radio" name="optionsRadios.{{$s->id}}" id="optionsRadios2" value="option2">
+                                    {{$s->d}}
 								</label>
 							</div>
                        </div>
                    </div>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-body">
-                   <div class="row">
-                       <div class="col-md-1">
-                            <h3><b>2.</b></h3>
-                       </div>
-                       <div class="col-md-11">
-                           <img src="{{asset('admin/img/previews/preview-big-icons.jpg')}}" alt="" width="200px">
-                           <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum nesciunt consequuntur iusto atque, tempora corporis ab! Magnam, expedita? Accusamus voluptate libero voluptas, tenetur ullam quam? Reiciendis minus quo blanditiis ut ?</p>
-                           <div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-										Option one is this and that—be sure to include why it's great
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-										Option two can be something else and selecting it will deselect option one
-								</label>
-                            </div>
-                            <div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-										Option one is this and that—be sure to include why it's great
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-										Option two can be something else and selecting it will deselect option one
-								</label>
-							</div>
-                       </div>
-                   </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                   <div class="row">
-                       <div class="col-md-1">
-                            <h3><b>3.</b></h3>
-                       </div>
-                       <div class="col-md-11">
-                           <p class="text-justify"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum nesciunt consequuntur iusto atque, tempora corporis ab! Magnam, expedita? Accusamus voluptate libero voluptas, tenetur ullam quam? Reiciendis minus quo blanditiis ut ?</p>
-                           <div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-										Option one is this and that—be sure to include why it's great
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-										Option two can be something else and selecting it will deselect option one
-								</label>
-                            </div>
-                            <div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-										Option one is this and that—be sure to include why it's great
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-										Option two can be something else and selecting it will deselect option one
-								</label>
-							</div>
-                       </div>
-                   </div>
-                </div>
-            </div>
+            @endforeach
             <div class="card">
                 <div class="card-body">
                     <button type="submit" class="btn btn-primary"> Simpan Jawaban</button>
