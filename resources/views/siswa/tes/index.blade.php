@@ -38,16 +38,17 @@
                             </thead>
                             <tbody>
                                 @foreach($data as $d)
-                               <tr>
+                                <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$d->mapel->mapel}}</td>
                                     <td>{{$d->tanggal}}</td>
                                     <td>{{$d->periode}}</td>
-                                    <td> 
-                                    <a href="{{Route('inputTes')}}" class="btn btn-sm btn-warning m-1 "> <i class="fa fa-play"></i></a>
+                                    <td>
+                                        <a href="{{Route('inputTes',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-play"></i></a>
                                     </td>
-                               </tr>
-                               @endforeach
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
