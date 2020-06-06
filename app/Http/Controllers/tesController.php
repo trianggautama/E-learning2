@@ -14,7 +14,7 @@ class tesController extends Controller
         $data = Tes::orderBy('id', 'desc')->get();
         $mapel = Mapel::orderBy('mapel', 'asc')->get();
         $periode = Periode::orderBy('tahun', 'desc')->get();
-        return view('admin.soal.index', compact('data', 'mapel', 'periode'));
+        return view('admin.tes.index', compact('data', 'mapel', 'periode'));
     }
 
     public function store(Request $req)
@@ -30,7 +30,7 @@ class tesController extends Controller
         $mapel = Mapel::orderBy('mapel', 'asc')->get();
         $periode = Periode::orderBy('tahun', 'desc')->get();
 
-        return view('admin.soal.edit', compact('data', 'mapel', 'periode'));
+        return view('admin.tes.edit', compact('data', 'mapel', 'periode'));
     }
 
     public function update(Request $req, $uuid)
