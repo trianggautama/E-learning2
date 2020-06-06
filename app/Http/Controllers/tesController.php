@@ -62,7 +62,7 @@ class tesController extends Controller
         $siswa_id = Auth::user()->siswa->id;
         $data = Tes::where('uuid', $uuid)->first();
         $tesSiswa = Tes_siswa::where('siswa_id', $siswa_id)->where('tes_id', $data->id)->first();
-        // if (!$tesSiswa) {
+        if (!$tesSiswa) {
             $tesSiswa = new Tes_siswa;
             $tesSiswa->siswa_id = $siswa_id;
             $tesSiswa->tes_id = $data->id;
@@ -71,26 +71,36 @@ class tesController extends Controller
             $soalData = Soal::where('mapel_id', $data->mapel_id)->get();
             $soal = $soalData->shuffle()->take(10);
             return view('siswa.tes.input', compact('data', 'soal'));
-        // }
+        }
 
-        // return back()->withWarning('Anda sudah melakukan tes');
+        return back()->withWarning('Anda sudah melakukan tes');
     }
 
     public function jawaban(Request $req, $uuid)
-    { 
-                    $tes = Tes::where('uuid',$uuid)->first();
-                    $tes_siswa = Tes_siswa::where('tes_id',$tes->id)->where('siswa_id',Auth::user()->siswa->id)->first();
-                    $soal = collect($req->soal_id)->filter();
-                    $pilihan = collect($req->pilihan)->filter();
-                    for($i=0;$i<count($soal);$i++)
-                    {
-                        $jawaban             = new Jawaban_siswa();
-                        $jawaban->soal_id     = $soal[$i];
-                        $jawaban->jawaban    = $pilihan[$i];
-                        $jawaban->bs         = 1; 
-                        $jawaban->tes_siswa_id = $tes_siswa->id;
-                        $jawaban->save();
-                    }
+    {
+        $siswa_id = Auth::user()->siswa->id;
+        $tes = Tes::where('uuid', $uuid)->first();
+        $tes_siswa = Tes_siswa::where('tes_id', $tes->id)->where('siswa_id', $siswa_id)->first();
+        $soal = collect($req->soal_id)->filter();
+        $pilihan = collect($req->pilihan)->filter();
+        for ($i = 0; $i < count($soal); $i++) {
+            $jawabanSoal = Soal::findOrFail($soal[$i]);
+            if ($jawabanSoal->jawaban == $pilihan[$i]) {
+                $bs = 1;
+            } else {
+                $bs = 0;
+            }
+            $jawaban = new Jawaban_siswa();
+            $jawaban->soal_id = $soal[$i];
+            $jawaban->jawaban = $pilihan[$i];
+            $jawaban->bs = $bs;
+            $jawaban->tes_siswa_id = $tes_siswa->id;
+            $jawaban->save();
+        }
+        $jawabanSiswa = Jawaban_siswa::where('tes_siswa_id', $tes_siswa->id)->where('bs', 1)->count();
+        $tes_siswa->nilai = $jawabanSiswa * 10;
+        $tes_siswa->update();
+        return redirect()->route('siswaTesIndex')->withSuccess('Berhasil melakukan tes! Nilai anda adalah : <b>' . $tes_siswa->nilai . '</b>');
     }
 
 }

@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Tes (Nama Mapel)  periode (Periode)</span></li>
+                <li><span>Tes (Nama Mapel) periode (Periode)</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -20,51 +20,55 @@
         <div class="col-lg-12">
             <form action="" method="post">
                 @csrf
-            @foreach($soal as $s)
-            <div class="card">
-                <div class="card-body">
-                   <div class="row">
-                       <div class="col-md-1">
-                            <h3><b>{{$loop->iteration}}</b></h3>
-                       </div>
-                       <div class="col-md-11">
-                           <img src="{{asset('soal/'.$s->gambar)}}" alt="" width="200px">
-                           <p class="text-justify">{{$s->soal}}</p>
-                           <input type="text" name="soal_id[]" value="{{$s->id}}">
-                           <div class="radio">
-								<label>
-									<input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan1" value="A" >
-										{{$s->a}}
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan2" value="B">
-                                    {{$s->b}}
-								</label>
+                @foreach($soal as $s)
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <h3><b>{{$loop->iteration}}</b></h3>
                             </div>
-                            <div class="radio">
-								<label>
-									<input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan1" value="C" >
-                                    {{$s->c}}
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan2" value="D">
-                                    {{$s->d}}
-								</label>
-							</div>
-                       </div>
-                   </div>
+                            <div class="col-md-11">
+                                <img src="{{asset('soal/'.$s->gambar)}}" alt="" width="200px">
+                                <p class="text-justify">{{$s->soal}}</p>
+                                <input type="text" name="soal_id[]" value="{{$s->id}}">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan1"
+                                            value="a">
+                                        {{$s->a}}
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan2"
+                                            value="b">
+                                        {{$s->b}}
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan1"
+                                            value="c">
+                                        {{$s->c}}
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan2"
+                                            value="d">
+                                        {{$s->d}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            @endforeach
-            <div class="card">
-                <div class="card-body">
-                    <button type="submit" class="btn btn-primary"> Simpan Jawaban</button>
+                @endforeach
+                <div class="card">
+                    <div class="card-body">
+                        <button type="submit" class="btn btn-primary"> Simpan Jawaban</button>
+                    </div>
                 </div>
-            </div>
             </form>
         </div>
     </div>
