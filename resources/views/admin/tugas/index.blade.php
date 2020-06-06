@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Tes</h2>
+        <h2>Halaman Tugas</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Data Tes</span></li>
+                <li><span>Data Tugas</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -21,8 +21,6 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
-                        <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
-                            Data</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -31,21 +29,29 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Periode tahun</th>
+                                    <th>Mapel</th>
+                                    <th>Pertemuan</th>
+                                    <th>Tugas</th>
+                                    <th>Batas Waktu</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($data as $d)
                               <tr>
-                                  <td>1</td>
-                                  <td>2020</td>
+                                  <td>{{$loop->iteration}}</td>
+                                  <td>{{$d->pertemuan->mapel->mapel}}</td>
+                                  <td>{{$d->pertemuan->pertemuan}}</td>
+                                  <td>{{$d->deskripsi}}</td>
+                                  <td>{{$d->batas_waktu}}</td>
                                   <td>
-                                            <a href="{{Route('mapelEdit')}}" class="btn btn-sm btn-primary m-1 "> <i
+                                            <a href="{{Route('tugasEdit',['uuid'=>$d->uuid])}}" class="btn btn-sm btn-primary m-1 "> <i
                                                     class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                                    <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}')"> <i
                                                 class="fa fa-trash"></i></button>
                                   </td>
                               </tr>
+                              @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -92,7 +98,7 @@
         function Hapus(uuid) {
 			Swal.fire({
 			title: 'Anda Yakin?',
-			text: " Menghapus Haul " ,        
+			text: " Menghapus Data Siswa "  ,        
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -101,7 +107,7 @@
 			cancelButtonText: 'Batal'
 		}).then((result) => {
 			if (result.value) {
-				url = '';
+				url = "{{Route('tugasDestroy','')}}";
 				window.location.href =  url+'/'+uuid ;			
 			}
 		})
