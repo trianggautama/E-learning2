@@ -71,4 +71,29 @@ class modulController extends Controller
         $data->delete();
         return redirect()->back()->withSuccess('Data berhasil dihapus');
     }
+
+    public function instrukturEdit($uuid)
+    {
+        $data = Modul::where('uuid', $uuid)->first();
+        return view('instruktur.modul.edit', compact('data'));
+    }
+
+    public function instrukturUpdate(Request $req, $uuid)
+    {
+        $data = Modul::where('uuid', $uuid)->first();
+        $data->fill($req->all())->save();
+        if ($req->file != null) {
+            $img = $req->file('file');
+            $FotoExt = $img->getClientOriginalExtension();
+            $FotoName = $data->id;
+            $file = $FotoName . '.' . $FotoExt;
+            $img->move('modul', $file);
+            $data->file = $file;
+        } else {
+            $data->file = $data->file;
+        }
+        $data->update();
+
+        return redirect()->route('instrukturPertemuanShow', ['uuid' => $data->pertemuan->uuid])->withSuccess('Data berhasil diubah');
+    }
 }

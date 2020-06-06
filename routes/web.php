@@ -117,3 +117,24 @@ Route::get('siswa/pertemuan/detail/{uuid}', 'pertemuanController@siswaShow')->na
 Route::get('siswa/tes/index', 'tesController@siswaIndex')->name('siswaTesIndex');
 Route::get('siswa/input/tes/index/{uuid}', 'tesController@inputTes')->name('inputTes');
 Route::post('siswa/input/tes/index/{uuid}', 'tesController@jawaban')->name('updateTes');
+
+//halmaan instruktur
+Route::get('halaman/instruktur/index', 'adminController@instrukturIndex')->name('halamanInstrukturIndex');
+Route::get('intruktur/mapel/index', 'mapelController@instrukturIndex')->name('instrukturMapelIndex');
+Route::get('instruktur/mapel/detail/{uuid}', 'mapelController@instrukturShow')->name('instrukturMapelShow');
+Route::post('instruktur/pertemuan/create', 'pertemuanController@store')->name('instrukturPertemuanStore');
+Route::get('instruktur/pertemuan/detail/{uuid}', 'pertemuanController@instrukturShow')->name('instrukturPertemuanShow');
+Route::get('instruktur/pertemuan/edit/{uuid}', 'pertemuanController@instrukturEdit')->name('instrukturPertemuanEdit');
+Route::put('instruktur/pertemuan/edit/{uuid}', 'pertemuanController@instrukturUpdate')->name('instrukturPertemuanUpdate');
+Route::get('instruktur/pertemuan/delete/{uuid}', 'pertemuanController@destroy')->name('instrukturPertemuanDestroy');
+
+Route::post('instruktur/modul/create', 'modulController@store')->name('instrukturModulStore');
+Route::get('instruktur/modul/edit/{uuid}', 'modulController@instrukturEdit')->name('instrukturModulEdit');
+Route::put('instruktur/modul/edit/{uuid}', 'modulController@instrukturUpdate')->name('instrukturModulUpdate');
+Route::get('instruktur/modul/delete/{uuid}', 'modulController@destroy')->name('instrukturModulDestroy');
+
+
+Route::post('instruktur/tugas/create', 'tugasController@store')->name('instrukturTugasStore');
+Route::get('instruktur/tugas/edit/{uuid}', 'tugasController@instrukturEdit')->name('instrukturTugasEdit');
+Route::put('instruktur/tugas/edit/{uuid}', 'tugasController@instrukturUpdate')->name('instrukturTugasUpdate');
+Route::get('instruktur/tugas/delete/{uuid}', 'tugasController@destroy')->name('instrukturTugasDestroy');

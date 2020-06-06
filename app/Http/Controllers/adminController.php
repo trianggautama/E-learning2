@@ -17,4 +17,9 @@ class adminController extends Controller
         $mapel = Mapel::all();
         return view('siswa.index',compact('mapel'));
     }
+
+    public function instrukturIndex()
+    {
+        return view('instruktur.index');
+    }
 }
