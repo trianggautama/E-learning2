@@ -23,6 +23,7 @@ class CreateSoalsTable extends Migration
             $table->string('b', 50);
             $table->string('c', 50);
             $table->string('d', 50);
+            $table->string('jawaban', 50);
             $table->string('gambar', 100)->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();

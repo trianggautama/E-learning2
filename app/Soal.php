@@ -10,7 +10,7 @@ class Soal extends Model
     use Uuid;
 
     protected $fillable = [
-        'mapel_id', 'kode_soal', 'soal', 'a', 'b', 'c', 'd', 'gambar', 'status',
+        'mapel_id', 'kode_soal', 'soal', 'a', 'b', 'c', 'd', 'jawaban','gambar', 'status',
     ];
 
     public function mapel()

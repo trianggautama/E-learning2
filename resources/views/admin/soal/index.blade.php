@@ -125,6 +125,15 @@
                         </div>
                     </div>
                     <div class="form-group ">
+                        <label class="">Jawaban</label>
+                        <select name="jawaban" id="" class="form-control">
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
+                            <option value="d">D</option>
+                        </select>
+                    </div>
+                    <div class="form-group ">
                         <label class="">gambar Soal</label>
                         <input type="file" class="form-control" name="gambar" id="gambar">
                     </div>
