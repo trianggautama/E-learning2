@@ -18,6 +18,8 @@
     </header>
     <div class="row">
         <div class="col-lg-12">
+            <form action="" method="post">
+                @csrf
             @foreach($soal as $s)
             <div class="card">
                 <div class="card-body">
@@ -28,28 +30,28 @@
                        <div class="col-md-11">
                            <img src="{{asset('soal/'.$s->gambar)}}" alt="" width="200px">
                            <p class="text-justify">{{$s->soal}}</p>
-                           <input type="text" name="soal_id" value="{{$s->id}}">
+                           <input type="text" name="soal_id[]" value="{{$s->id}}">
                            <div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios.{{$s->id}}" id="optionsRadios1" value="option1" >
+									<input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan1" value="A" >
 										{{$s->a}}
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios.{{$s->id}}" id="optionsRadios2" value="option2">
+									<input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan2" value="B">
                                     {{$s->b}}
 								</label>
                             </div>
                             <div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios.{{$s->id}}" id="optionsRadios1" value="option1" >
+									<input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan1" value="C" >
                                     {{$s->c}}
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios.{{$s->id}}" id="optionsRadios2" value="option2">
+									<input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan2" value="D">
                                     {{$s->d}}
 								</label>
 							</div>
@@ -63,6 +65,7 @@
                     <button type="submit" class="btn btn-primary"> Simpan Jawaban</button>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </section>
