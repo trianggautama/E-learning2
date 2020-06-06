@@ -39,19 +39,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>MTK</td>
-                                  <td>2020</td>
-                                  <td>Instruktur 1</td>
-                                  <td>3 Mei 2020</td>
-                                  <td>
-                                            <a href="" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                @foreach($data as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->mapel->mapel}}</td>
+                                    <td>{{carbon\carbon::parse($d->periode->tahun)->translatedFormat('F Y')}}</td>
+                                    <td>{{$d->mapel->instruktur}}</td>
+                                    <td>{{$d->tanggal_ujian}}</td>
+                                    @if ($d->status == 1)
+                                    Sudah Terlaksana
+                                    @else
+                                    Belum Terlaksana
+                                    @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{Route('soalEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -77,12 +85,18 @@
                         <label class="">Mata Pelajaran</label>
                         <select name="mapel_id" id="mapel_id" class="form-control">
                             <option value="">-- pilih dari mata pelajaran --</option>
+                            @foreach($mapel as $d)
+                            <option value="{{$d->id}}">{{$d->mapel}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group ">
                         <label class="">Periode</label>
-                        <select name="mapel_id" id="mapel_id" class="form-control">
+                        <select name="periode_id" id="periode_id" class="form-control">
                             <option value="">-- pilih dari periode --</option>
+                            @foreach($periode as $d)
+                            <option value="{{$d->id}}">{{$d->periode}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group ">
@@ -92,8 +106,8 @@
                     <div class="form-group ">
                         <label class="">Status</label>
                         <select name="status_tes" id="status_tes" class="form-control">
-                            <option value="">Belum Terlaksana</option>
-                            <option value="">Sudah Terlaksana</option>
+                            <option value="0">Belum Terlaksana</option>
+                            <option value="1">Sudah Terlaksana</option>
                         </select>
                     </div>
                     <div class="modal-footer">

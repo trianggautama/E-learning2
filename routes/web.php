@@ -24,11 +24,11 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin/index', 'adminController@adminIndex')->name('adminIndex');
 
 //periode
-Route::get('/user/index', 'userController@index')->name('userIndex');
-Route::post('/user/create', 'userController@store')->name('userStore');
-Route::get('/user/edit/{uuid}', 'userController@edit')->name('userEdit');
-Route::put('/user/edit/{uuid}', 'userController@update')->name('userUpdate');
-Route::get('/user/delete/{uuid}', 'userController@destroy')->name('userDestroy');
+    Route::get('/user/index', 'userController@index')->name('userIndex');
+    Route::post('/user/create', 'userController@store')->name('userStore');
+    Route::get('/user/edit/{uuid}', 'userController@edit')->name('userEdit');
+    Route::put('/user/edit/{uuid}', 'userController@update')->name('userUpdate');
+    Route::get('/user/delete/{uuid}', 'userController@destroy')->name('userDestroy');
 
 //periode
     Route::get('/periode/index', 'periodeController@index')->name('periodeIndex');
@@ -87,7 +87,7 @@ Route::get('/user/delete/{uuid}', 'userController@destroy')->name('userDestroy')
     Route::get('/soal/index', 'soalController@index')->name('soalIndex');
     Route::post('/soal/create', 'soalController@store')->name('soalStore');
     Route::get('/soal/detail', 'soalController@show')->name('soalShow');
-    Route::get('/soal/edit', 'soalController@edit')->name('soalEdit');
+    Route::get('/soal/edit/{uuid}', 'soalController@edit')->name('soalEdit');
     Route::put('/soal/edit/{uuid}', 'soalController@update')->name('soalUpdate');
     Route::get('/soal/delete/{uuid}', 'soalController@destroy')->name('soalDestroy');
 
@@ -103,9 +103,8 @@ Route::get('/user/delete/{uuid}', 'userController@destroy')->name('userDestroy')
 
 });
 
-//halaman siswa 
+//halaman siswa
 Route::get('halaman/siswa/index', 'adminController@siswaIndex')->name('halamanSiswaIndex');
 Route::get('siswa/pertemuan/index', 'pertemuanController@siswaIndex')->name('siswaPertemuanIndex');
 Route::get('siswa/tes/index', 'tesController@siswaIndex')->name('siswaTesIndex');
 Route::get('siswa/input/tes/index', 'tesController@inputTes')->name('inputTes');
-

@@ -40,18 +40,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Mapel 1</td>
-                                  <td>S012</td>
-                                  <td> Lorem ipsum vero magnam  Fugit ipsa magnam voluptatibus dolorem placeat veniam tempora quo ipsam?</td>
-                                  <td><img src="{{asset('admin/img/!logged-user.jpg')}}" alt="Joseph Doe" class="rounded-circle" width="50px"/></td>
-                                  <td>Aktif</td>
-                                  <td>
-                                    <a href="{{Route('soalEdit')}}" class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                    <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
+                                @foreach($data as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->kode_soal}}</td>
+                                    <td>{{$d->mapel->mapel}}</td>
+                                    <td>{{$d->soal}}</td>
+                                    <td><img src="{{asset('admin/img/!logged-user.jpg')}}" alt="Joseph Doe"
+                                            class="rounded-circle" width="50px" /></td>
+                                    <td>
+                                        @if ($d->status == 1)
+                                        Aktif
+                                        @else
+                                        Tidak Aktif
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{Route('soalEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                                class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -71,17 +82,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('soalStore')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group ">
                         <label class="">Mata Pelajaran</label>
-                        <select name="" id="" class="form-control">
-                            <option value="">-- pilih Mapel</option>
+                        <select name="mapel_id" id="" class="form-control">
+                            <option value="">-- Pilih Mapel</option>
+                            @foreach($mapel as $d)
+                            <option value="{{$d->id}}">{{$d->mapel}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group ">
                         <label class="">Kode Soal</label>
-                        <input type="text" class="form-control" name="soal" id="soal">
+                        <input type="text" class="form-control" name="kode_soal" id="kode_soal">
                     </div>
                     <div class="form-group ">
                         <label class="">Soal</label>
@@ -90,24 +104,24 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group ">
-                            <label class="">Pilihan A</label>
-                            <input type="text" class="form-control" name="soal" id="soal">
-                        </div>
+                                <label class="">Pilihan A</label>
+                                <input type="text" class="form-control" name="a" id="a">
+                            </div>
 
-                        <div class="form-group ">
-                            <label class="">Pilihan B</label>
-                            <input type="text" class="form-control" name="soal" id="soal">
-                        </div>
+                            <div class="form-group ">
+                                <label class="">Pilihan B</label>
+                                <input type="text" class="form-control" name="b" id="b">
+                            </div>
                         </div>
                         <div class="col-md-6">
-                        <div class="form-group ">
-                        <label class="">Pilihan C</label>
-                        <input type="text" class="form-control" name="soal" id="soal">
-                    </div>
-                    <div class="form-group ">
-                        <label class="">Pilihan D</label>
-                        <input type="text" class="form-control" name="soal" id="soal">
-                    </div>
+                            <div class="form-group ">
+                                <label class="">Pilihan C</label>
+                                <input type="text" class="form-control" name="c" id="c">
+                            </div>
+                            <div class="form-group ">
+                                <label class="">Pilihan D</label>
+                                <input type="text" class="form-control" name="d" id="d">
+                            </div>
                         </div>
                     </div>
                     <div class="form-group ">
@@ -116,9 +130,9 @@
                     </div>
                     <div class="form-group ">
                         <label class="">Status</label>
-                        <select name="" id="" class="form-control">
+                        <select name="status" id="" class="form-control">
                             <option value="1">Aktif</option>
-                            <option value="2">Tidak Aktif</option>
+                            <option value="0">Tidak Aktif</option>
                         </select>
                     </div>
                     <div class="modal-footer">
