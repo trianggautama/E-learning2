@@ -194,7 +194,7 @@
 										</li>
 
 										<li>
-											<a class="nav-link" href="{{Route('pertemuanIndex')}}">
+											<a class="nav-link" href="{{Route('tesIndex')}}">
 												Tes
 											</a>
 										</li>
@@ -236,7 +236,7 @@
 							<div class="widget-content">
 								<ul class="list-unstyled m-0">
 									<li><a href="{{Route('userIndex')}}">Data user</a></li>
-									<li><a href="#">Data Instruktur</a></li>
+									<li><a href="{{Route('instrukturIndex')}}">Data Instruktur</a></li>
 									<li><a href="#">Data Alumni</a></li>
 								</ul>
 							</div>

@@ -83,17 +83,24 @@ Route::get('/user/delete/{uuid}', 'userController@destroy')->name('userDestroy')
     Route::put('/tugas/edit/{uuid}', 'tugasController@update')->name('tugasUpdate');
     Route::get('/tugas/delete/{uuid}', 'tugasController@destroy')->name('tugasDestroy');
 
-//Tes
+//Soal
     Route::get('/soal/index', 'soalController@index')->name('soalIndex');
     Route::post('/soal/create', 'soalController@store')->name('soalStore');
     Route::get('/soal/detail', 'soalController@show')->name('soalShow');
     Route::get('/soal/edit', 'soalController@edit')->name('soalEdit');
     Route::put('/soal/edit/{uuid}', 'soalController@update')->name('soalUpdate');
     Route::get('/soal/delete/{uuid}', 'soalController@destroy')->name('soalDestroy');
+
 //Tes
     Route::get('/tes/index', 'tesController@index')->name('tesIndex');
     Route::get('/tes/edit', 'tesController@edit')->name('tesEdit');
     Route::get('/tes/show', 'tesController@show')->name('tesShow');
+
+//Tes
+    Route::get('/instruktur/index', 'instrukturController@index')->name('instrukturIndex');
+    Route::get('/instruktur/edit', 'instrukturController@edit')->name('instrukturEdit');
+    Route::get('/instruktur/show', 'instrukturController@show')->name('instrukturShow');
+
 });
 
 //halaman siswa 

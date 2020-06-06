@@ -2,7 +2,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Siswa</h2>
+        <h2>Halaman Admin</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -10,7 +10,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Data Siswa</span></li>
+                <li><span>Data Admin</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -33,10 +33,7 @@
                                     <th>No</th>
                                     <th>NRP</th>
                                     <th>Nama</th>
-                                    <th>Kelas</th>
-                                    <th>Tempat, Tanggal Lahir</th>
-                                    <th>email</th>
-                                    <th>asal</th>
+                                    <th>Username</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -44,20 +41,15 @@
                                 @foreach($data as $d)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$d->user->nrp}}</td>
-                                    <td>{{$d->user->nama}}</td>
-                                    <td>{{$d->kelas->nama_kelas}}</td>
-                                    <td>{{$d->tempat_lahir}},
-                                        {{carbon\carbon::parse($d->tanggal_lahir)->translatedFormat('d F Y')}}
-                                    </td>
-                                    <td>{{$d->email}}</td>
-                                    <td>{{$d->asal}}</td>
+                                    <td>{{$d->nrp}}</td>
+                                    <td>{{$d->nama}}</td>
+                                    <td>{{$d->username}}</td>
                                     <td>
-                                        <a href="{{Route('siswaShow',['uuid' => $d->uuid])}}"
+                                        <a href=""
                                             class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
-                                        <a href="{{Route('siswaEdit',['uuid' => $d->uuid])}}"
+                                        <a href=""
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}','{{$d->user->nama}}')"> <i
+                                            <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}','{{$d->nama}}')"> <i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -85,7 +77,7 @@
                     @csrf
                     <div class="form-group ">
                         <label class="">Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Siswa">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama">
                     </div>
                     <div class="form-group ">
                         <label class="">NRP</label>
@@ -99,16 +91,6 @@
                         <label class="">Password</label>
                         <input type="password" class="form-control" name="password" id="password"
                             placeholder="password">
-                    </div>
-
-                    </div>
-                    <div class="form-group ">
-                        <label class="">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-                    </div>
-                    <div class="form-group ">
-                        <label class="">Asal</label>
-                        <input type="text" class="form-control" name="asal" id="asal" placeholder="Asal">
                     </div>
                     <div class="form-group ">
                         <label class="">Foto</label>
@@ -145,7 +127,7 @@
 			cancelButtonText: 'Batal'
 		}).then((result) => {
 			if (result.value) {
-				url = "{{Route('siswaDestroy','')}}";
+				url = "{{Route('userDestroy','')}}";
 				window.location.href =  url+'/'+uuid ;			
 			}
 		})

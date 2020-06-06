@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Tes</h2>
+        <h2>Halaman Instruktur</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Data Tes</span></li>
+                <li><span>Data Instruktur</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -31,25 +31,27 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Mata Pelajaran</th>
-                                    <th>Periode</th>
-                                    <th>Instruktur</th>
-                                    <th>Tanggal Ujian</th>
+                                    <th>Nama</th>
+                                    <th>NRP</th>
+                                    <th>Tempat, Tanggal Lahir</th>
+                                    <th>Email</th>
+                                    <th>Gambar</th>
+                                    <th>username</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                               <tr>
                                   <td>1</td>
-                                  <td>MTK</td>
-                                  <td>2020</td>
                                   <td>Instruktur 1</td>
-                                  <td>3 Mei 2020</td>
-                                  <td>
-                                            <a href="" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
-                                                class="fa fa-trash"></i></button>
+                                  <td>12313134131</td>
+                                  <td>Banjarbaru, 12-05-1988</td>
+                                  <td>instruktur@gmail.com</td>
+                                  <td><img src="{{asset('admin/img/!logged-user.jpg')}}" alt="Joseph Doe" class="rounded-circle" width="50px"/></td>
+                                  <td>instruktur123</td>
+                                <td>
+                                    <a href="{{Route('instrukturEdit')}}" class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                    <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i class="fa fa-trash"></i></button>
                                   </td>
                               </tr>
                             </tbody>
@@ -62,7 +64,7 @@
 </section>
 
 <div class="modal fade bd-example-modal-lg" id="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Tambah Data</h5>
@@ -74,27 +76,38 @@
                 <form action="" method="post">
                     @csrf
                     <div class="form-group ">
-                        <label class="">Mata Pelajaran</label>
-                        <select name="mapel_id" id="mapel_id" class="form-control">
-                            <option value="">-- pilih dari mata pelajaran --</option>
-                        </select>
+                        <label class="">Nama</label>
+                        <input type="text" class="form-control" name="nama" id="nama">
                     </div>
                     <div class="form-group ">
-                        <label class="">Periode</label>
-                        <select name="mapel_id" id="mapel_id" class="form-control">
-                            <option value="">-- pilih dari periode --</option>
-                        </select>
+                        <label class="">NRP</label>
+                        <input type="text" class="form-control" name="nrp" id="nrp">
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group ">
+                            <label class="">Tempat Lahir</label>
+                            <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir">
+                        </div>
+                    </div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                <label class="">Tanggal Lahir</label>
+                                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group ">
-                        <label class="">Tanggal Ujian</label>
-                        <input type="date" class="form-control" name="tanggal_ujian" id="tanggal_ujian">
+                        <label class="">Email</label>
+                        <input type="email" class="form-control" name="email" id="email">
                     </div>
                     <div class="form-group ">
-                        <label class="">Status</label>
-                        <select name="status_tes" id="status_tes" class="form-control">
-                            <option value="">Belum Terlaksana</option>
-                            <option value="">Sudah Terlaksana</option>
-                        </select>
+                        <label class="">Username</label>
+                        <input type="text" class="form-control" name="username" id="username">
+                    </div>
+                    <div class="form-group ">
+                        <label class="">Password</label>
+                        <input type="password" class="form-control" name="password" id="password">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
