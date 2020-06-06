@@ -189,7 +189,7 @@
 									<ul class="nav nav-children">
 										<li>
 											<a class="nav-link" href="{{Route('soalIndex')}}">
-												Manajeman Soal
+												Manajemen Soal
 											</a>
 										</li>
 										<li>

@@ -86,7 +86,7 @@ Route::group(['middleware' => ['admin']], function () {
 //Soal
     Route::get('/soal/index', 'soalController@index')->name('soalIndex');
     Route::post('/soal/create', 'soalController@store')->name('soalStore');
-    Route::get('/soal/detail', 'soalController@show')->name('soalShow');
+    Route::get('/soal/detail/{uuid}', 'soalController@show')->name('soalShow');
     Route::get('/soal/edit/{uuid}', 'soalController@edit')->name('soalEdit');
     Route::put('/soal/edit/{uuid}', 'soalController@update')->name('soalUpdate');
     Route::get('/soal/delete/{uuid}', 'soalController@destroy')->name('soalDestroy');
