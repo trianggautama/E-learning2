@@ -27,10 +27,9 @@ class tesController extends Controller
     public function edit($uuid)
     {
         $data = Tes::where('uuid', $uuid)->first();
-        $mapel = Mapel::orderBy('mapel', 'asc')->get();
         $periode = Periode::orderBy('tahun', 'desc')->get();
 
-        return view('admin.tes.edit', compact('data', 'mapel', 'periode'));
+        return view('admin.tes.edit', compact('data', 'periode'));
     }
 
     public function update(Request $req, $uuid)
@@ -38,7 +37,7 @@ class tesController extends Controller
         $data = Tes::where('uuid', $uuid)->first();
         $data->fill($req->all())->save();
 
-        return redirect()->route('soalIndex')->withSuccess('Data berhasil diubah');
+        return redirect()->route('tesIndex')->withSuccess('Data berhasil diubah');
     }
 
     public function destroy($uuid)

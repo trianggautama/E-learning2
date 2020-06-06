@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nama', 'nrp', 'username', 'password',
+        'nama', 'nrp', 'username', 'password', 'role',
     ];
 
     /**
@@ -39,5 +39,10 @@ class User extends Authenticatable
     public function siswa()
     {
         return $this->hasOne(Siswa::class);
+    }
+
+    public function instruktur()
+    {
+        return $this->hasOne(instruktur::class);
     }
 }

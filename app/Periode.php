@@ -13,8 +13,4 @@ class Periode extends Model
         'tahun',
     ];
 
-    public function mapel()
-    {
-        return $this->hasMany(Mapel::class);
-    }
 }

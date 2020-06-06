@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Instruktur;
 use App\Mapel;
-use App\Periode;
 use Illuminate\Http\Request;
 
 class mapelController extends Controller
@@ -11,8 +11,8 @@ class mapelController extends Controller
     public function index()
     {
         $data = Mapel::orderBy('id', 'Desc')->get();
-        $periode = Periode::orderBy('tahun', 'Desc')->get();
-        return view('admin.mapel.index', compact('data', 'periode'));
+        $instruktur = Instruktur::orderBy('id', 'Desc')->get();
+        return view('admin.mapel.index', compact('data', 'instruktur'));
     }
 
     public function store(Request $req)
@@ -30,8 +30,8 @@ class mapelController extends Controller
     public function edit($uuid)
     {
         $data = Mapel::where('uuid', $uuid)->first();
-        $periode = Periode::orderBy('tahun', 'Desc')->get();
-        return view('admin.mapel.edit', compact('data', 'periode'));
+        $instruktur = Instruktur::orderBy('id', 'Desc')->get();
+        return view('admin.mapel.edit', compact('data', 'instruktur'));
     }
 
     public function update(Request $req, $uuid)
