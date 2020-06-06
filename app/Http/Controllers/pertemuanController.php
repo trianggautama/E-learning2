@@ -63,4 +63,31 @@ class pertemuanController extends Controller
         $tugas = Tugas::where('pertemuan_id',$data->id)->get();
         return view('siswa.pertemuan.show', compact('data','modul','tugas'));
     }
+
+    public function instrukturStore(Request $req)
+    {
+        $mapel = Mapel::where('uuid', $req->uuid)->first();
+        $data = $mapel->pertemuan()->create($req->all());
+        return redirect()->back()->withSuccess('Data berhasil disimpan');
+    }
+
+    public function instrukturShow($uuid)
+    {
+        $data = Pertemuan::where('uuid', $uuid)->first();
+        return view('instruktur.pertemuan.show', compact('data'));
+    }
+
+    public function instrukturedit($uuid)
+    {
+        $data = Pertemuan::where('uuid', $uuid)->first();
+        return view('instruktur.pertemuan.edit', compact('data'));
+    }
+
+    public function instrukturUpdate(Request $req, $uuid)
+    {
+        $data = Pertemuan::where('uuid', $uuid)->first();
+        $data->fill($req->all())->save();
+
+        return redirect()->route('instrukturMapelShow', ['uuid' => $data->mapel->uuid])->withSuccess('Data berhasil diubah');
+    }
 }

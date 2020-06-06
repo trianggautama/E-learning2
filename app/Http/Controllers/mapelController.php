@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Instruktur;
 use App\Mapel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class mapelController extends Controller
@@ -45,6 +46,19 @@ class mapelController extends Controller
     {
         $data = Mapel::where('uuid', $uuid)->first()->delete();
         return redirect()->back()->withSuccess('Data berhasil dihapus');
+    }
+
+    public function instrukturIndex()
+    {
+        $instruktur_id = Auth::user()->instruktur->id;
+        $data = Mapel::where('instruktur_id', $instruktur_id)->get();
+        return view('instruktur.mapel.index', compact('data'));
+    }
+
+    public function instrukturShow($uuid)
+    {
+        $data = Mapel::where('uuid', $uuid)->first();
+        return view('instruktur.mapel.show', compact('data'));
     }
 
 }

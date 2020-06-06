@@ -48,4 +48,18 @@ class tugasController extends Controller
         $data = Tugas::where('uuid', $uuid)->first()->delete();
         return redirect()->back()->withSuccess('Data berhasil dihapus');
     }
+
+    public function instrukturEdit($uuid)
+    {
+        $data = Tugas::where('uuid', $uuid)->first();
+        return view('instruktur.tugas.edit', compact('data'));
+    }
+
+    public function instrukturUpdate(Request $req, $uuid)
+    {
+        $data = Tugas::where('uuid', $uuid)->first();
+        $data->fill($req->all())->save();
+
+        return redirect()->route('instrukturPertemuanShow', ['uuid' => $data->pertemuan->uuid])->withSuccess('Data berhasil diubah');
+    }
 }

@@ -31,6 +31,14 @@ class soalController extends Controller
         return redirect()->back()->withSuccess('Data berhasil disimpan');
     }
 
+    public function show($uuid)
+    {
+        $data = Soal::where('uuid', $uuid)->first();
+
+        return view('admin.soal.show', compact('data'));
+    }
+
+
     public function edit($uuid)
     {
         $data = Soal::where('uuid', $uuid)->first();

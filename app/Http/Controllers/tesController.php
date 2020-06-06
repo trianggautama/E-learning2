@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jawaban_siswa;
 use App\Mapel;
 use App\Periode;
 use App\Soal;

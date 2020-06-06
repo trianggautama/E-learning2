@@ -43,11 +43,16 @@
                                 @foreach($data as $d)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$d->kode_soal}}</td>
                                     <td>{{$d->mapel->mapel}}</td>
+                                    <td>{{$d->kode_soal}}</td>
                                     <td>{{$d->soal}}</td>
-                                    <td><img src="{{asset('admin/img/!logged-user.jpg')}}" alt="Joseph Doe"
-                                            class="rounded-circle" width="50px" /></td>
+                                    <td>
+                                        @if($d->gambar)
+                                        <img src="{{asset('soal/'.$d->gambar)}}" alt="Joseph Doe" class="rounded-circle" width="50px" height="50px" />
+                                        @else
+                                        <img src="{{asset('admin/img/!logged-user.jpg')}}" alt="Joseph Doe" class="rounded-circle" width="50px" />
+                                        @endif
+                                    </td>
                                     <td>
                                         @if ($d->status == 1)
                                         Aktif
@@ -56,6 +61,8 @@
                                         @endif
                                     </td>
                                     <td>
+                                        <a href="{{Route('soalShow',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
                                         <a href="{{Route('soalEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
                                         <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i

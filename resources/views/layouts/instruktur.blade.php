@@ -80,8 +80,8 @@
 								data-lock-picture="img/!logged-user.jpg" />
 						</figure>
 						<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-							<span class="name">John Doe Junior</span>
-							<span class="role">administrator</span>
+							<span class="name">{{Auth::user()->nama}}</span>
+							<span class="role">Siswa</span>
 						</div>
 						<i class="fa custom-caret"></i>
 					</a>
@@ -89,17 +89,9 @@
 						<ul class="list-unstyled mb-2">
 							<li class="divider"></li>
 							<li>
-								<a role="menuitem" tabindex="-1" href="pages-user-profile.html"><i
-										class="fas fa-user"></i> My Profile</a>
-							</li>
-							<li>
-								<a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i
-										class="fas fa-lock"></i> Lock Screen</a>
-							</li>
-							<li>
 								<a role="menuitem" tabindex="-1" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();"> <i class="fa fa-sign-out-alt"></i>
                                         {{ __('Logout') }}
                                     </a>
 
@@ -135,28 +127,10 @@
 
 							<ul class="nav nav-main">
 								<li>
-									<a class="nav-link" href="layouts-default.html">
+									<a class="nav-link" href="{{Route('halamanSiswaIndex')}}">
 										<i class="fas fa-home" aria-hidden="true"></i>
 										<span>Home</span>
 									</a>
-								</li>
-								<li class="nav-parent">
-									<a class="nav-link" href="#">
-										<i class="fas fa-users" aria-hidden="true"></i>
-										<span>Siswa</span>
-									</a>
-									<ul class="nav nav-children">
-										<li>
-											<a class="nav-link" href="{{Route('kelasIndex')}}">
-												Data Kelas
-											</a>
-										</li>
-										<li>
-											<a class="nav-link" href="{{Route('siswaIndex')}}">
-												Data Siswa
-											</a>
-										</li>
-									</ul>
 								</li>
 								<li class="nav-parent">
 									<a class="nav-link" href="#">
@@ -165,86 +139,20 @@
 									</a>
 									<ul class="nav nav-children">
 										<li>
-											<a class="nav-link" href="{{Route('mapelIndex')}}">
+											<a class="nav-link" href="{{Route('instrukturMapelIndex')}}">
 												Data Mata Pelajaran
-											</a>
-										</li>
-										<li>
-											<a class="nav-link" href="{{Route('pertemuanIndex')}}">
-												Pertemuan
-											</a>
-										</li>
-										<li>
-											<a class="nav-link" href="{{Route('modulIndex')}}">
-												Materi
-											</a>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-parent">
-									<a class="nav-link" href="#">
-										<i class="fas fa-question-circle" aria-hidden="true"></i>
-										<span>Data Kuis</span>
-									</a>
-									<ul class="nav nav-children">
-										<li>
-											<a class="nav-link" href="{{Route('soalIndex')}}">
-												Manajemen Soal
-											</a>
-										</li>
-										<li>
-											<a class="nav-link" href="{{Route('tugasIndex')}}">
-												Tugas
-											</a>
-										</li>
-										<li>
-											<a class="nav-link" href="{{Route('tesIndex')}}">
-												Tes
-											</a>
-										</li>
-									</ul>
-								</li>
-								<li class="nav-parent">
-									<a class="nav-link" href="#">
-										<i class="fas fa-asterisk" aria-hidden="true"></i>
-										<span>Data Kelulusan</span>
-									</a>
-									<ul class="nav nav-children">
-										<li>
-											<a>
-												Data Kelulusan
-											</a>
-										</li>
-										<li>
-											<a>
-												Data Tidak Lulus
 											</a>
 										</li>
 									</ul>
 								</li>
 								<li>
-									<a class="nav-link" href="{{Route('periodeIndex')}}">
-										<i class="fas fa-clock" aria-hidden="true"></i>
-										<span>Pengeturan Periode </span>
+									<a class="nav-link" href="#">
+										<i class="fas fa-award" aria-hidden="true"></i>
+										<span>Data kelulusan </span>
 									</a>
 								</li>
 							</ul>
 						</nav>
-
-						<hr class="separator" />
-
-						<div class="sidebar-widget widget-tasks">
-							<div class="widget-header">
-								<h6>Data</h6>
-							</div>
-							<div class="widget-content">
-								<ul class="list-unstyled m-0">
-									<li><a href="{{Route('userIndex')}}">Data user</a></li>
-									<li><a href="{{Route('instrukturIndex')}}">Data Instruktur</a></li>
-									<li><a href="#">Data Alumni</a></li>
-								</ul>
-							</div>
-						</div>
 					</div>
 
 					<script>
