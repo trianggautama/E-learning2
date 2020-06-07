@@ -21,7 +21,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
-                        <button class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> Cetak Data</button>
+                        <a href="{{Route('hasilTesFilterTes')}}" class="btn btn-sm btn-secondary"><i class="fa fa-filter"></i> Filter Tes</a>
+                        <a href="{{Route('hasilTesFilterHasil')}}" class="btn btn-sm btn-secondary"><i class="fa fa-filter"></i> Filter Hasil</a>
+                        <a href="{{Route('hasilTesCetak')}}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-print"></i> Cetak Data</a>
                         <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
                             Data</button>
                     </div>
@@ -34,7 +36,7 @@
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Tes</th>
-                                    <th>Tanggal Tes</th>
+                                    <th>Periode</th>
                                     <th>Status Tes</th>
                                     <th>Nilai</th>
                                     <th>Keterangan</th>
@@ -47,9 +49,9 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$d->siswa->user->nama}}</td>
                                     <td>{{$d->tes->mapel->mapel}}</td>
-                                    <td>{{$d->tes->tanggal_ujian}}</td>
+                                    <td>{{carbon\carbon::parse($d->tes->periode->tahun)->translatedFormat('Y')}}</td>
                                     <td>@if($d->tes->status == 0)
-                                            <p class="text-primary"> Tes Maih Berlangsung</p>
+                                            <p class="text-primary"> Tes Masih Berlangsung</p>
                                         @else
                                             <p class="text-primary"> Tes Sudah Selesai</p>
                                         @endif

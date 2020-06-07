@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tes;
 use App\Tes_siswa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -18,6 +19,17 @@ class hasilTesController extends Controller
     {
         $data = Tes_siswa::where('siswa_id',Auth::user()->siswa->id)->get();
         return view('siswa.hasilTes.index', compact('data'));
+    }
+
+    public function filterHasil()
+    {
+        return view('admin.hasilTes.filterHasil');
+    }
+
+    public function filterTes()
+    {
+        $data = Tes::all();
+        return view('admin.hasilTes.filterTes',compact('data'));
     }
 
     // public function store(Request $req)
