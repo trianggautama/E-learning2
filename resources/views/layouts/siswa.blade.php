@@ -152,9 +152,9 @@
 									</ul>
 								</li>
 								<li>
-									<a class="nav-link" href="{{Route('periodeIndex')}}">
+									<a class="nav-link" href="{{Route('siswaHasilTesIndex')}}">
 										<i class="fas fa-award" aria-hidden="true"></i>
-										<span>Data kelulusan </span>
+										<span>hasil Ujian </span>
 									</a>
 								</li>
 							</ul>

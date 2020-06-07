@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Kelas</h2>
+        <h2>Halaman Hasil Tes</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Data Kelas</span></li>
+                <li><span>Data Hasil Tes Siswa</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -21,6 +21,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
+                        <button class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> Cetak Data</button>
                         <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
                             Data</button>
                     </div>
@@ -31,7 +32,12 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kelas</th>
+                                    <th>Nama</th>
+                                    <th>Tes</th>
+                                    <th>Tanggal Tes</th>
+                                    <th>Status Tes</th>
+                                    <th>Nilai</th>
+                                    <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -39,13 +45,25 @@
                                 @foreach($data as $d)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$d->nama_kelas}}</td>
+                                    <td>{{$d->siswa->user->nama}}</td>
+                                    <td>{{$d->tes->mapel->mapel}}</td>
+                                    <td>{{$d->tes->tanggal_ujian}}</td>
+                                    <td>@if($d->tes->status == 0)
+                                            <p class="text-primary"> Tes Maih Berlangsung</p>
+                                        @else
+                                            <p class="text-primary"> Tes Sudah Selesai</p>
+                                        @endif
+                                    </td>
+                                    <td>{{$d->nilai}}</td>
+                                    <td>
+                                        @if($d->nilai >= 70)
+                                            <p class="text-success"> Lulus</p>
+                                        @else
+                                            <p class="text-danger"> Tidak Lulus</p>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="" class="btn btn-sm btn-warning m-1 "> <i class="fa fa-file"></i></a>
-                                        <a href="{{Route('kelasEdit',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}','{{$d->nama_kelas}}')"> <i
-                                                class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
                                 @endforeach

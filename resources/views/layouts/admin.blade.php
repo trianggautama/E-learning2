@@ -207,17 +207,17 @@
 								<li class="nav-parent">
 									<a class="nav-link" href="#">
 										<i class="fas fa-asterisk" aria-hidden="true"></i>
-										<span>Data Kelulusan</span>
+										<span> Hasil Tes Dan Tugas</span>
 									</a>
 									<ul class="nav nav-children">
 										<li>
-											<a>
-												Data Kelulusan
+											<a class="nav-link" href="{{Route('hasilTesIndex')}}">
+												Hasil Tes
 											</a>
 										</li>
 										<li>
-											<a>
-												Data Tidak Lulus
+											<a class="nav-link" href="{{Route('tugasSiswaIndex')}}">
+												tugas Siswa
 											</a>
 										</li>
 									</ul>

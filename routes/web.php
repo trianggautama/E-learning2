@@ -106,6 +106,26 @@ Route::group(['middleware' => ['admin']], function () {
     Route::put('/instruktur/edit/{uuid}', 'instrukturController@update')->name('instrukturUpdate');
     Route::get('/instruktur/delete/{uuid}', 'instrukturController@destroy')->name('instrukturDestroy');
 
+//Hasil Tes
+    Route::get('/hasilTes/index', 'hasilTesController@index')->name('hasilTesIndex');
+    Route::post('/hasilTes/create', 'hasilTesController@store')->name('hasilTesStore');
+    Route::get('/hasilTes/edit/{uuid}', 'hasilTesController@edit')->name('hasilTesEdit');
+    Route::put('/hasilTes/edit/{uuid}', 'hasilTesController@update')->name('hasilTesUpdate');
+    Route::get('/hasilTes/delete/{uuid}', 'hasilTesController@destroy')->name('hasilTesDestroy');
+
+//Hasil Tes
+    Route::get('/tugasSiswa/index', 'tugasSiswaController@index')->name('tugasSiswaIndex');
+    Route::post('/tugasSiswa/create', 'tugasSiswaController@store')->name('tugasSiswaStore');
+    Route::get('/tugasSiswa/edit/{uuid}', 'tugasSiswaController@edit')->name('tugasSiswaEdit');
+    Route::put('/tugasSiswa/edit/{uuid}', 'tugasSiswaController@update')->name('tugasSiswaUpdate');
+    Route::get('/tugasSiswa/delete/{uuid}', 'tugasSiswaController@destroy')->name('tugasSiswaDestroy');
+
+//Cetak Report
+    Route::get('/siswa/cetak', 'reportController@siswa')->name('siswaCetak');
+    Route::get('/mapel/cetak', 'reportController@mapel')->name('mapelCetak');
+    Route::get('/pertemuan/cetak', 'reportController@pertemuan')->name('pertemuanCetak');
+    Route::get('/pertemuan/mapel/cetak/{uuid}', 'reportController@pertemuanMapel')->name('pertemuanMapelCetak');
+
 });
 
 //halaman siswa
@@ -117,6 +137,9 @@ Route::get('siswa/pertemuan/detail/{uuid}', 'pertemuanController@siswaShow')->na
 Route::get('siswa/tes/index', 'tesController@siswaIndex')->name('siswaTesIndex');
 Route::get('siswa/input/tes/index/{uuid}', 'tesController@inputTes')->name('inputTes');
 Route::post('siswa/input/tes/index/{uuid}', 'tesController@jawaban')->name('updateTes');
+
+Route::get('siswa/hasilTes/index', 'hasilTesController@siswaIndex')->name('siswaHasilTesIndex');
+
 
 //halmaan instruktur
 Route::get('halaman/instruktur/index', 'adminController@instrukturIndex')->name('halamanInstrukturIndex');

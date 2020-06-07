@@ -7,7 +7,7 @@
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
-                    <a href="index.html">
+                <a href="index.html">
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
@@ -34,7 +34,7 @@
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan1"
-                                            value="a">
+                                            value="a" required>
                                         {{$s->a}}
                                     </label>
                                 </div>

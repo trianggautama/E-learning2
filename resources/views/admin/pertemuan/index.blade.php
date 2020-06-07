@@ -20,8 +20,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Order by tanggal</h3>
-                    <div class="text-right">
+                    <div class="text-right"> 
+                    <a href="{{Route('pertemuanCetak')}}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-print"></i> Cetak Data</a>
                     </div>
                 </div>
                 <div class="card-body">

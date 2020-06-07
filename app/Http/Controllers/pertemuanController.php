@@ -13,7 +13,7 @@ class pertemuanController extends Controller
 
     public function index()
     {
-        $data = Pertemuan::orderBy('tanggal', 'desc')->get();
+        $data = Pertemuan::orderBy('tanggal', 'asc')->get();
         return view('admin.pertemuan.index', compact('data'));
     }
 

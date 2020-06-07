@@ -41,11 +41,15 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$d->mapel->mapel}}</td>
-                                    <td>{{$d->tanggal_ujian}}</td>
+                                    <td>{{carbon\carbon::parse($d->tanggal_ujian)->translatedFormat('d F Y')}}</td>
                                     <td>{{$d->periode->tahun}}</td>
                                     <td>
+                                    @if(carbon\carbon::parse($d->tanggal_ujian) >= carbon\carbon::now())
                                         <a href="{{Route('inputTes',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-warning m-1 "> <i class="fa fa-play"></i></a>
+                                    @else
+                                        <p class="text-danger"> Waktu Ujian Sudah lewat</p>
+                                    @endif
                                     </td>
                                 </tr>
                                 @endforeach
