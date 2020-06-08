@@ -28,6 +28,14 @@ class tesController extends Controller
         return redirect()->back()->withSuccess('Data berhasil disimpan');
     }
 
+    public function show($uuid)
+    {
+        $tes = Tes::where('uuid', $uuid)->first();
+        $data = Tes_siswa::where('tes_id', $tes->id)->get();
+
+        return view('admin.tes.show', compact('data', 'tes'));
+    }
+
     public function edit($uuid)
     {
         $data = Tes::where('uuid', $uuid)->first();

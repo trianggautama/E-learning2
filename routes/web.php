@@ -94,7 +94,7 @@ Route::group(['middleware' => ['admin']], function () {
 //Tes
     Route::get('/tes/index', 'tesController@index')->name('tesIndex');
     Route::post('/tes/create', 'tesController@store')->name('tesStore');
-    Route::get('/tes/show', 'tesController@show')->name('tesShow');
+    Route::get('/tes/detail/{uuid}', 'tesController@show')->name('tesShow');
     Route::get('/tes/edit/{uuid}', 'tesController@edit')->name('tesEdit');
     Route::put('/tes/edit/{uuid}', 'tesController@update')->name('tesUpdate');
     Route::get('/tes/delete/{uuid}', 'tesController@destroy')->name('tesDestroy');

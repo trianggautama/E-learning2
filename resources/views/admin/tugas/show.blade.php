@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Tugas</h2>
+        <h2>Detail Tugas {{$tugas->pertemuan->mapel->mapel}} Pertemuan {{$tugas->pertemuan->pertemuan}}</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Data Tugas</span></li>
+                <li><span>Detail Tugas </span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -32,26 +32,21 @@
                                     <th>Mapel</th>
                                     <th>Pertemuan</th>
                                     <th>Tugas</th>
-                                    <th>Batas Waktu</th>
-                                    <th>Aksi</th>
+                                    <th>Nama Siswa</th>
+                                    <th>Waktu Mengumpul</th>
+                                    <th>File</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($data as $d)
                               <tr>
                                   <td>{{$loop->iteration}}</td>
-                                  <td>{{$d->pertemuan->mapel->mapel}}</td>
-                                  <td>{{$d->pertemuan->pertemuan}}</td>
-                                  <td>{{$d->deskripsi}}</td>
-                                  <td>{{$d->batas_waktu}}</td>
-                                  <td>
-                                    <a href="{{Route('tugasShow',['uuid'=>$d->uuid])}}" class="btn btn-sm btn-warning m-1 "> <i
-                                                    class="fa fa-info-circle"></i></a>
-                                            <a href="{{Route('tugasEdit',['uuid'=>$d->uuid])}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                                    <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}')"> <i
-                                                class="fa fa-trash"></i></button>
-                                  </td>
+                                  <td>{{$d->tugas->pertemuan->mapel->mapel}}</td>
+                                  <td>{{$d->tugas->pertemuan->pertemuan}}</td>
+                                  <td>{{$d->tugas->deskripsi}}</td>
+                                  <td>{{$d->siswa->user->nama}}</td>
+                                  <td>{{carbon\carbon::parse($d->created_at)->translatedFormat('H:i')}} WITA</td>
+                                  <td> <a href="{{asset('tugas/'.$d->file)}}" class="btn btn-warning" download><i class="fa fa-file-download"></i> {{$d->file}}</a></td>
                               </tr>
                               @endforeach
                             </tbody>

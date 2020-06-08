@@ -53,6 +53,8 @@
                                     @endif
                                     </td>
                                     <td>
+                                        <a href="{{Route('tesShow',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
                                         <a href="{{Route('tesEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
                                         <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i

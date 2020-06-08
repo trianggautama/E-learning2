@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Tugas</h2>
+        <h2>Halaman Hasil Tes {{$tes->mapel->mapel}} Periode {{carbon\carbon::parse($tes->periode->tahun)->translatedFormat('Y')}}</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Data Tugas</span></li>
+                <li><span>Data Hasil Tes Siswa</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -29,31 +29,41 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Mapel</th>
-                                    <th>Pertemuan</th>
-                                    <th>Tugas</th>
-                                    <th>Batas Waktu</th>
+                                    <th>Nama</th>
+                                    <th>Tes</th>
+                                    <th>Periode</th>
+                                    <th>Status Tes</th>
+                                    <th>Nilai</th>
+                                    <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($data as $d)
-                              <tr>
-                                  <td>{{$loop->iteration}}</td>
-                                  <td>{{$d->pertemuan->mapel->mapel}}</td>
-                                  <td>{{$d->pertemuan->pertemuan}}</td>
-                                  <td>{{$d->deskripsi}}</td>
-                                  <td>{{$d->batas_waktu}}</td>
-                                  <td>
-                                    <a href="{{Route('tugasShow',['uuid'=>$d->uuid])}}" class="btn btn-sm btn-warning m-1 "> <i
-                                                    class="fa fa-info-circle"></i></a>
-                                            <a href="{{Route('tugasEdit',['uuid'=>$d->uuid])}}" class="btn btn-sm btn-primary m-1 "> <i
-                                                    class="fa fa-edit"></i></a>
-                                                    <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}')"> <i
-                                                class="fa fa-trash"></i></button>
-                                  </td>
-                              </tr>
-                              @endforeach
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->siswa->user->nama}}</td>
+                                    <td>{{$d->tes->mapel->mapel}}</td>
+                                    <td>{{carbon\carbon::parse($d->tes->periode->tahun)->translatedFormat('Y')}}</td>
+                                    <td>@if($d->tes->status == 0)
+                                            <p class="text-primary"> Tes Masih Berlangsung</p>
+                                        @else
+                                            <p class="text-primary"> Tes Sudah Selesai</p>
+                                        @endif
+                                    </td>
+                                    <td>{{$d->nilai}}</td>
+                                    <td>
+                                        @if($d->nilai >= 70)
+                                            <p class="text-success"> Lulus</p>
+                                        @else
+                                            <p class="text-danger"> Tidak Lulus</p>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-warning m-1 "> <i class="fa fa-file"></i></a>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -64,7 +74,7 @@
 </section>
 
 <div class="modal fade bd-example-modal-lg" id="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Tambah Data</h5>
@@ -73,11 +83,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('kelasStore')}}" method="post">
                     @csrf
                     <div class="form-group ">
-                        <label class="">Periode Tahun</label>
-                        <input type="date" class="form-control" name="tahun" id="tahun">
+                        <label class="">Nama kelas</label>
+                        <input type="text" class="form-control" name="nama_kelas" id="kelas" placeholder="Kelas">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -97,10 +107,10 @@
             $('#status').text('Tambah Data');
             $('#modal').modal('show');
         });
-        function Hapus(uuid) {
+        function Hapus(uuid,nama) {
 			Swal.fire({
 			title: 'Anda Yakin?',
-			text: " Menghapus Data Tugas "  ,        
+			text: " Menghapus Data Kelas " + nama ,        
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -109,7 +119,7 @@
 			cancelButtonText: 'Batal'
 		}).then((result) => {
 			if (result.value) {
-				url = "{{Route('tugasDestroy','')}}";
+				url = "{{Route('kelasDestroy','')}}";
 				window.location.href =  url+'/'+uuid ;			
 			}
 		})

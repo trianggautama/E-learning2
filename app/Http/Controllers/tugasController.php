@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pertemuan;
 use App\Tugas;
+use App\Tugas_siswa;
 use Illuminate\Http\Request;
 
 class tugasController extends Controller
@@ -25,8 +26,9 @@ class tugasController extends Controller
 
     public function show($uuid)
     {
-        $data = Tugas::where('uuid', $uuid)->first();
-        return view('admin.tugas.show', compact('data'));
+        $tugas  = Tugas::where('uuid',$uuid)->first();
+        $data   = Tugas_siswa::where('tugas_id', $tugas->id)->get();
+        return view('admin.tugas.show', compact('data','tugas'));
     }
 
     public function edit($uuid)

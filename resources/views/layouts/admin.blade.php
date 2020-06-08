@@ -55,7 +55,7 @@
 		<!-- start: header -->
 		<header class="header">
 			<div class="logo-container">
-				<a href="../2.2.0" class="logo">
+				<a href="/admin/index" class="logo">
 					<img src="{{asset('admin/img/logo_ut.png')}}" width="40" height="35" alt="Porto Admin" />
 				</a>
 				<p class="logo pt-1	">
@@ -233,7 +233,6 @@
 								<ul class="list-unstyled m-0">
 									<li><a href="{{Route('userIndex')}}">Data user</a></li>
 									<li><a href="{{Route('instrukturIndex')}}">Data Instruktur</a></li>
-									<li><a href="#">Data Alumni</a></li>
 								</ul>
 							</div>
 						</div>
