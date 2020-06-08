@@ -17,4 +17,9 @@ class Tugas extends Model
     {
         return $this->belongsTo(Pertemuan::class);
     }
+
+    public function tugas_siswa()
+    {
+        return $this->hasMany(tugas_siswa::class);
+    }
 }

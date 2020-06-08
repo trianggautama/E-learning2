@@ -115,12 +115,14 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/hasilTes/filter/hasil', 'hasilTesController@filterHasil')->name('hasilTesFilterHasil');
     Route::get('/hasilTes/filter/tes', 'hasilTesController@filterTes')->name('hasilTesFilterTes');
 
-//Hasil Tes
+//Tugas Siswa
     Route::get('/tugasSiswa/index', 'tugasSiswaController@index')->name('tugasSiswaIndex');
     Route::post('/tugasSiswa/create', 'tugasSiswaController@store')->name('tugasSiswaStore');
     Route::get('/tugasSiswa/edit/{uuid}', 'tugasSiswaController@edit')->name('tugasSiswaEdit');
     Route::put('/tugasSiswa/edit/{uuid}', 'tugasSiswaController@update')->name('tugasSiswaUpdate');
     Route::get('/tugasSiswa/delete/{uuid}', 'tugasSiswaController@destroy')->name('tugasSiswaDestroy');
+    Route::get('/tugasSiswa/filter', 'tugasSiswaController@filter')->name('tugasSiswaFilter');
+
 
 //Cetak Report
     Route::get('/siswa/cetak', 'reportController@siswa')->name('siswaCetak');
@@ -131,6 +133,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/hasilTes/cetak', 'reportController@hasilTes')->name('hasilTesCetak');
     Route::post('/hasilTes/filter/hasil', 'reportController@hasilTesFilterHasil')->name('hasilTesFilterHasilCetak');
     Route::post('/hasilTes/filter/tes', 'reportController@hasilTesFilterTes')->name('hasilTesFilterTesCetak');
+    Route::get('/tugas/cetak', 'reportController@tugas')->name('tugasCetak');
+    Route::post('/tugasSiswa/filter', 'reportController@tugasFilter')->name('tugasFilter');
+
 
 });
 

@@ -9,6 +9,8 @@ use App\Siswa;
 use App\Pertemuan;
 use App\User;
 use App\Tes_siswa;
+use App\Tugas;
+use App\Tugas_siswa;
 use Illuminate\Http\Request;
 
 class reportController extends Controller
@@ -98,5 +100,26 @@ class reportController extends Controller
         $pdf->setPaper('a4', 'portrait');
 
         return $pdf->stream('Laporan Data per Tes .pdf');
+    }
+
+    public function tugas() 
+    {
+        $data         = Tugas_siswa::all();
+        $tgl          = Carbon::now()->format('d-m-Y');
+        $pdf          = PDF::loadView('formCetak.tugas', ['data'=>$data,'tgl'=>$tgl]);
+        $pdf->setPaper('a4', 'portrait');
+
+        return $pdf->stream('Laporan Data Tugas.pdf');
+    }
+
+    public function tugasFilter(Request $request) 
+    {   
+        $tugas        = Tugas::findOrFail($request->tugas_id);
+        $data         = Tugas_siswa::where('tugas_id',$request->tugas_id)->get();
+        $tgl          = Carbon::now()->format('d-m-Y');
+        $pdf          = PDF::loadView('formCetak.tugasFilter', ['data'=>$data,'tgl'=>$tgl,'tugas'=>$tugas]);
+        $pdf->setPaper('a4', 'portrait');
+
+        return $pdf->stream('Laporan Data Tugas Filter .pdf');
     }
 }

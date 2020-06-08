@@ -37,9 +37,14 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
-                        <button class="btn btn-sm btn-success" onclick="tambah('{{$t->id}}')"><i class="fa fa-plus"></i>
-                            Upload
-                            Tugas</button>
+                    @php
+                    $tugas_siswa = $t->tugas_siswa->where('siswa_id', Auth::user()->siswa->id);
+                    @endphp
+                    @if($tugas_siswa->count() == 0)
+                            <button class="btn btn-sm btn-success" onclick="tambah('{{$t->id}}')"><i class="fa fa-plus"></i>
+                                Upload
+                                Tugas</button>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">
@@ -48,8 +53,13 @@
                         <small>Batas Waktu
                             ({{carbon\carbon::parse($t->batas_waktu)->translatedFormat('d F Y')}})</small></h3>
                     <hr>
-                    <label for=""><b>Berkas Upload</b></label><br>
-                    Anda Belum Mengumpulkan Tugas
+                    <label for=""><b>Berkas Upload </b></label><br>
+                        @if($tugas_siswa->count() != 0)
+                        <a href="{{asset('tugas/'.$tugas_siswa->first()->file)}}" class="btn btn-warning" download><i
+                            class="fa fa-file-download"></i> {{$tugas_siswa->first()->file}}</a>
+                        @else
+                            Anda belum Mengumpul Tugas 
+                        @endif
                 </div>
             </div>
             @endforeach

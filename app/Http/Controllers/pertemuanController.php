@@ -64,8 +64,7 @@ class pertemuanController extends Controller
         $data = Pertemuan::where('uuid', $uuid)->first();
         $modul = Modul::where('pertemuan_id', $data->id)->get();
         $tugas = Tugas::where('pertemuan_id', $data->id)->get();
-        $tugas_id = Tugas::where('pertemuan_id', $data->id)->first();
-        return view('siswa.pertemuan.show', compact('data', 'modul', 'tugas', 'tugas_id'));
+        return view('siswa.pertemuan.show', compact('data', 'modul', 'tugas'));
     }
 
     public function tugasUpload(Request $req)
