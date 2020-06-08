@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Mapel;
 use App\Modul;
 use App\Pertemuan;
+use App\Siswa;
 use App\Tugas;
+use App\Tugas_siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class pertemuanController extends Controller
 {
@@ -58,10 +61,35 @@ class pertemuanController extends Controller
 
     public function siswaShow($uuid)
     {
-        $data = Pertemuan::where('uuid',$uuid)->first();
-        $modul = Modul::where('pertemuan_id',$data->id)->get();
-        $tugas = Tugas::where('pertemuan_id',$data->id)->get();
-        return view('siswa.pertemuan.show', compact('data','modul','tugas'));
+        $data = Pertemuan::where('uuid', $uuid)->first();
+        $modul = Modul::where('pertemuan_id', $data->id)->get();
+        $tugas = Tugas::where('pertemuan_id', $data->id)->get();
+        $tugas_id = Tugas::where('pertemuan_id', $data->id)->first();
+        return view('siswa.pertemuan.show', compact('data', 'modul', 'tugas', 'tugas_id'));
+    }
+
+    public function tugasUpload(Request $req)
+    {
+        $siswa_id = Auth::user()->siswa->id;
+        $data = new Tugas_siswa;
+        $data->siswa_id = $siswa_id;
+        $data->tugas_id = $req->tugas_id;
+        $data->save();
+
+        if ($req->file != null) {
+            $img = $req->file('file');
+            $FotoExt = $img->getClientOriginalExtension();
+            $FotoName = $data->id;
+            $file = $FotoName . '.' . $FotoExt;
+            $img->move('tugas', $file);
+            $data->file = $file;
+            $data->update();
+            return redirect()->back()->withSuccess('Berhasil upload tugas');
+        } else {
+            $data->delete();
+            return redirect()->back()->withWarning('Gagal upload tugas');
+        }
+
     }
 
     public function instrukturStore(Request $req)

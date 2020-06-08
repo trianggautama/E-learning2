@@ -28,20 +28,25 @@
                 <div class="card-body">
                     <h5>Modul</h5>
                     @foreach($modul as $m)
-                        <a href="{{asset('modul/'.$m->file)}}" class="btn btn-warning" download><i class="fa fa-file-download"></i> {{$m->judul}}</a>
-                    @endforeach                
+                    <a href="{{asset('modul/'.$m->file)}}" class="btn btn-warning" download><i
+                            class="fa fa-file-download"></i> {{$m->judul}}</a>
+                    @endforeach
                 </div>
             </div>
             @foreach($data->tugas as $t)
-            <div class="card"> 
+            <div class="card">
                 <div class="card-header">
-                <div class="text-right">
-                        <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Upload Tugas</button>
+                    <div class="text-right">
+                        <button class="btn btn-sm btn-success" onclick="tambah('{{$t->id}}')"><i class="fa fa-plus"></i>
+                            Upload
+                            Tugas</button>
                     </div>
                 </div>
                 <div class="card-body">
+                    {{--  <input type="hidden" id="tugas" value="{{$t->id}}"> --}}
                     <h3>{{$t->deskripsi}} <br>
-                    <small>Batas Waktu ({{carbon\carbon::parse($t->batas_waktu)->translatedFormat('d F Y')}})</small></h3>
+                        <small>Batas Waktu
+                            ({{carbon\carbon::parse($t->batas_waktu)->translatedFormat('d F Y')}})</small></h3>
                     <hr>
                     <label for=""><b>Berkas Upload</b></label><br>
                     Anda Belum Mengumpulkan Tugas
@@ -62,8 +67,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{Route('kelasStore')}}" method="post">
+                <form action="{{Route('tugasSiswaStore')}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="tugas_id" id="tugas_id">
                     <div class="form-group ">
                         <label class="">File Tugas</label>
                         <input type="file" class="form-control" name="file" id="file" placeholder="Kelas">
@@ -82,9 +88,10 @@
 @endsection
 @section('scripts')
 <script>
-    $("#tambah").click(function(){
-            $('#status').text('Tambah Data');
-            $('#modal').modal('show');
-        });
+    tambah = (id) =>{
+        $('#tugas_id').val(id);
+        $('#modal').modal('show');
+    }
+    
 </script>
 @endsection

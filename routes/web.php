@@ -115,7 +115,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/hasilTes/filter/hasil', 'hasilTesController@filterHasil')->name('hasilTesFilterHasil');
     Route::get('/hasilTes/filter/tes', 'hasilTesController@filterTes')->name('hasilTesFilterTes');
 
-
 //Hasil Tes
     Route::get('/tugasSiswa/index', 'tugasSiswaController@index')->name('tugasSiswaIndex');
     Route::post('/tugasSiswa/create', 'tugasSiswaController@store')->name('tugasSiswaStore');
@@ -140,13 +139,13 @@ Route::get('halaman/siswa/index', 'adminController@siswaIndex')->name('halamanSi
 Route::put('/halaman/siswa/index', 'siswaController@updateProfileSiswa')->name('updateProfileSiswa');
 Route::get('siswa/pertemuan/index', 'pertemuanController@siswaIndex')->name('siswaPertemuanIndex');
 Route::get('siswa/pertemuan/detail/{uuid}', 'pertemuanController@siswaShow')->name('siswaPertemuanShow');
+Route::post('siswa/pertemuan/detail/tugasUpload', 'pertemuanController@tugasUpload')->name('tugasSiswaStore');
 
 Route::get('siswa/tes/index', 'tesController@siswaIndex')->name('siswaTesIndex');
 Route::get('siswa/input/tes/index/{uuid}', 'tesController@inputTes')->name('inputTes');
 Route::post('siswa/input/tes/index/{uuid}', 'tesController@jawaban')->name('updateTes');
 
 Route::get('siswa/hasilTes/index', 'hasilTesController@siswaIndex')->name('siswaHasilTesIndex');
-
 
 //halmaan instruktur
 Route::get('halaman/instruktur/index', 'adminController@instrukturIndex')->name('halamanInstrukturIndex');
@@ -162,7 +161,6 @@ Route::post('instruktur/modul/create', 'modulController@store')->name('instruktu
 Route::get('instruktur/modul/edit/{uuid}', 'modulController@instrukturEdit')->name('instrukturModulEdit');
 Route::put('instruktur/modul/edit/{uuid}', 'modulController@instrukturUpdate')->name('instrukturModulUpdate');
 Route::get('instruktur/modul/delete/{uuid}', 'modulController@destroy')->name('instrukturModulDestroy');
-
 
 Route::post('instruktur/tugas/create', 'tugasController@store')->name('instrukturTugasStore');
 Route::get('instruktur/tugas/edit/{uuid}', 'tugasController@instrukturEdit')->name('instrukturTugasEdit');
