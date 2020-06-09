@@ -30,7 +30,7 @@
                             <div class="col-md-11">
                                 <img src="{{asset('soal/'.$s->gambar)}}" alt="" width="200px">
                                 <p class="text-justify">{{$s->soal}}</p>
-                                <input type="text" name="soal_id[]" value="{{$s->id}}">
+                                <input type="hidden" name="soal_id[]" value="{{$s->id}}">
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="pilihan[{{$loop->iteration -1}}]" id="pilihan1"

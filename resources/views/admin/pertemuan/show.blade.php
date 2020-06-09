@@ -91,7 +91,7 @@
                                     <td>
                                         <a href="{{Route('tugasEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                        <button class="btn btn-sm btn-danger" onclick="HapusTugas('{{$d->uuid}}','{{$d->deskripsi}}')"> <i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -195,6 +195,24 @@
 		}).then((result) => {
 			if (result.value) {
 				url = "{{Route('modulDestroy','')}}";
+				window.location.href =  url+'/'+uuid ;			
+			}
+		})
+        }
+
+        function HapusTugas(uuid,nama) {
+			Swal.fire({
+			title: 'Anda Yakin?',
+			text: " Menghapus Data Tugas " + nama ,        
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Hapus',
+			cancelButtonText: 'Batal'
+		}).then((result) => {
+			if (result.value) {
+				url = "{{Route('tugasDestroy','')}}";
 				window.location.href =  url+'/'+uuid ;			
 			}
 		})

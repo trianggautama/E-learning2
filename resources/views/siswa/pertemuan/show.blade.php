@@ -41,9 +41,13 @@
                     $tugas_siswa = $t->tugas_siswa->where('siswa_id', Auth::user()->siswa->id);
                     @endphp
                     @if($tugas_siswa->count() == 0)
+                        @if($t->batas_waktu >= carbon\carbon::now())
                             <button class="btn btn-sm btn-success" onclick="tambah('{{$t->id}}')"><i class="fa fa-plus"></i>
                                 Upload
                                 Tugas</button>
+                                @else 
+                                Batas Waktu Telah Lewat
+                        @endif
                         @endif
                     </div>
                 </div>

@@ -49,7 +49,7 @@
                                     <td>{{$d->tes->mapel->mapel}}</td>
                                     <td>{{$d->tes->tanggal_ujian}}</td>
                                     <td>@if($d->tes->status == 0)
-                                            <p class="text-primary"> Tes Maih Berlangsung</p>
+                                            <p class="text-primary"> Tes Masih Berlangsung</p>
                                         @else
                                             <p class="text-primary"> Tes Sudah Selesai</p>
                                         @endif
