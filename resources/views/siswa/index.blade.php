@@ -26,11 +26,7 @@
                     Profil Sekolah
                 </div>
                 <div class="card-body">
-                    <p class="text-justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas dolor
-                        harum inventore. Enim corrupti, maiores eos cum natus consequatur totam, optio ipsa debitis rem
-                        labore quos blanditiis quae nostrum asperiores? Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Vel aliquid quis explicabo iusto, ratione excepturi repellendus rerum totam
-                        omnis placeat? Ullam aspernatur praesentium dicta libero ex doloremque quasi optio dolor.</p>
+                    <p class="text-justify">UT School merupakan lembaga pendidikan yang berada di bawah PT United Tractors Tbk. Lembaga ini mengkhususkan diri untuk mendidik siswanya di level SMK, D3, dan S1. Khusus D3 dan S1, mereka akan masuk dalam program heavy equipment technical management. UT School berdiri sejak 2008 silam, Sesuai dengan visi UT School yaitu Menjadi Lembaga Pendidikan Keterampilan Mekanik dan Operator Alat-alat Berat Terbaik di Dunia, UT School berhasil mencetak lulusan-lulusan yang berkualitas. Hingga kini, UT School telah meluluskan lebih dari 7000 wisudawan yang sudah bekerja di UT dan anak-anak perusahaannya maupun di pelanggan-pelanggan UT.</p>
                 </div>
             </div>
             <div class="card">
@@ -74,29 +70,21 @@
                                         <h5 class="m-0 pt-2 pb-2 text-uppercase">timeline pertemuan</h5>
                                     </div>
                                     <ol class="tm-items">
+                                    @foreach($pertemuan as $p)
                                         <li>
                                             <div class="tm-box">
-                                                <p class="text-muted mb-0">7 juni 2020.</p>
+                                                <p class="text-muted mb-0">{{carbon\carbon::parse($p->tanggal)->translatedFormat('d F Y')}}</p>
                                                 <p>
-                                                    Pertemuan 1 Mapel A
+                                                    {{$p->pertemuan}} Mapel {{$p->mapel->mapel}}
                                                 </p>
-                                                <a href="" class="btn btn-sm btn-warning"> Detail</a>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="tm-box">
-                                                <p class="text-muted mb-0">9 juni 2020.</p>
-                                                <p>
-                                                    Pertemuan 1 Mapel B
-                                                </p>
-                                                <a href="" class="btn btn-sm btn-warning"> Detail</a>
-                                            </div>
-                                        </li>
+                                    @endforeach
                                     </ol>
                                 </div>
                             </div>
                         </div>
-
+                        {{$pertemuan->links()}}
                     </div>
                     <div id="edit" class="tab-pane">
 

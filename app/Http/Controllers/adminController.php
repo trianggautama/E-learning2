@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mapel;
+use App\Pertemuan;
 use Illuminate\Http\Request;
 
 class adminController extends Controller
@@ -13,9 +14,10 @@ class adminController extends Controller
     }
 
     public function siswaIndex()
-    {
+    {   
+        $pertemuan = Pertemuan::orderBy('tanggal', 'asc')->paginate(5);
         $mapel = Mapel::all();
-        return view('siswa.index',compact('mapel'));
+        return view('siswa.index',compact('mapel','pertemuan'));
     }
 
     public function instrukturIndex()

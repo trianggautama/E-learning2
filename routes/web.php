@@ -171,3 +171,6 @@ Route::post('instruktur/tugas/create', 'tugasController@store')->name('instruktu
 Route::get('instruktur/tugas/edit/{uuid}', 'tugasController@instrukturEdit')->name('instrukturTugasEdit');
 Route::put('instruktur/tugas/edit/{uuid}', 'tugasController@instrukturUpdate')->name('instrukturTugasUpdate');
 Route::get('instruktur/tugas/delete/{uuid}', 'tugasController@destroy')->name('instrukturTugasDestroy');
+
+//Instruktur 
+Route::get('instruktur/tugasSiswa/index', 'tugasSiswaController@instrukturIndex')->name('instrukturTugasSiswaIndex');

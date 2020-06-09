@@ -93,7 +93,7 @@
                     @csrf
                     <div class="form-group ">
                         <label class="">Mata Pelajaran</label>
-                        <select name="mapel_id" id="" class="form-control">
+                        <select name="mapel_id" id="" class="form-control" required>
                             <option value="">-- Pilih Mapel</option>
                             @foreach($mapel as $d)
                             <option value="{{$d->id}}">{{$d->mapel}}</option>
@@ -102,38 +102,38 @@
                     </div>
                     <div class="form-group ">
                         <label class="">Kode Soal</label>
-                        <input type="text" class="form-control" name="kode_soal" id="kode_soal">
+                        <input type="text" class="form-control" name="kode_soal" id="kode_soal" required>
                     </div>
                     <div class="form-group ">
                         <label class="">Soal</label>
-                        <textarea name="soal" id="soal" class="form-control"></textarea>
+                        <textarea name="soal" id="soal" class="form-control" required></textarea>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group ">
                                 <label class="">Pilihan A</label>
-                                <input type="text" class="form-control" name="a" id="a">
+                                <input type="text" class="form-control" name="a" id="a" required>
                             </div>
 
                             <div class="form-group ">
                                 <label class="">Pilihan B</label>
-                                <input type="text" class="form-control" name="b" id="b">
+                                <input type="text" class="form-control" name="b" id="b" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group ">
                                 <label class="">Pilihan C</label>
-                                <input type="text" class="form-control" name="c" id="c">
+                                <input type="text" class="form-control" name="c" id="c" required>
                             </div>
                             <div class="form-group ">
                                 <label class="">Pilihan D</label>
-                                <input type="text" class="form-control" name="d" id="d">
+                                <input type="text" class="form-control" name="d" id="d" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-group ">
                         <label class="">Jawaban</label>
-                        <select name="jawaban" id="" class="form-control">
+                        <select name="jawaban" id="" class="form-control" required>
                             <option value="a">A</option>
                             <option value="b">B</option>
                             <option value="c">C</option>

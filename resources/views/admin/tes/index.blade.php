@@ -85,7 +85,7 @@
                     @csrf
                     <div class="form-group ">
                         <label class="">Mata Pelajaran</label>
-                        <select name="mapel_id" id="mapel_id" class="form-control">
+                        <select name="mapel_id" id="mapel_id" class="form-control" required>
                             <option value="">-- pilih dari mata pelajaran --</option>
                             @foreach($mapel as $d)
                             <option value="{{$d->id}}">{{$d->mapel}}</option>
@@ -94,7 +94,7 @@
                     </div>
                     <div class="form-group ">
                         <label class="">Periode</label>
-                        <select name="periode_id" id="periode_id" class="form-control">
+                        <select name="periode_id" id="periode_id" class="form-control" required>
                             <option value="">-- pilih dari periode --</option>
                             @foreach($periode as $d)
                             <option value="{{$d->id}}">{{carbon\carbon::parse($d->tahun)->translatedFormat('Y')}}
@@ -104,7 +104,7 @@
                     </div>
                     <div class="form-group ">
                         <label class="">Tanggal Ujian</label>
-                        <input type="date" class="form-control" name="tanggal_ujian" id="tanggal_ujian">
+                        <input type="date" class="form-control" name="tanggal_ujian" id="tanggal_ujian" required>
                     </div>
                     <div class="form-group ">
                         <label class="">Status</label>

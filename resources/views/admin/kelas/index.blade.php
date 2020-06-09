@@ -72,7 +72,7 @@
                     @csrf
                     <div class="form-group ">
                         <label class="">Nama kelas</label>
-                        <input type="text" class="form-control" name="nama_kelas" id="kelas" placeholder="Kelas">
+                        <input type="text" class="form-control" name="nama_kelas" id="kelas" placeholder="Kelas" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

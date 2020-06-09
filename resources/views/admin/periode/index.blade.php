@@ -71,7 +71,7 @@
                     @csrf
                     <div class="form-group ">
                         <label class="">Periode Tahun</label>
-                        <input type="date" class="form-control" name="tahun" id="tahun">
+                        <input type="date" class="form-control" name="tahun" id="tahun" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

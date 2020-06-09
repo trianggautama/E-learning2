@@ -85,7 +85,7 @@
                     @csrf
                     <div class="form-group ">
                         <label class="">Kelas</label>
-                        <select name="kelas_id" id="kelas_id" class="form-control">
+                        <select name="kelas_id" id="kelas_id" class="form-control" required>
                             <option value="">-- pilih kelas --</option>
                             @foreach($kelas as $d)
                             <option value="{{$d->id}}">{{$d->nama_kelas}}</option>
@@ -94,20 +94,19 @@
                     </div>
                     <div class="form-group ">
                         <label class="">Username</label>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
                     </div>
                     <div class="form-group ">
                         <label class="">Password</label>
-                        <input type="password" class="form-control" name="password" id="password"
-                            placeholder="password">
+                        <input type="password" class="form-control" name="password" id="password"  placeholder="password" required>
                     </div>
                     <div class="form-group ">
                         <label class="">NRP</label>
-                        <input type="text" class="form-control" name="nrp" id="nrp" placeholder="NRP">
+                        <input type="text" class="form-control" name="nrp" id="nrp" placeholder="NRP" required>
                     </div>
                     <div class="form-group ">
                         <label class="">Nama Siswa</label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Siswa">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Siswa" required>
                     </div>
                     <div class="form-group ">
                         <label class="">Jenis Kelamin</label>
@@ -120,25 +119,23 @@
                         <div class="col-md-6">
                             <div class="form-group ">
                                 <label class="">Tempat Lahir</label>
-                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir"
-                                    placeholder="Tempat lahir">
+                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat lahir " required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group ">
                                 <label class="">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir"
-                                    placeholder="Tanggal lahir">
+                                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" placeholder="Tanggal lahir" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-group ">
                         <label class="">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                     </div>
                     <div class="form-group ">
                         <label class="">Asal</label>
-                        <input type="text" class="form-control" name="asal" id="asal" placeholder="Asal">
+                        <input type="text" class="form-control" name="asal" id="asal" placeholder="Asal" required>
                     </div>
                     <div class="form-group ">
                         <label class="">Foto</label>

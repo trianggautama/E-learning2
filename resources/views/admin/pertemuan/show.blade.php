@@ -120,11 +120,11 @@
                     <input type="hidden" name="uuid" value="{{$data->uuid}}">
                     <div class="form-group ">
                         <label class="">Judul Modul</label>
-                        <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul">
+                        <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul" required>
                     </div>
                     <div class="form-group ">
                         <label class="">file</label>
-                        <input type="file" class="form-control" name="file" id="file">
+                        <input type="file" class="form-control" name="file" id="file" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -152,11 +152,11 @@
                     <input type="hidden" name="uuid" value="{{$data->uuid}}">
                     <div class="form-group ">
                         <label class="">Deskripsi</label>
-                        <input type="text" class="form-control" name="deskripsi" id="deskripsi">
+                        <input type="text" class="form-control" name="deskripsi" id="deskripsi" required>
                     </div>
                     <div class="form-group ">
                         <label class="">Batas Waktu</label>
-                        <input type="date" class="form-control" name="batas_waktu" id="batas_waktu">
+                        <input type="date" class="form-control" name="batas_waktu" id="batas_waktu" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

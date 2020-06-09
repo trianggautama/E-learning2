@@ -145,12 +145,24 @@
 										</li>
 									</ul>
 								</li>
-								<li>
+								<!-- <li class="nav-parent">
 									<a class="nav-link" href="#">
-										<i class="fas fa-award" aria-hidden="true"></i>
-										<span>Data kelulusan </span>
+										<i class="fas fa-book" aria-hidden="true"></i>
+										<span>Tugas dan Tes</span>
 									</a>
-								</li>
+									<ul class="nav nav-children">
+										<li>
+											<a class="nav-link" href="{{Route('instrukturTugasSiswaIndex')}}">
+												Data Tugas
+											</a>
+										</li>
+										<li>
+											<a class="nav-link" href="{{Route('instrukturMapelIndex')}}">
+												Data Hasil Tes
+											</a>
+										</li>
+									</ul>
+								</li> -->
 							</ul>
 						</nav>
 					</div>

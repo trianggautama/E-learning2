@@ -22,7 +22,6 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
-                        <button class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> Cetak Data</button>
                         <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
                             Data</button>
                     </div>
@@ -80,11 +79,11 @@
                     <input type="hidden" name="uuid" value="{{$data->uuid}}" id="">
                     <div class="form-group ">
                         <label class="">Nama Pertemuan</label>
-                        <input type="text" class="form-control" name="pertemuan" id="pertemuan" placeholder="Pertemuan">
+                        <input type="text" class="form-control" name="pertemuan" id="pertemuan" placeholder="Pertemuan" required>
                     </div>
                     <div class="form-group ">
                         <label class="">Tanggal</label>
-                        <input type="date" class="form-control" name="tanggal" id="tanggal">
+                        <input type="date" class="form-control" name="tanggal" id="tanggal" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

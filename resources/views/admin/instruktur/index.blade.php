@@ -87,37 +87,41 @@
                     <input type="hidden" name="role" value="3">
                     <div class="form-group ">
                         <label class="">Nama</label>
-                        <input type="text" class="form-control" name="nama" id="nama">
+                        <input type="text" class="form-control" name="nama" id="nama" required>
                     </div>
                     <div class="form-group ">
                         <label class="">NRP</label>
-                        <input type="text" class="form-control" name="nrp" id="nrp">
+                        <input type="text" class="form-control" name="nrp" id="nrp" required>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group ">
                                 <label class="">Tempat Lahir</label>
-                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir">
+                                <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir"required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group ">
                                 <label class="">Tanggal Lahir</label>
-                                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir">
+                                <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
                             </div>
                         </div>
                     </div>
                     <div class="form-group ">
                         <label class="">Email</label>
-                        <input type="email" class="form-control" name="email" id="email">
+                        <input type="email" class="form-control" name="email" id="email" required>
                     </div>
                     <div class="form-group ">
                         <label class="">Username</label>
-                        <input type="text" class="form-control" name="username" id="username">
+                        <input type="text" class="form-control" name="username" id="username" required>
                     </div>
                     <div class="form-group ">
                         <label class="">Password</label>
-                        <input type="password" class="form-control" name="password" id="password">
+                        <input type="password" class="form-control" name="password" id="password" required>
+                    </div>
+                    <div class="form-group ">
+                        <label class="">Foto</label>
+                        <input type="file" class="form-control" name="foto" id="foto" >
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

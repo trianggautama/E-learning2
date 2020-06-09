@@ -82,7 +82,7 @@
                     <input type="hidden" name="tugas_id" id="tugas_id">
                     <div class="form-group ">
                         <label class="">File Tugas</label>
-                        <input type="file" class="form-control" name="file" id="file" placeholder="Kelas">
+                        <input type="file" class="form-control" name="file" id="file" placeholder="Kelas" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
