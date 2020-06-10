@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.siswa')
 
 @section('content')
 <section role="main" class="content-body">
