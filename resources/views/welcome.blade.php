@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="fixed">
 
-<head>
+<head> 
 
 	<!-- Basic -->
 	<meta charset="UTF-8">
