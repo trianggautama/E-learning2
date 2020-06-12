@@ -31,6 +31,8 @@
 	<link rel="stylesheet" href="{{asset('admin/vendor/jquery-ui/jquery-ui.theme.css')}}" />
 	<link rel="stylesheet" href="{{asset('admin/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css')}}" />
 	<link rel="stylesheet" href="{{asset('admin/vendor/morris/morris.css')}}" />
+	<link rel="stylesheet" href="{{asset('admin/vendor/summernote/summernote-bs4.css')}}" />
+
 
 	<!-- Datatable -->
 	<link rel="stylesheet" href="{{asset('admin/vendor/datatables/media/css/dataTables.bootstrap4.css')}}" />

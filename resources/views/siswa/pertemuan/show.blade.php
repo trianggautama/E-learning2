@@ -67,6 +67,43 @@
                 </div>
             </div>
             @endforeach
+
+            <div class="card">
+                <div class="card-header">
+                    Kolom Diskusi
+                </div>
+                <div class="card-body">
+                <ul class="simple-user-list mb-3">
+								<li>
+                                    <div class="alert alert-default">
+                                        <figure class="image rounded">
+                                            <img src="{{asset('admin/img/!sample-user.jpg')}}" alt="Joseph Doe Junior" class="rounded-circle">
+                                        </figure>
+                                        <span class="title">Joseph Doe Junior</span>
+                                        <span class="message">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
+									</div>
+								</li>
+								<li>
+                                    <div class="alert alert-default">
+                                        <figure class="image rounded">
+                                            <img src="{{asset('admin/img/!sample-user.jpg')}}" alt="Joseph Doe Junior" class="rounded-circle">
+                                        </figure>
+                                        <span class="title">Joseph Doe Junior</span>
+                                        
+                                        <span class="message">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore quam laudantium dicta deleniti repudiandae aperiam eaque assumenda cumque! Nobis placeat vero consequatur temporibus veritatis accusantium quam, eligendi laborum ut ab?</span>
+									</div>
+								</li>
+                            </ul>
+                            <div class="compose pt-3">
+                                <textarea name="komen" id="" rows="8" class="form-control" placeholder="ketik komentar anda ..."></textarea>
+										<div class="text-right mt-3">
+											<a href="#" class="btn btn-primary">
+												<i class="fas fa-paper-plane mr-1"></i>
+												Send
+											</a>
+										</div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -106,6 +143,9 @@
         $('#tugas_id').val(id);
         $('#modal').modal('show');
     }
-    
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+ 
 </script>
 @endsection

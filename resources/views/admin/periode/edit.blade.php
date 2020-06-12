@@ -30,6 +30,10 @@
                             <label class="">Periode Tahun</label>
                             <input type="date" class="form-control" name="tahun" value="{{$data->tahun}}" id="tahun">
                         </div>
+                        <div class="form-group ">
+                            <label class="">Nama Kepala Sekolah</label>
+                            <input type="text" class="form-control" name="nama_kepala_sekolah" id="nama_kepala_sekolah" required>
+                        </div>
                         <div class="card-footer text-right">
                             <a href="{{Route('kelasIndex')}}" type="button" class="btn btn-default">Batal</a>
                             <button type="submit" class="btn btn-primary">ubah</button>
