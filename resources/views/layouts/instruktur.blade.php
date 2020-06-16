@@ -147,7 +147,7 @@
 										</li>
 									</ul>
 								</li>
-								<!-- <li class="nav-parent">
+								<li class="nav-parent">
 									<a class="nav-link" href="#">
 										<i class="fas fa-book" aria-hidden="true"></i>
 										<span>Tugas dan Tes</span>
@@ -164,7 +164,7 @@
 											</a>
 										</li>
 									</ul>
-								</li> -->
+								</li>
 							</ul>
 						</nav>
 					</div>

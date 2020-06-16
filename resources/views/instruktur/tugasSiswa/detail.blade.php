@@ -25,34 +25,27 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped mb-0" id="datatable-default">
+                    <table class="table table-bordered table-striped mb-0" id="datatable-default">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Mapel</th>
-                                    <th>Pertemuan</th>
-                                    <th>Tanggal</th>
-                                    <th>Tugas</th>
+                                    <th>Keterangan</th>
+                                    <th>Batas Waktu</th>
+                                    <th>Aksi</th>
                                 </tr>
-                            </thead> 
+                            </thead>
                             <tbody>
-                            @foreach($data as $d)
-                                @foreach($d as $p)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{$p->mapel->mapel}}</td>
-                                        <td>{{$p->pertemuan}}</td>
-                                        <td>{{carbon\carbon::parse($p->tanggal)->translatedFormat('d F Y')}}</td>
-                                        <td>
-                                            @if($p->tugas->count() != 0)
-                                                <a href="{{Route('instrukturTugasIndex',['uuid'=>$p->uuid])}}" class="btn btn-sm  btn-primary"> <i class="fa fa-file"></i> Lihat Tugas </a>
-                                            @else
-                                                Tidak Ada Tugas
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach                               
-                            @endforeach
+                                @foreach($data as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->deskripsi}}</td>
+                                    <td>{{carbon\carbon::parse($d->batas_waktu)->translatedFormat('d F Y')}}</td>
+                                    <td>
+                                        <a href="{{Route('tugasSiswaShow',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-info"></i > Lihat tugas Siswa</a>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -64,4 +64,12 @@ class tugasController extends Controller
 
         return redirect()->route('instrukturPertemuanShow', ['uuid' => $data->pertemuan->uuid])->withSuccess('Data berhasil diubah');
     }
+
+    public function instrukturIndex($uuid)
+    {
+        $pertemuan = Pertemuan::where('uuid',$uuid)->first();
+        $data      = Tugas::where('pertemuan_id', $pertemuan->id)->get();
+
+        return view('instruktur.tugasSiswa.detail', compact('data'));
+    }
 }

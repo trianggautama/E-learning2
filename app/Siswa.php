@@ -23,4 +23,9 @@ class Siswa extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function tugas_siswa()
+    {
+        return $this->hasmany(Tugas_siswa::class);
+    }
+
 }

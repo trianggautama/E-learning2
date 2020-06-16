@@ -174,3 +174,5 @@ Route::get('instruktur/tugas/delete/{uuid}', 'tugasController@destroy')->name('i
 
 //Instruktur 
 Route::get('instruktur/tugasSiswa/index', 'tugasSiswaController@instrukturIndex')->name('instrukturTugasSiswaIndex');
+Route::get('instruktur/tugas/show/{uuid}', 'tugasController@instrukturIndex')->name('instrukturTugasIndex');
+Route::get('instruktur/tugasSiswa/show/{uuid}', 'tugasSiswaController@tugasSiswaShow')->name('tugasSiswaShow');
