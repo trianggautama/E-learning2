@@ -79,7 +79,10 @@
                                         <figure class="image rounded">
                                             <img src="{{asset('admin/img/!sample-user.jpg')}}" alt="Joseph Doe Junior" class="rounded-circle">
                                         </figure>
-                                        <span class="title">Joseph Doe Junior</span>
+                                        <div class="row">
+                                            <div class="col-md-6"><span class="title">Joseph Doe Junior</span></div>
+                                            <div class="col-md-6 text-right"> <a href="" class=" text-danger"> <i class="fas fa-trash"></i> Hapus</a></div>
+                                        </div>
                                         <span class="message">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
 									</div>
 								</li>
