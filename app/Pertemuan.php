@@ -27,4 +27,9 @@ class Pertemuan extends Model
     {
         return $this->hasMany(Tugas::class);
     }
+
+    public function komentar()
+    {
+        return $this->hasMany(Komentar::class);
+    }
 }
