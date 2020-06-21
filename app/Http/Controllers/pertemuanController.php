@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Komentar;
 use App\Mapel;
 use App\Modul;
 use App\Pertemuan;
@@ -79,6 +80,19 @@ class pertemuanController extends Controller
         $modul = Modul::where('pertemuan_id', $data->id)->get();
         $tugas = Tugas::where('pertemuan_id', $data->id)->get();
         return view('instruktur.pertemuan.jadwalShow', compact('data', 'modul', 'tugas'));
+    }
+    public function komentarStore(Request $req)
+    {
+        $data = Komentar::create($req->all());
+
+        return redirect()->back()->withSuccess('Berhasil mengirim komentar');
+    }
+
+    public function komentarDestroy($uuid)
+    {
+        $data = Komentar::where('uuid', $uuid)->first()->delete();
+
+        return redirect()->back()->withSuccess('Berhasil menghapus komentar');
     }
 
     public function tugasUpload(Request $req)

@@ -18,7 +18,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('/comment', 'pertemuanController@komentarStore')->name('komentarStore');
+    Route::get('/comment/delete/{uuid}', 'pertemuanController@komentarDestroy')->name('komentarDestroy');
+});
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin/index', 'adminController@adminIndex')->name('adminIndex');
@@ -123,7 +126,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/tugasSiswa/delete/{uuid}', 'tugasSiswaController@destroy')->name('tugasSiswaDestroy');
     Route::get('/tugasSiswa/filter', 'tugasSiswaController@filter')->name('tugasSiswaFilter');
 
-
 //Cetak Report
     Route::get('/siswa/cetak', 'reportController@siswa')->name('siswaCetak');
     Route::get('/mapel/cetak', 'reportController@mapel')->name('mapelCetak');
@@ -135,7 +137,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/hasilTes/filter/tes', 'reportController@hasilTesFilterTes')->name('hasilTesFilterTesCetak');
     Route::get('/tugas/cetak', 'reportController@tugas')->name('tugasCetak');
     Route::post('/tugasSiswa/filter', 'reportController@tugasFilter')->name('tugasFilter');
-
 
 });
 
@@ -172,7 +173,7 @@ Route::get('instruktur/tugas/edit/{uuid}', 'tugasController@instrukturEdit')->na
 Route::put('instruktur/tugas/edit/{uuid}', 'tugasController@instrukturUpdate')->name('instrukturTugasUpdate');
 Route::get('instruktur/tugas/delete/{uuid}', 'tugasController@destroy')->name('instrukturTugasDestroy');
 
-//Instruktur 
+//Instruktur
 Route::get('instruktur/tugasSiswa/index', 'tugasSiswaController@instrukturIndex')->name('instrukturTugasSiswaIndex');
 Route::get('instruktur/tugas/show/{uuid}', 'tugasController@instrukturIndex')->name('instrukturTugasIndex');
 Route::get('instruktur/tugasSiswa/show/{uuid}', 'tugasSiswaController@tugasSiswaShow')->name('tugasSiswaShow');

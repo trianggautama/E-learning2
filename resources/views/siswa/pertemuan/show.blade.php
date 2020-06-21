@@ -37,16 +37,16 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
-                    @php
-                    $tugas_siswa = $t->tugas_siswa->where('siswa_id', Auth::user()->siswa->id);
-                    @endphp
-                    @if($tugas_siswa->count() == 0)
+                        @php
+                        $tugas_siswa = $t->tugas_siswa->where('siswa_id', Auth::user()->siswa->id);
+                        @endphp
+                        @if($tugas_siswa->count() == 0)
                         @if($t->batas_waktu >= carbon\carbon::now())
-                            <button class="btn btn-sm btn-success" onclick="tambah('{{$t->id}}')"><i class="fa fa-plus"></i>
-                                Upload
-                                Tugas</button>
-                                @else 
-                                Batas Waktu Telah Lewat
+                        <button class="btn btn-sm btn-success" onclick="tambah('{{$t->id}}')"><i class="fa fa-plus"></i>
+                            Upload
+                            Tugas</button>
+                        @else
+                        Batas Waktu Telah Lewat
                         @endif
                         @endif
                     </div>
@@ -58,12 +58,12 @@
                             ({{carbon\carbon::parse($t->batas_waktu)->translatedFormat('d F Y')}})</small></h3>
                     <hr>
                     <label for=""><b>Berkas Upload </b></label><br>
-                        @if($tugas_siswa->count() != 0)
-                        <a href="{{asset('tugas/'.$tugas_siswa->first()->file)}}" class="btn btn-warning" download><i
+                    @if($tugas_siswa->count() != 0)
+                    <a href="{{asset('tugas/'.$tugas_siswa->first()->file)}}" class="btn btn-warning" download><i
                             class="fa fa-file-download"></i> {{$tugas_siswa->first()->file}}</a>
-                        @else
-                            Anda belum Mengumpul Tugas 
-                        @endif
+                    @else
+                    Anda belum Mengumpul Tugas
+                    @endif
                 </div>
             </div>
             @endforeach
@@ -73,42 +73,44 @@
                     Kolom Diskusi
                 </div>
                 <div class="card-body">
-                <ul class="simple-user-list mb-3">
-								<li>
-                                    <div class="alert alert-default">
-                                        <figure class="image rounded">
-                                            <img src="{{asset('admin/img/!sample-user.jpg')}}" alt="Joseph Doe Junior" class="rounded-circle">
-                                        </figure>
-                                        <div class="row">
-                                            <div class="col-md-6"><span class="title">Joseph Doe Junior</span></div>
-                                            <div class="col-md-6 text-right"> <a href="" class=" text-danger"> <i class="fas fa-trash"></i> Hapus</a></div>
-                                        </div>
-                                        <span class="message">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
-									</div>
-								</li>
-								<li>
-                                    <div class="alert alert-default">
-                                        <figure class="image rounded">
-                                            <img src="{{asset('admin/img/!sample-user.jpg')}}" alt="Joseph Doe Junior" class="rounded-circle">
-                                        </figure>
-                                        <span class="title">Joseph Doe Junior</span>
-                                        
-                                        <span class="message">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore quam laudantium dicta deleniti repudiandae aperiam eaque assumenda cumque! Nobis placeat vero consequatur temporibus veritatis accusantium quam, eligendi laborum ut ab?</span>
-									</div>
-								</li>
-                            </ul>
-                            <div class="compose pt-3">
-                                <textarea name="komen" id="" rows="8" class="form-control" placeholder="ketik komentar anda ..."></textarea>
-										<div class="text-right mt-3">
-											<a href="#" class="btn btn-primary">
-												<i class="fas fa-paper-plane mr-1"></i>
-												Send
-											</a>
-										</div>
+                    <ul class="simple-user-list mb-3">
+                        @foreach($data->komentar as $d)
+                        <li>
+                            <div class="alert alert-default">
+                                <figure class="image rounded">
+                                    <img src="{{asset('admin/img/!sample-user.jpg')}}" alt="Joseph Doe Junior"
+                                        class="rounded-circle">
+                                </figure>
+                                <div class="row">
+                                    <div class="col-md-6"><span class="title">{{$d->user->nama}}</span></div>
+                                    <div class="col-md-6 text-right"> <a
+                                            href="{{Route('komentarDestroy', ['uuid' => $d->uuid])}}"
+                                            class=" text-danger"> <i class="fas fa-trash"></i> Hapus</a></div>
+                                </div>
+                                <span class="message">{{$d->komentar}}</span>
+                            </div>
+                        </li>
+                        @endforeach
+
+                    </ul>
+                    <div class="compose pt-3">
+                        <form action="{{Route('komentarStore')}}" method="post">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{Auth::id()}}">
+                            <input type="hidden" name="pertemuan_id" value="{{$data->id}}">
+                            <textarea name="komentar" id="" rows="8" class="form-control"
+                                placeholder="ketik komentar anda ..."></textarea>
+                            <div class="text-right mt-3">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane mr-1"></i>
+                                    Send
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </section>
 
 <div class="modal fade bd-example-modal-lg" id="modal" tabindex="-1" role="dialog">
