@@ -76,20 +76,37 @@
                     <ul class="simple-user-list mb-3">
                         @foreach($data->komentar as $d)
                         <li>
-                            <div class="alert alert-default">
-                                <figure class="image rounded">
-                                    <img src="{{asset('admin/img/!sample-user.jpg')}}" alt="Joseph Doe Junior"
-                                        class="rounded-circle">
+                        @if($d->user_id == Auth::user()->id)
+                                <div class="alert alert-default">
+                            @else
+                                <div class="alert alert-light">
+                            @endif                                
+                            <figure class="image rounded">
+                                    <img src="{{asset('images/user/'.$d->user->foto)}}" 
+                                        class="rounded-circle" width="30px" height="30px">
                                 </figure>
                                 <div class="row">
-                                    <div class="col-md-6"><span class="title">{{$d->user->nama}}</span></div>
-                                    <div class="col-md-6 text-right"> <a
+                                    <div class="col-md-6"><span class="title">{{$d->user->nama}} 
+                                        @if($d->user->role == 1)
+                                         <small class="text-primary"> ( Siswa ) </small>
+                                        @elseif($d->user->role == 3)
+                                         <small class="text-success"> ( Instruktur ) </small>
+                                        @else
+                                        <small class="text-warning"> ( Admin ) </small>
+                                        @endif
+                                    </span> <small>{{carbon\carbon::parse($d->created_at)->translatedFormat('d F Y')}}</small></div>
+                                    <div class="col-md-6 text-right"> 
+                                    @if($d->user_id == Auth::user()->id)
+                                    <a
                                             href="{{Route('komentarDestroy', ['uuid' => $d->uuid])}}"
-                                            class=" text-danger"> <i class="fas fa-trash"></i> Hapus</a></div>
+                                            class=" text-danger"> <i class="fas fa-trash"></i></a>
+                                    @endif
                                 </div>
-                                <span class="message">{{$d->komentar}}</span>
+                                </div>
+                                <p class="pt-2" style="padding-left:55px">{{$d->komentar}}</p>
                             </div>
                         </li>
+                        <hr>
                         @endforeach
 
                     </ul>

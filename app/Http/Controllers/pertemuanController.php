@@ -34,6 +34,14 @@ class pertemuanController extends Controller
         return view('admin.pertemuan.show', compact('data'));
     }
 
+    public function jadwalPertemuan($uuid)
+    {
+        $data = Pertemuan::where('uuid', $uuid)->first();
+        $modul = Modul::where('pertemuan_id', $data->id)->get();
+        $tugas = Tugas::where('pertemuan_id', $data->id)->get();
+        return view('admin.pertemuan.jadwal', compact('data', 'modul', 'tugas'));
+    }
+
     public function edit($uuid)
     {
         $data = Pertemuan::where('uuid', $uuid)->first();

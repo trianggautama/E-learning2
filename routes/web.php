@@ -70,6 +70,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/pertemuan/edit/{uuid}', 'pertemuanController@edit')->name('pertemuanEdit');
     Route::put('/pertemuan/edit/{uuid}', 'pertemuanController@update')->name('pertemuanUpdate');
     Route::get('/pertemuan/delete/{uuid}', 'pertemuanController@destroy')->name('pertemuanDestroy');
+    Route::get('/jadwal/index/{uuid}', 'pertemuanController@jadwalPertemuan')->name('jadwalPertemuan');
+
 
 //modul
     Route::get('/modul/index', 'modulController@index')->name('modulIndex');
@@ -177,3 +179,6 @@ Route::get('instruktur/tugas/delete/{uuid}', 'tugasController@destroy')->name('i
 Route::get('instruktur/tugasSiswa/index', 'tugasSiswaController@instrukturIndex')->name('instrukturTugasSiswaIndex');
 Route::get('instruktur/tugas/show/{uuid}', 'tugasController@instrukturIndex')->name('instrukturTugasIndex');
 Route::get('instruktur/tugasSiswa/show/{uuid}', 'tugasSiswaController@tugasSiswaShow')->name('tugasSiswaShow');
+
+Route::get('jadwal/instruktur/index', 'pertemuanController@instrukturIndex')->name('jadwalIndex');
+Route::get('jadwal/instruktur/show/{uuid}', 'pertemuanController@jadwalInstruktur')->name('instrukturJadwalPertemuanShow');
