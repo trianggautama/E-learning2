@@ -165,6 +165,12 @@
 										</li>
 									</ul>
 								</li>
+								<li>
+									<a class="nav-link" href="{{Route('jadwalIndex')}}">
+										<i class="fas fa-calendar" aria-hidden="true"></i>
+										<span>Jadwal</span>
+									</a>
+								</li>
 							</ul>
 						</nav>
 					</div>

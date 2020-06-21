@@ -66,7 +66,7 @@
                                 </td>
                                   <td>0</td>
                                   <td>  
-                                  <button class="btn btn-sm btn-primary" onclick="tambah('')"><i class="fa fa-edit"></i> Upload Tugas</button>                               
+                                  <button class="btn btn-sm btn-primary" onclick="tambah('')"><i class="fa fa-edit"></i> Input Nilai</button>                               
                                  </td>
                               </tr>
                               @endforeach

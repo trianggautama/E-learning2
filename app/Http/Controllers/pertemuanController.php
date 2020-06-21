@@ -59,12 +59,26 @@ class pertemuanController extends Controller
         return view('siswa.pertemuan.index', compact('data'));
     }
 
+    public function instrukturIndex()
+    {
+        $data = Pertemuan::orderBy('tanggal', 'desc')->get();
+        return view('instruktur.pertemuan.jadwal', compact('data'));
+    }
+
     public function siswaShow($uuid)
     {
         $data = Pertemuan::where('uuid', $uuid)->first();
         $modul = Modul::where('pertemuan_id', $data->id)->get();
         $tugas = Tugas::where('pertemuan_id', $data->id)->get();
         return view('siswa.pertemuan.show', compact('data', 'modul', 'tugas'));
+    }
+
+    public function jadwalInstruktur($uuid)
+    {
+        $data = Pertemuan::where('uuid', $uuid)->first();
+        $modul = Modul::where('pertemuan_id', $data->id)->get();
+        $tugas = Tugas::where('pertemuan_id', $data->id)->get();
+        return view('instruktur.pertemuan.jadwalShow', compact('data', 'modul', 'tugas'));
     }
 
     public function tugasUpload(Request $req)
