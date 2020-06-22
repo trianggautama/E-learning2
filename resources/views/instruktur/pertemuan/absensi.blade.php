@@ -20,7 +20,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Jadwal Pertemuan (Filter yang mapel instrukturnya aja ) </h3>
+                    <h3>Absensi Pertemuan </h3>
                     <div class="text-right">
                     </div>
                 </div>
@@ -30,27 +30,25 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Mepel</th>
-                                    <th>Pertemuan</th>
-                                    <th>Tanggal</th>
+                                    <th>Nama Siswa</th>
+                                    <th>NRP</th>
+                                    <th>Jam Absen</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $d)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$d->mapel->mapel}}</td>
-                                    <td>{{$d->pertemuan}}</td>
-                                    <td>{{carbon\carbon::parse($d->tanggal)->translatedFormat('d F Y')}}</td>
-                                    <td>
-                                        <a href="{{Route('instrukturAbsensiPertemuan',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-calendar"></i> Absensi</a>
-                                        <a href="{{Route('instrukturJadwalPertemuanShow',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i>Info</a>
-                                    </td>
-                                </tr>
-                                @endforeach
+                               <tr>
+                                   <td>1</td>
+                                   <td>Siswa 1</td>
+                                   <td>124142143</td>
+                                   <td>7.30</td>
+                                   <td>Belum di verifikasi</td>
+                                   <td>
+                                   <a href="#" class="btn btn-sm btn-success m-1 " target="_blank"> <i
+                                                class="fa fa-check-circle"></i> verifikasi</a>
+                                   </td>
+                               </tr>
                             </tbody>
                         </table>
                     </div>

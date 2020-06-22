@@ -78,12 +78,12 @@
 				<div id="userbox" class="userbox">
 					<a href="#" data-toggle="dropdown">
 						<figure class="profile-picture">
-						<img src="{{asset('images/user/'.$d->user->foto)}}" 
+						<img src="{{asset('images/user/'. Auth::user()->foto)}}" 
                                         class="rounded-circle" width="30px" height="30px">
 						</figure>
 						<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
 							<span class="name">{{Auth::user()->nama}}</span>
-							<span class="role">Siswa</span>
+							<span class="role">Instruktur</span>
 						</div>
 						<i class="fa custom-caret"></i>
 					</a>

@@ -1,4 +1,4 @@
-@extends('layouts.siswa')
+@extends('layouts.instruktur')
 
 @section('content')
 <section role="main" class="content-body">

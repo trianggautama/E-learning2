@@ -18,7 +18,10 @@
         </div>
     </header>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 ">
+            <div class="text-right mb-3">
+            <a href="#" class="btn btn-primary"><i class="fas fa-hand-paper"></i> Klik Untuk Absensi</a>
+            </div>
             <div class="card">
                 <div class="card-header">
                     Modul Pertemuan
