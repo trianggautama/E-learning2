@@ -27,9 +27,9 @@ class tugasSiswaController extends Controller
     public function instrukturIndex()
     {
         $instruktur = Auth::user()->instruktur->id;
-        $mapel = Mapel::with('pertemuan')->where('instruktur_id',$instruktur)->get();
-        $data = $mapel->map(function($item){
-            $pertemuan = Pertemuan::with('tugas')->where('mapel_id',$item->id)->get();
+        $mapel = Mapel::with('pertemuan')->where('instruktur_id', $instruktur)->get();
+        $data = $mapel->map(function ($item) {
+            $pertemuan = Pertemuan::with('tugas')->where('mapel_id', $item->id)->get();
             return $pertemuan;
         });
         return view('instruktur.tugasSiswa.index', compact('data'));
@@ -37,10 +37,19 @@ class tugasSiswaController extends Controller
 
     public function tugasSiswaShow($uuid)
     {
-        $tugas = Tugas::where('uuid',$uuid)->first();
+        $tugas = Tugas::where('uuid', $uuid)->first();
         $siswa = Siswa::all();
-        $data = Tugas_siswa::where('tugas_id',$tugas->id)->get();
-        return view('instruktur.tugasSiswa.show', compact('data','tugas','siswa'));
+        $data = Tugas_siswa::where('tugas_id', $tugas->id)->get();
+        return view('instruktur.tugasSiswa.show', compact('data', 'tugas', 'siswa'));
+    }
+
+    public function nilaiStore(Request $req)
+    {
+        $data = Tugas_siswa::findOrFail($req->id);
+        $data->nilai = $req->nilai;
+        $data->update();
+
+        return redirect()->back()->withSuccess('Data berhasil disimpan');
     }
 
 }
