@@ -22,8 +22,8 @@
             <div class="text-right mb-3">
                 <form action="{{Route('absensiStore')}}" method="POST">
                     @csrf
-                    <input type="text" name="pertemuan_id" value="{{$data->id}}" id="">
-                    <input type="text" name="user_id" value="{{Auth::id()}}" id="">
+                    <input type="hidden" name="pertemuan_id" value="{{$data->id}}" id="">
+                    <input type="hidden" name="user_id" value="{{Auth::id()}}" id="">
                     <button type="submit" class="btn btn-primary"><i class="fas fa-hand-paper"></i> Klik Untuk
                         Absensi</button>
                 </form>
