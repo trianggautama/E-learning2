@@ -117,6 +117,13 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/tugasSiswa/delete/{uuid}', 'tugasSiswaController@destroy')->name('tugasSiswaDestroy');
     Route::get('/tugasSiswa/filter', 'tugasSiswaController@filter')->name('tugasSiswaFilter');
 
+//Nilai Siswa
+    Route::get('/nilaiSiswa/index', 'nilaiSiswaController@index')->name('nilaiSiswaIndex');
+    Route::post('/nilaiSiswa/create', 'nilaiSiswaController@store')->name('nilaiSiswaStore');
+    Route::get('/nilaiSiswa/edit/{uuid}', 'nilaiSiswaController@edit')->name('nilaiSiswaEdit');
+    Route::put('/nilaiSiswa/edit/{uuid}', 'nilaiSiswaController@update')->name('nilaiSiswaUpdate');
+    Route::get('/nilaiSiswa/delete/{uuid}', 'nilaiSiswaController@destroy')->name('nilaiSiswaDestroy');
+
 //Cetak Report
     Route::get('/siswa/cetak', 'reportController@siswa')->name('siswaCetak');
     Route::get('/mapel/cetak', 'reportController@mapel')->name('mapelCetak');
