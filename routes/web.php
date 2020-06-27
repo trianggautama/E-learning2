@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -148,6 +147,9 @@ Route::post('siswa/pertemuan/detail/tugasUpload', 'pertemuanController@tugasUplo
 Route::get('siswa/tes/index', 'tesController@siswaIndex')->name('siswaTesIndex');
 Route::get('siswa/input/tes/index/{uuid}', 'tesController@inputTes')->name('inputTes');
 Route::post('siswa/input/tes/index/{uuid}', 'tesController@jawaban')->name('updateTes');
+
+Route::post('siswa/input/absensi', 'pertemuanController@absensiStore')->name('absensiStore');
+Route::get('siswa/input/absensi/verif/{uuid}', 'pertemuanController@absensiVerif')->name('absensiVerif');
 
 Route::get('siswa/hasilTes/index', 'hasilTesController@siswaIndex')->name('siswaHasilTesIndex');
 

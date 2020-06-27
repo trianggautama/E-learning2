@@ -20,7 +20,13 @@
     <div class="row">
         <div class="col-lg-12 ">
             <div class="text-right mb-3">
-            <a href="#" class="btn btn-primary"><i class="fas fa-hand-paper"></i> Klik Untuk Absensi</a>
+                <form action="{{Route('absensiStore')}}" method="POST">
+                    @csrf
+                    <input type="text" name="pertemuan_id" value="{{$data->id}}" id="">
+                    <input type="text" name="user_id" value="{{Auth::id()}}" id="">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-hand-paper"></i> Klik Untuk
+                        Absensi</button>
+                </form>
             </div>
             <div class="card">
                 <div class="card-header">
@@ -79,35 +85,36 @@
                     <ul class="simple-user-list mb-3">
                         @foreach($data->komentar as $d)
                         <li>
-                        @if($d->user_id == Auth::user()->id)
-                                <div class="alert alert-default">
-                            @else
+                            @if($d->user_id == Auth::user()->id)
+                            <div class="alert alert-default">
+                                @else
                                 <div class="alert alert-light">
-                            @endif                                
-                            <figure class="image rounded">
-                                    <img src="{{asset('images/user/'.$d->user->foto)}}" 
-                                        class="rounded-circle" width="30px" height="30px">
-                                </figure>
-                                <div class="row">
-                                    <div class="col-md-6"><span class="title">{{$d->user->nama}} 
-                                        @if($d->user->role == 1)
-                                         <small class="text-primary"> ( Siswa ) </small>
-                                        @elseif($d->user->role == 3)
-                                         <small class="text-success"> ( Instruktur ) </small>
-                                        @else
-                                        <small class="text-warning"> ( Admin ) </small>
-                                        @endif
-                                    </span> <small>{{carbon\carbon::parse($d->created_at)->translatedFormat('d F Y')}}</small></div>
-                                    <div class="col-md-6 text-right"> 
-                                    @if($d->user_id == Auth::user()->id)
-                                    <a
-                                            href="{{Route('komentarDestroy', ['uuid' => $d->uuid])}}"
-                                            class=" text-danger"> <i class="fas fa-trash"></i></a>
                                     @endif
+                                    <figure class="image rounded">
+                                        <img src="{{asset('images/user/'.$d->user->foto)}}" class="rounded-circle"
+                                            width="30px" height="30px">
+                                    </figure>
+                                    <div class="row">
+                                        <div class="col-md-6"><span class="title">{{$d->user->nama}}
+                                                @if($d->user->role == 1)
+                                                <small class="text-primary"> ( Siswa ) </small>
+                                                @elseif($d->user->role == 3)
+                                                <small class="text-success"> ( Instruktur ) </small>
+                                                @else
+                                                <small class="text-warning"> ( Admin ) </small>
+                                                @endif
+                                            </span>
+                                            <small>{{carbon\carbon::parse($d->created_at)->translatedFormat('d F Y')}}</small>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            @if($d->user_id == Auth::user()->id)
+                                            <a href="{{Route('komentarDestroy', ['uuid' => $d->uuid])}}"
+                                                class=" text-danger"> <i class="fas fa-trash"></i></a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <p class="pt-2" style="padding-left:55px">{{$d->komentar}}</p>
                                 </div>
-                                </div>
-                                <p class="pt-2" style="padding-left:55px">{{$d->komentar}}</p>
-                            </div>
                         </li>
                         <hr>
                         @endforeach

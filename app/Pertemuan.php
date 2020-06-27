@@ -32,4 +32,9 @@ class Pertemuan extends Model
     {
         return $this->hasMany(Komentar::class);
     }
+
+    public function absensi()
+    {
+        return $this->hasMany(Absensi::class);
+    }
 }
