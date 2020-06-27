@@ -29,26 +29,36 @@
                         <table class="table table-bordered table-striped mb-0" id="datatable-default">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Nama Siswa</th>
-                                    <th>NRP</th>
-                                    <th>Jam Absen</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Nama Siswa</th>
+                                    <th class="text-center">NRP</th>
+                                    <th class="text-center">Jam Absen</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                               <tr>
-                                   <td>1</td>
-                                   <td>Siswa 1</td>
-                                   <td>124142143</td>
-                                   <td>7.30</td>
-                                   <td>Belum di verifikasi</td>
-                                   <td>
-                                   <a href="#" class="btn btn-sm btn-success m-1 " target="_blank"> <i
-                                                class="fa fa-check-circle"></i> verifikasi</a>
-                                   </td>
-                               </tr>
+                                @foreach($data->absensi as $d)
+                                <tr>
+                                    <td class="text-center">{{$loop->iteration}}</td>
+                                    <td class="text-center">{{$d->user->nama}}</td>
+                                    <td class="text-center">{{$d->user->nrp}}</td>
+                                    <td class="text-center">{{carbon\carbon::parse($d->created_at)->format('H:i:s')}}
+                                    </td>
+                                    <td class="text-center">
+                                        @if($d->status == 0)
+                                        <span class="badge badge-warning">Belum diverifikasi</span>
+                                        @else
+                                        <span class="badge badge-success">Sudah diverifikasi</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{Route('absensiVerif',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-success m-1 "> <i class="fa fa-check-circle"></i>
+                                            verifikasi</a>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

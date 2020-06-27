@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Absensi;
 use App\Komentar;
 use App\Mapel;
 use App\Modul;
@@ -94,6 +95,22 @@ class pertemuanController extends Controller
     {
         $data = Pertemuan::where('uuid', $uuid)->first();
         return view('instruktur.pertemuan.absensi', compact('data'));
+    }
+
+    public function absensiStore(Request $req)
+    {
+        $data = Absensi::create($req->all());
+
+        return back()->withSuccess('Berhasil melakukan absensi');
+    }
+
+    public function absensiVerif($uuid)
+    {
+        $data = Absensi::where('uuid', $uuid)->first();
+        $data->status = 1;
+        $data->update();
+
+        return back()->withSuccess('Data berhasil diverifikasi');
     }
 
     public function komentarStore(Request $req)
