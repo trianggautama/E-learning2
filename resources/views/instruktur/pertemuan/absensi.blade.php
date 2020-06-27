@@ -53,9 +53,13 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{Route('absensiVerif',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-success m-1 "> <i class="fa fa-check-circle"></i>
-                                            verifikasi</a>
+                                        @if($d->status == 0)
+                                            <a href="{{Route('absensiVerif',['uuid' => $d->uuid])}}"
+                                                class="btn btn-sm btn-success m-1 "> <i class="fa fa-check-circle"></i>
+                                                verifikasi</a>
+                                        @else
+                                        -
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
