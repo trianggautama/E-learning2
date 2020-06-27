@@ -22,7 +22,7 @@
                 <div class="card-header">
                     <div class="text-right">
 
-                    <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
+                        <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
                             Data</button>
                     </div>
                 </div>
@@ -41,20 +41,22 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($data as $d)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Adi</td>
-                                    <td>80%</td>
-                                    <td>90</td>
-                                    <td>75</td>
-                                    <th>100</th>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->user->nama}}</td>
+                                    <td>{{$d->absensi}}</td>
+                                    <td>{{$d->tugas}}</td>
+                                    <td>{{$d->tes}}</td>
+                                    <td>{{$d->nilai_akhir}}</td>
                                     <td>
-                                        <a href="{{Route('nilaiSiswaEdit','aihkdahu')}}"
+                                        <a href="{{Route('nilaiSiswaEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
                                         <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -74,14 +76,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('nilaiSiswaStore')}}" method="post">
                     @csrf
                     <div class="form-group ">
                         <label class="">Siswa</label>
-                        <select name="" id="" class="form-control">
-                        @foreach($siswa as $s)
-                            <option value="{{$s->id}}">{{$s->user->nama}}</option>
-                        @endforeach
+                        <select name="user_id" id="" class="form-control">
+                            @foreach($siswa as $s)
+                            <option value="{{$s->user->id}}">{{$s->user->nama}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="modal-footer">

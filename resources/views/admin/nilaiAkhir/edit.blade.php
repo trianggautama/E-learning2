@@ -28,15 +28,18 @@
                         @method('PUT')
                         <div class="form-group ">
                             <label class="">Absensi (%)</label>
-                            <input type="text" class="form-control" name="absensi" value="" id="absensi"  placeholder="Absensi">
+                            <input type="text" class="form-control" name="absensi" value="{{$data->absensi}}"
+                                id="absensi" placeholder="Absensi">
                         </div>
                         <div class="form-group ">
                             <label class="">Rata - Rata Nilai Tugas</label>
-                            <input type="text" class="form-control" name="tugas" value="" id="tugas"  placeholder="Nilai Tugas">
+                            <input type="text" class="form-control" name="tugas" value="{{$data->tugas}}" id="tugas"
+                                placeholder="Nilai Tugas">
                         </div>
                         <div class="form-group ">
                             <label class="">Rata - Rata Nilai Tes</label>
-                            <input type="text" class="form-control" name="tes" value="" id="tes"  placeholder="Nilai Tes">
+                            <input type="text" class="form-control" name="tes" value="{{$data->tes}}" id="tes"
+                                placeholder="Nilai Tes">
                         </div>
                 </div>
                 <div class="card-footer text-right">
