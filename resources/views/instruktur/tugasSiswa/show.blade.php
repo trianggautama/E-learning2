@@ -70,13 +70,15 @@
                                     </td>
                                     @if($d->tugas_siswa->where('tugas_id',$tugas->id)->first())
                                     <td>{{$d->tugas_siswa->where('tugas_id',$tugas->id)->first()->nilai}}</td>
-                                    @else
-                                    <p class="text-danger">Belum Ada Nilai</p>
-                                    @endif
                                     <td>
-                                        <button id="tambahModal" data-id="{{$d->id}}" class="btn btn-sm btn-primary"><i
+                                        <button id="tambahModal" data-id="{{$d->tugas_siswa->where('tugas_id',$tugas->id)->first()->id}}" class="btn btn-sm btn-primary"><i
                                                 class="fa fa-edit"></i> Input Nilai</button>
                                     </td>
+                                    @else
+                                    <td>  <p class="text-danger">Belum Ada Nilai</p></td>
+                                    <td>-</td>
+                                    @endif
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>

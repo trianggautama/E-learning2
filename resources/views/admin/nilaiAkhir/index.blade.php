@@ -45,14 +45,14 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$d->user->nama}}</td>
-                                    <td>{{$d->absensi}}</td>
+                                    <td>{{$d->absensi}} %</td>
                                     <td>{{$d->tugas}}</td>
                                     <td>{{$d->tes}}</td>
                                     <td>{{$d->nilai_akhir}}</td>
                                     <td>
                                         <a href="{{Route('nilaiSiswaEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}')"> <i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -106,7 +106,7 @@
         function Hapus(uuid) {
 			Swal.fire({
 			title: 'Anda Yakin?',
-			text: " Menghapus Haul " ,        
+			text: " Menghapus Data Nilai " ,        
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -115,7 +115,7 @@
 			cancelButtonText: 'Batal'
 		}).then((result) => {
 			if (result.value) {
-				url = '';
+				url = "{{Route('nilaiSiswaDestroy','')}}";
 				window.location.href =  url+'/'+uuid ;			
 			}
 		})

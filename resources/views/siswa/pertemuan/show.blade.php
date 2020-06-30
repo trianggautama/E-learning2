@@ -20,16 +20,18 @@
     <div class="row">
         <div class="col-lg-12 ">
             <div class="text-right mb-3">
-                @if($data->absensi->where('user_id',Auth::user()->id)->isEmpty())
-                <form action="{{Route('absensiStore')}}" method="POST">
-                    @csrf
-                    <input type="hidden" name="pertemuan_id" value="{{$data->id}}" id="">
-                    <input type="hidden" name="user_id" value="{{Auth::id()}}" id="">
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-hand-paper"></i> Klik Untuk
-                        Absensi</button>
-                </form>
-                @else
-                <a href="#" class="btn btn-success"><i class="fas fa-check-circle"></i> Anda sudah melakukan absen</a>
+                @if( carbon\carbon::parse($data->tanggal)->format('Y-m-d') == carbon\carbon::now()->format('Y-m-d'))
+                    @if($data->absensi->where('user_id',Auth::user()->id)->isEmpty())
+                        <form action="{{Route('absensiStore')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="pertemuan_id" value="{{$data->id}}" id="">
+                            <input type="hidden" name="user_id" value="{{Auth::id()}}" id="">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-hand-paper"></i> Klik Untuk
+                                Absensi</button>
+                        </form>
+                    @else
+                        <a href="#" class="btn btn-success"><i class="fas fa-check-circle"></i> Anda sudah melakukan absen</a>
+                    @endif
                 @endif
             </div>
             <div class="card">

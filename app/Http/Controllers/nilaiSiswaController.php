@@ -39,7 +39,7 @@ class nilaiSiswaController extends Controller
         //tes
         $tes = Tes_siswa::where('siswa_id', $user->siswa->id)->avg('nilai');
 
-        $nilaiAkhir = ($hitungAbsensi + $tugas + $tes) / 3;
+        $nilaiAkhir = (($hitungAbsensi*0.2) + ($tugas*0.4) + ($tes*0.4));
         $data = new Nilai_siswa;
         $data->user_id = $req->user_id;
         $data->absensi = $hitungAbsensi;
@@ -65,7 +65,7 @@ class nilaiSiswaController extends Controller
         $data->tugas = $req->tugas;
         $data->tes = $req->tes;
 
-        $nilaiAkhir = ($req->absensi + $req->tugas + $req->tes) / 3;
+        $nilaiAkhir = (($req->absensi*02) + ($req->tugas*0.4) + ($req->tes*0.4));
         $data->nilai_akhir = number_format($nilaiAkhir, 2, '.', '');
         $data->update();
 
