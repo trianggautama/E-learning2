@@ -21,7 +21,7 @@
 
 <div class="card">
   <div class="card-body">
-      <p>Home Admin</p>
+      <p>Home Instruktur</p>
 
     <div class="alert alert-success" role="alert">
       <h4 class="alert-heading">WELCOME BACK!</h4>

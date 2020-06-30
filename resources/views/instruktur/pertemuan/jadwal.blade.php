@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.instruktur')
 
 @section('content')
 <section role="main" class="content-body">
@@ -20,8 +20,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="text-right"> 
-                    <a href="{{Route('pertemuanCetak')}}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-print"></i> Cetak Data</a>
+                    <h3>Jadwal Pertemuan (Filter yang mapel instrukturnya aja ) </h3>
+                    <div class="text-right">
                     </div>
                 </div>
                 <div class="card-body">
@@ -44,14 +44,10 @@
                                     <td>{{$d->pertemuan}}</td>
                                     <td>{{carbon\carbon::parse($d->tanggal)->translatedFormat('d F Y')}}</td>
                                     <td>
-                                        <a href="{{Route('jadwalPertemuan',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
-                                        <a href="{{Route('pertemuanShow',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-cogs"></i></a>
-                                        <a href="{{Route('pertemuanEdit',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                            <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}','{{$d->pertemuan}}')"> <i
-                                                class="fa fa-trash"></i></button>
+                                        <a href="{{Route('instrukturAbsensiPertemuan',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-calendar"></i> Absensi</a>
+                                        <a href="{{Route('instrukturJadwalPertemuanShow',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i>Info</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -67,26 +63,6 @@
 @endsection
 @section('scripts')
 <script>
-    $("#tambah").click(function(){
-            $('#status').text('Tambah Data');
-            $('#modal').modal('show');
-        });
-        function Hapus(uuid,nama) {
-			Swal.fire({
-			title: 'Anda Yakin?',
-			text: " Menghapus Data  " + nama ,        
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Hapus',
-			cancelButtonText: 'Batal'
-		}).then((result) => {
-			if (result.value) {
-				url = "{{Route('pertemuanDestroy','')}}";
-				window.location.href =  url+'/'+uuid ;			
-			}
-		})
-        }
+
 </script>
 @endsection

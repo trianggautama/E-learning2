@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTugasSiswasTable extends Migration
+class CreateKomentarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateTugasSiswasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tugas_siswas', function (Blueprint $table) {
+        Schema::create('komentars', function (Blueprint $table) {
             $table->id();
             $table->string('uuid', 36);
-            $table->foreignId('siswa_id')->onDelete('cascade');
-            $table->foreignId('tugas_id')->onDelete('cascade');
-            $table->string('file', 100)->nullable();
-            $table->integer('nilai', 100)->default(0);
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('pertemuan_id');
+            $table->string('komentar', 100);
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateTugasSiswasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tugas_siswas');
+        Schema::dropIfExists('komentars');
     }
 }

@@ -2,23 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
- */
-
 Route::get('/', function () {
     return view('auth.login');
 });
 
 Auth::routes();
-
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('/comment', 'pertemuanController@komentarStore')->name('komentarStore');
+    Route::get('/comment/delete/{uuid}', 'pertemuanController@komentarDestroy')->name('komentarDestroy');
+});
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin/index', 'adminController@adminIndex')->name('adminIndex');
@@ -67,6 +59,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/pertemuan/edit/{uuid}', 'pertemuanController@edit')->name('pertemuanEdit');
     Route::put('/pertemuan/edit/{uuid}', 'pertemuanController@update')->name('pertemuanUpdate');
     Route::get('/pertemuan/delete/{uuid}', 'pertemuanController@destroy')->name('pertemuanDestroy');
+    Route::get('/jadwal/index/{uuid}', 'pertemuanController@jadwalPertemuan')->name('jadwalPertemuan');
 
 //modul
     Route::get('/modul/index', 'modulController@index')->name('modulIndex');
@@ -123,6 +116,12 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/tugasSiswa/delete/{uuid}', 'tugasSiswaController@destroy')->name('tugasSiswaDestroy');
     Route::get('/tugasSiswa/filter', 'tugasSiswaController@filter')->name('tugasSiswaFilter');
 
+//Nilai Siswa
+    Route::get('/nilaiSiswa/index', 'nilaiSiswaController@index')->name('nilaiSiswaIndex');
+    Route::post('/nilaiSiswa/create', 'nilaiSiswaController@store')->name('nilaiSiswaStore');
+    Route::get('/nilaiSiswa/edit/{uuid}', 'nilaiSiswaController@edit')->name('nilaiSiswaEdit');
+    Route::put('/nilaiSiswa/edit/{uuid}', 'nilaiSiswaController@update')->name('nilaiSiswaUpdate');
+    Route::get('/nilaiSiswa/delete/{uuid}', 'nilaiSiswaController@destroy')->name('nilaiSiswaDestroy');
 
 //Cetak Report
     Route::get('/siswa/cetak', 'reportController@siswa')->name('siswaCetak');
@@ -136,7 +135,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/tugas/cetak', 'reportController@tugas')->name('tugasCetak');
     Route::post('/tugasSiswa/filter', 'reportController@tugasFilter')->name('tugasFilter');
 
-
 });
 
 //halaman siswa
@@ -149,6 +147,9 @@ Route::post('siswa/pertemuan/detail/tugasUpload', 'pertemuanController@tugasUplo
 Route::get('siswa/tes/index', 'tesController@siswaIndex')->name('siswaTesIndex');
 Route::get('siswa/input/tes/index/{uuid}', 'tesController@inputTes')->name('inputTes');
 Route::post('siswa/input/tes/index/{uuid}', 'tesController@jawaban')->name('updateTes');
+
+Route::post('siswa/input/absensi', 'pertemuanController@absensiStore')->name('absensiStore');
+Route::get('siswa/input/absensi/verif/{uuid}', 'pertemuanController@absensiVerif')->name('absensiVerif');
 
 Route::get('siswa/hasilTes/index', 'hasilTesController@siswaIndex')->name('siswaHasilTesIndex');
 
@@ -172,5 +173,12 @@ Route::get('instruktur/tugas/edit/{uuid}', 'tugasController@instrukturEdit')->na
 Route::put('instruktur/tugas/edit/{uuid}', 'tugasController@instrukturUpdate')->name('instrukturTugasUpdate');
 Route::get('instruktur/tugas/delete/{uuid}', 'tugasController@destroy')->name('instrukturTugasDestroy');
 
-//Instruktur 
+//Instruktur
 Route::get('instruktur/tugasSiswa/index', 'tugasSiswaController@instrukturIndex')->name('instrukturTugasSiswaIndex');
+Route::get('instruktur/tugas/show/{uuid}', 'tugasController@instrukturIndex')->name('instrukturTugasIndex');
+Route::put('/instruktur/tugasSiswa/createNilai', 'tugasSiswaController@nilaiStore')->name('tugasSiswaNilaiStore');
+Route::get('instruktur/tugasSiswa/show/{uuid}', 'tugasSiswaController@tugasSiswaShow')->name('tugasSiswaShow');
+
+Route::get('jadwal/instruktur/index', 'pertemuanController@instrukturIndex')->name('jadwalIndex');
+Route::get('jadwal/instruktur/show/{uuid}', 'pertemuanController@jadwalInstruktur')->name('instrukturJadwalPertemuanShow');
+Route::get('jadwal/absensi/show/{uuid}', 'pertemuanController@absensiPertemuan')->name('instrukturAbsensiPertemuan');

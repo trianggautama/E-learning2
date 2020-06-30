@@ -31,6 +31,8 @@
 	<link rel="stylesheet" href="{{asset('admin/vendor/jquery-ui/jquery-ui.theme.css')}}" />
 	<link rel="stylesheet" href="{{asset('admin/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css')}}" />
 	<link rel="stylesheet" href="{{asset('admin/vendor/morris/morris.css')}}" />
+	<link rel="stylesheet" href="{{asset('admin/vendor/summernote/summernote-bs4.css')}}" />
+
 
 	<!-- Datatable -->
 	<link rel="stylesheet" href="{{asset('admin/vendor/datatables/media/css/dataTables.bootstrap4.css')}}" />
@@ -76,12 +78,12 @@
 				<div id="userbox" class="userbox">
 					<a href="#" data-toggle="dropdown">
 						<figure class="profile-picture">
-							<img src="{{asset('admin/img/!logged-user.jpg')}}" alt="Joseph Doe" class="rounded-circle"
-								data-lock-picture="img/!logged-user.jpg" />
+						<img src="{{asset('images/user/'. Auth::user()->foto)}}" 
+                                        class="rounded-circle" width="30px" height="30px">
 						</figure>
 						<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
 							<span class="name">{{Auth::user()->nama}}</span>
-							<span class="role">Siswa</span>
+							<span class="role">Instruktur</span>
 						</div>
 						<i class="fa custom-caret"></i>
 					</a>
@@ -145,7 +147,7 @@
 										</li>
 									</ul>
 								</li>
-								<!-- <li class="nav-parent">
+								<li class="nav-parent">
 									<a class="nav-link" href="#">
 										<i class="fas fa-book" aria-hidden="true"></i>
 										<span>Tugas dan Tes</span>
@@ -162,7 +164,13 @@
 											</a>
 										</li>
 									</ul>
-								</li> -->
+								</li>
+								<li>
+									<a class="nav-link" href="{{Route('jadwalIndex')}}">
+										<i class="fas fa-calendar" aria-hidden="true"></i>
+										<span>Jadwal</span>
+									</a>
+								</li>
 							</ul>
 						</nav>
 					</div>
@@ -225,6 +233,7 @@
 	<script src="{{asset('admin/vendor/jqvmap/maps/continents/jquery.vmap.europe.js')}}"></script>
 	<script src="{{asset('admin/vendor/jqvmap/maps/continents/jquery.vmap.north-america.js')}}"></script>
 	<script src="{{asset('admin/vendor/jqvmap/maps/continents/jquery.vmap.south-america.js')}}"></script>
+	<script src="{{asset('admin/vendor/summernote/summernote-bs4.js')}}"></script>
 
 
 	<!-- Datatable Scripts -->

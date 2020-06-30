@@ -1,9 +1,9 @@
-@extends('layouts.instruktur')
+@extends('layouts.admin')
 
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Tugas</h2>
+        <h2>Halaman Modul</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Data Tugas</span></li>
+                <li><span>Data Modul</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -21,6 +21,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
+
+                        <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
+                            Data</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -29,30 +32,31 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Mapel</th>
-                                    <th>Pertemuan</th>
-                                    <th>Tanggal</th>
-                                    <th>Tugas</th>
+                                    <th>Nama Siswa</th>
+                                    <th>Absensi</th>
+                                    <th>Rata - rata Tugas</th>
+                                    <th>Rata - rata tes</th>
+                                    <th>Nilai Akhir</th>
+                                    <th>Aksi</th>
                                 </tr>
-                            </thead> 
+                            </thead>
                             <tbody>
-                            @foreach($data as $d)
-                                @foreach($d as $p)
-                                    <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{$p->mapel->mapel}}</td>
-                                        <td>{{$p->pertemuan}}</td>
-                                        <td>{{carbon\carbon::parse($p->tanggal)->translatedFormat('d F Y')}}</td>
-                                        <td>
-                                            @if($p->tugas->count() != 0)
-                                                <a href="{{Route('instrukturTugasIndex',['uuid'=>$p->uuid])}}" class="btn btn-sm  btn-primary"> <i class="fa fa-file"></i> Lihat Tugas </a>
-                                            @else
-                                                Tidak Ada Tugas
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach                               
-                            @endforeach
+                                @foreach($data as $d)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->user->nama}}</td>
+                                    <td>{{$d->absensi}} %</td>
+                                    <td>{{$d->tugas}}</td>
+                                    <td>{{$d->tes}}</td>
+                                    <td>{{$d->nilai_akhir}}</td>
+                                    <td>
+                                        <a href="{{Route('nilaiSiswaEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}')"> <i
+                                                class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -72,11 +76,15 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="post">
+                <form action="{{Route('nilaiSiswaStore')}}" method="post">
                     @csrf
                     <div class="form-group ">
-                        <label class="">Periode Tahun</label>
-                        <input type="date" class="form-control" name="tahun" id="tahun">
+                        <label class="">Siswa</label>
+                        <select name="user_id" id="" class="form-control">
+                            @foreach($siswa as $s)
+                            <option value="{{$s->user->id}}">{{$s->user->nama}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -88,7 +96,6 @@
     </div>
 </div>
 </div>
-
 @endsection
 @section('scripts')
 <script>
@@ -99,7 +106,7 @@
         function Hapus(uuid) {
 			Swal.fire({
 			title: 'Anda Yakin?',
-			text: " Menghapus Data Tugas "  ,        
+			text: " Menghapus Data Nilai " ,        
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -108,7 +115,7 @@
 			cancelButtonText: 'Batal'
 		}).then((result) => {
 			if (result.value) {
-				url = "{{Route('tugasDestroy','')}}";
+				url = "{{Route('nilaiSiswaDestroy','')}}";
 				window.location.href =  url+'/'+uuid ;			
 			}
 		})

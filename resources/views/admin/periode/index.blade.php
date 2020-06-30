@@ -32,6 +32,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Periode tahun</th>
+                                    <th>Kepala Sekolah</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -40,6 +41,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{carbon\carbon::parse($d->tahun)->format('Y')}}</td>
+                                    <td>Nama Kelapa Sekolah</td>
                                     <td>
                                         <a href="{{Route('periodeEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
@@ -72,6 +74,10 @@
                     <div class="form-group ">
                         <label class="">Periode Tahun</label>
                         <input type="date" class="form-control" name="tahun" id="tahun" required>
+                    </div>
+                    <div class="form-group ">
+                        <label class="">Nama Kepala Sekolah</label>
+                        <input type="text" class="form-control" name="nama_kepala_sekolah" id="nama_kepala_sekolah" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

@@ -212,6 +212,11 @@
 												tugas Siswa
 											</a>
 										</li>
+										<li>
+											<a class="nav-link" href="{{Route('nilaiSiswaIndex')}}">
+												Nilai Akhir
+											</a>
+										</li>
 									</ul>
 								</li>
 								<li>

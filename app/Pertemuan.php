@@ -27,4 +27,14 @@ class Pertemuan extends Model
     {
         return $this->hasMany(Tugas::class);
     }
+
+    public function komentar()
+    {
+        return $this->hasMany(Komentar::class);
+    }
+
+    public function absensi()
+    {
+        return $this->hasMany(Absensi::class);
+    }
 }

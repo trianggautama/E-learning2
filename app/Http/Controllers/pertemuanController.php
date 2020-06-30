@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Absensi;
+use App\Komentar;
 use App\Mapel;
 use App\Modul;
 use App\Pertemuan;
@@ -33,6 +35,14 @@ class pertemuanController extends Controller
         return view('admin.pertemuan.show', compact('data'));
     }
 
+    public function jadwalPertemuan($uuid)
+    {
+        $data = Pertemuan::where('uuid', $uuid)->first();
+        $modul = Modul::where('pertemuan_id', $data->id)->get();
+        $tugas = Tugas::where('pertemuan_id', $data->id)->get();
+        return view('admin.pertemuan.jadwal', compact('data', 'modul', 'tugas'));
+    }
+
     public function edit($uuid)
     {
         $data = Pertemuan::where('uuid', $uuid)->first();
@@ -59,12 +69,62 @@ class pertemuanController extends Controller
         return view('siswa.pertemuan.index', compact('data'));
     }
 
+    public function instrukturIndex()
+    {
+        $data = Pertemuan::orderBy('tanggal', 'desc')->get();
+        return view('instruktur.pertemuan.jadwal', compact('data'));
+    }
+
     public function siswaShow($uuid)
     {
         $data = Pertemuan::where('uuid', $uuid)->first();
         $modul = Modul::where('pertemuan_id', $data->id)->get();
         $tugas = Tugas::where('pertemuan_id', $data->id)->get();
         return view('siswa.pertemuan.show', compact('data', 'modul', 'tugas'));
+    }
+
+    public function jadwalInstruktur($uuid)
+    {
+        $data = Pertemuan::where('uuid', $uuid)->first();
+        $modul = Modul::where('pertemuan_id', $data->id)->get();
+        $tugas = Tugas::where('pertemuan_id', $data->id)->get();
+        return view('instruktur.pertemuan.jadwalShow', compact('data', 'modul', 'tugas'));
+    }
+
+    public function absensiPertemuan($uuid)
+    {
+        $data = Pertemuan::where('uuid', $uuid)->first();
+        return view('instruktur.pertemuan.absensi', compact('data'));
+    }
+
+    public function absensiStore(Request $req)
+    {
+        $data = Absensi::create($req->all());
+
+        return back()->withSuccess('Berhasil melakukan absensi');
+    }
+
+    public function absensiVerif($uuid)
+    {
+        $data = Absensi::where('uuid', $uuid)->first();
+        $data->status = 1;
+        $data->update();
+
+        return back()->withSuccess('Data berhasil diverifikasi');
+    }
+
+    public function komentarStore(Request $req)
+    {
+        $data = Komentar::create($req->all());
+
+        return redirect()->back()->withSuccess('Berhasil mengirim komentar');
+    }
+
+    public function komentarDestroy($uuid)
+    {
+        $data = Komentar::where('uuid', $uuid)->first()->delete();
+
+        return redirect()->back()->withSuccess('Berhasil menghapus komentar');
     }
 
     public function tugasUpload(Request $req)

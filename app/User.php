@@ -45,4 +45,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(instruktur::class);
     }
+
+    public function nilai_siswa()
+    {
+        return $this->hasMany(Nilai_siswa::class);
+    }
+
 }
