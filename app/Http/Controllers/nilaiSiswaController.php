@@ -65,7 +65,7 @@ class nilaiSiswaController extends Controller
         $data->tugas = $req->tugas;
         $data->tes = $req->tes;
 
-        $nilaiAkhir = (($req->absensi*02) + ($req->tugas*0.4) + ($req->tes*0.4));
+        $nilaiAkhir = (($req->absensi*0.2) + ($req->tugas*0.4) + ($req->tes*0.4));
         $data->nilai_akhir = number_format($nilaiAkhir, 2, '.', '');
         $data->update();
 
