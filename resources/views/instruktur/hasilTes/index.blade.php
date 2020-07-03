@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.instruktur')
 
 @section('content')
 <section role="main" class="content-body">
@@ -21,9 +21,6 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
-                        <a href="{{Route('hasilTesFilterTes')}}" class="btn btn-sm btn-secondary"><i class="fa fa-filter"></i> Filter Tes</a>
-                        <a href="{{Route('hasilTesFilterHasil')}}" class="btn btn-sm btn-secondary"><i class="fa fa-filter"></i> Filter Hasil</a>
-                        <a href="{{Route('hasilTesCetak')}}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-print"></i> Cetak Data</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -42,30 +39,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $d)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$d->siswa->user->nama}}</td>
-                                    <td>{{$d->tes->mapel->mapel}}</td>
-                                    <td>{{carbon\carbon::parse($d->tes->periode->tahun)->translatedFormat('Y')}}</td>
-                                    <td>@if($d->tes->status == 0)
-                                            <p class="text-primary"> Tes Masih Berlangsung</p>
-                                        @else
-                                            <p class="text-primary"> Tes Sudah Selesai</p>
-                                        @endif
-                                    </td>
-                                    <td>{{$d->nilai}}</td>
-                                    <td>
-                                        @if($d->nilai >= 70)
-                                            <p class="text-success"> Lulus</p>
-                                        @else
-                                            <p class="text-danger"> Tidak Lulus</p>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="" class="btn btn-sm btn-warning m-1 "> <i class="fa fa-file"></i></a>
-                                    </td>
-                                </tr>
+                                @foreach($data as $b)
+                                    @foreach($b->tes_siswa as $d)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$d->siswa->user->nama}}</td>
+                                        <td>{{$d->tes->mapel->mapel}}</td>
+                                        <td>{{carbon\carbon::parse($d->tes->periode->tahun)->translatedFormat('Y')}}</td>
+                                        <td>@if($d->tes->status == 0)
+                                                <p class="text-primary"> Tes Masih Berlangsung</p>
+                                            @else
+                                                <p class="text-primary"> Tes Sudah Selesai</p>
+                                            @endif
+                                        </td>
+                                        <td>{{$d->nilai}}</td>
+                                        <td>
+                                            @if($d->nilai >= 70)
+                                                <p class="text-success"> Lulus</p>
+                                            @else
+                                                <p class="text-danger"> Tidak Lulus</p>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="" class="btn btn-sm btn-warning m-1 "> <i class="fa fa-file"></i></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 @endforeach
                             </tbody>
                         </table>

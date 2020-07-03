@@ -32,7 +32,7 @@
                                 <option value="">-- Pilih instruktur --</option>
                                 @foreach ($instruktur as $d)
                                 <option value="{{$d->id}}" {{$d->id == $data->instruktur_id ? 'selected' : ''}}>
-                                    {{$data->instruktur->user->nama}}</option>
+                                    {{$d->user->nama}}</option>
                                 @endforeach
                             </select>
                         </div>

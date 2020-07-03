@@ -20,7 +20,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Jadwal Pertemuan (Filter yang mapel instrukturnya aja ) </h3>
+                    <h3>Jadwal Pertemuan</h3>
                     <div class="text-right">
                     </div>
                 </div>

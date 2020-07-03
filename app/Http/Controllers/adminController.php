@@ -24,4 +24,9 @@ class adminController extends Controller
     {
         return view('instruktur.index');
     }
+
+    public function instrukturProfil()
+    {
+        return view('instruktur.profil');
+    }
 }
