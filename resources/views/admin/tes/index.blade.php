@@ -35,6 +35,7 @@
                                     <th>Periode</th>
                                     <th>Instruktur</th>
                                     <th>Tanggal Ujian</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -46,6 +47,7 @@
                                     <td>{{carbon\carbon::parse($d->periode->tahun)->translatedFormat('Y')}}</td>
                                     <td>{{$d->mapel->instruktur->user->nama}}</td>
                                     <td>{{carbon\carbon::parse($d->tanggal_ujian)->translatedFormat('d F Y')}}</td>
+                                    <td>
                                     @if ($d->status == 1)
                                     Sudah Terlaksana
                                     @else
