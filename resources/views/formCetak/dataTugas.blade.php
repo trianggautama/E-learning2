@@ -16,6 +16,7 @@
         th,
         td {
             border: 1px solid #708090;
+            text-align: center;
         }
         th {
             background-color: darkslategray;
@@ -75,26 +76,28 @@
 
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center;">LAPORAN DATA MATA PELAJARAN</h2>
+            <h2 style="text-align:center;">LAPORAN DATA TUGAS </h2>
             <br>            
             <table class="table table-bordered table-striped mb-0" id="datatable-default">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Mata Pelajaran</th>
-                                    <th>Instruktur</th>
-                                    <th>Keterangan</th>
+                                    <th>Mapel</th>
+                                    <th>Pertemuan</th>
+                                    <th>Tugas</th>
+                                    <th>Batas Waktu</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($data as $d)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$d->mapel}}</td>
-                                    <td>{{$d->instruktur->user->nama}}</td>
-                                    <td>{{$d->deskripsi}}</td>
-                                </tr>
-                                @endforeach
+                              <tr>
+                                  <td>{{$loop->iteration}}</td>
+                                  <td>{{$d->pertemuan->mapel->mapel}}</td>
+                                  <td>{{$d->pertemuan->pertemuan}}</td>
+                                  <td>{{$d->deskripsi}}</td>
+                                  <td>{{$d->batas_waktu}}</td>
+                              </tr>
+                              @endforeach
                             </tbody>
                         </table>
             <br>

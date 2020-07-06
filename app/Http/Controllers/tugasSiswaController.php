@@ -52,4 +52,10 @@ class tugasSiswaController extends Controller
         return redirect()->back()->withSuccess('Data berhasil disimpan');
     }
 
+    public function siswaIndex()
+    {
+        $data = Tugas_siswa::where('siswa_id',Auth::user()->siswa->id)->get();
+        return view('siswa.hasilTugas.index', compact('data'));
+    }
+
 }

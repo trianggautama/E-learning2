@@ -107,8 +107,7 @@
                 <h5  style="margin:0px;">Kepala Sekolah</h5>
                 <br>
                 <br>
-                <h5 style="text-decoration:underline; margin:0px;">Nama</h5>
-                <h5  style="margin:0px;">NRP.19810405 200612312 1 002</h5>
+                <h5 style="text-decoration:underline; margin:0px;">{{$kepsek->kepsek}}</h5>
             </div>
         </div>
     </div>

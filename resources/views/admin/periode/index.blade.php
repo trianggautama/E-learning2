@@ -41,7 +41,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{carbon\carbon::parse($d->tahun)->format('Y')}}</td>
-                                    <td>Nama Kelapa Sekolah</td>
+                                    <td>{{$d->kepsek}}</td>
                                     <td>
                                         <a href="{{Route('periodeEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
@@ -77,7 +77,7 @@
                     </div>
                     <div class="form-group ">
                         <label class="">Nama Kepala Sekolah</label>
-                        <input type="text" class="form-control" name="nama_kepala_sekolah" id="nama_kepala_sekolah" required>
+                        <input type="text" class="form-control" name="kepsek" id="kepsek" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>

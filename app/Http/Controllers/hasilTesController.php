@@ -37,7 +37,7 @@ class hasilTesController extends Controller
         $data = Tes::whereHas('mapel', function($query){
             $query->where('instruktur_id',Auth::user()->instruktur->id); 
         })->with('mapel','tes_siswa')
-        ->get();
+        ->get(); 
         return view('instruktur.hasilTes.index', compact('data'));
     }
 

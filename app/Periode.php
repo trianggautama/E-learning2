@@ -10,7 +10,7 @@ class Periode extends Model
     use Uuid;
 
     protected $fillable = [
-        'tahun',
+        'tahun','kepsek'
     ];
 
 }

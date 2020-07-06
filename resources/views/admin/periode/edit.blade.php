@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group ">
                             <label class="">Nama Kepala Sekolah</label>
-                            <input type="text" class="form-control" name="nama_kepala_sekolah" id="nama_kepala_sekolah" required>
+                            <input type="text" class="form-control" name="kepsek" id="kepsek" required>
                         </div>
                         <div class="card-footer text-right">
                             <a href="{{Route('kelasIndex')}}" type="button" class="btn btn-default">Batal</a>

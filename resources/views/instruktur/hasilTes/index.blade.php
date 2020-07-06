@@ -21,6 +21,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
+                        <a href="{{Route('dataHasilTesCetak')}}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-print"></i> Cetak Data</a>
                     </div>
                 </div>
                 <div class="card-body">

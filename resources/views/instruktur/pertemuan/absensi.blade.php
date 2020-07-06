@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Pertemuan</h2>
+        <h2>Absensi Pertemuan {{$data->pertemuan}} / {{carbon\carbon::parse($data->tanggal)->translatedFormat('d F Y')}}</h2> 
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -22,6 +22,7 @@
                 <div class="card-header">
                     <h3>Absensi Pertemuan </h3>
                     <div class="text-right">
+                    <a href="{{Route('absensiCetak',['uuid' => $data->uuid])}}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-print"></i> Cetak Data</a>
                     </div>
                 </div>
                 <div class="card-body">

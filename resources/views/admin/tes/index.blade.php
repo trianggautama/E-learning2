@@ -21,6 +21,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
+                        <a href="{{Route('dataTesCetak')}}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-print"></i> Cetak Data</a>
                         <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
                             Data</button>
                     </div>
