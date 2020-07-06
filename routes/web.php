@@ -163,6 +163,7 @@ Route::get('siswa/hasilTugas/index', 'tugasSiswaController@siswaIndex')->name('s
 //halmaan instruktur
 Route::get('halaman/instruktur/index', 'adminController@instrukturIndex')->name('halamanInstrukturIndex');
 Route::get('halaman/instruktur/profil', 'adminController@instrukturProfil')->name('instrukturProfil');
+Route::put('halaman/instruktur/profilUpdate/{uuid}', 'adminController@instrukturProfileUpdate')->name('instrukturProfileUpdate');
 Route::get('intruktur/mapel/index', 'mapelController@instrukturIndex')->name('instrukturMapelIndex');
 Route::get('instruktur/mapel/detail/{uuid}', 'mapelController@instrukturShow')->name('instrukturMapelShow');
 Route::post('instruktur/pertemuan/create', 'pertemuanController@store')->name('instrukturPertemuanStore');
