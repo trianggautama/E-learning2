@@ -43,7 +43,7 @@ class User extends Authenticatable
 
     public function instruktur()
     {
-        return $this->hasOne(instruktur::class);
+        return $this->hasOne(Instruktur::class);
     }
 
     public function nilai_siswa()

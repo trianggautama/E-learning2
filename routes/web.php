@@ -156,6 +156,7 @@ Route::get('siswa/hasilTes/index', 'hasilTesController@siswaIndex')->name('siswa
 //halmaan instruktur
 Route::get('halaman/instruktur/index', 'adminController@instrukturIndex')->name('halamanInstrukturIndex');
 Route::get('halaman/instruktur/profil', 'adminController@instrukturProfil')->name('instrukturProfil');
+Route::put('halaman/instruktur/profilUpdate/{uuid}', 'adminController@instrukturProfileUpdate')->name('instrukturProfileUpdate');
 Route::get('intruktur/mapel/index', 'mapelController@instrukturIndex')->name('instrukturMapelIndex');
 Route::get('instruktur/mapel/detail/{uuid}', 'mapelController@instrukturShow')->name('instrukturMapelShow');
 Route::post('instruktur/pertemuan/create', 'pertemuanController@store')->name('instrukturPertemuanStore');
@@ -184,4 +185,4 @@ Route::get('jadwal/instruktur/index', 'pertemuanController@instrukturIndex')->na
 Route::get('jadwal/instruktur/show/{uuid}', 'pertemuanController@jadwalInstruktur')->name('instrukturJadwalPertemuanShow');
 Route::get('jadwal/absensi/show/{uuid}', 'pertemuanController@absensiPertemuan')->name('instrukturAbsensiPertemuan');
 
-Route::get('instruktur/hasilTes/index', 'hasilTesController@instrukturIndex')->name('instrukturHasilTesIndex'); 
+Route::get('instruktur/hasilTes/index', 'hasilTesController@instrukturIndex')->name('instrukturHasilTesIndex');
