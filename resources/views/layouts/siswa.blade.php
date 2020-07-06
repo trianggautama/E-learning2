@@ -148,7 +148,7 @@
 
 										<li>
 											<a class="nav-link" href="{{Route('siswaTesIndex')}}">
-												Jadwal 
+												Jadwal Kuis
 											</a>
 										</li>
 									</ul>
