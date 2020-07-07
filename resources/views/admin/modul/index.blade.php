@@ -21,8 +21,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="text-right">
+                        <a href="{{Route('modulCetak')}}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-print"></i> Cetak Data</a>
                     </div>
-                </div>
+                </div> 
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped mb-0" id="datatable-default">

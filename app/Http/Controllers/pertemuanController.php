@@ -71,7 +71,10 @@ class pertemuanController extends Controller
 
     public function instrukturIndex()
     {
-        $data = Pertemuan::orderBy('tanggal', 'desc')->get();
+        $data = Pertemuan::whereHas('mapel', function($query){
+            $query->where('instruktur_id',Auth::user()->instruktur->id);
+        })->with('mapel')
+         ->get();
         return view('instruktur.pertemuan.jadwal', compact('data'));
     }
 

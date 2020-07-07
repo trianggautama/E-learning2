@@ -32,6 +32,15 @@ class hasilTesController extends Controller
         return view('admin.hasilTes.filterTes',compact('data'));
     }
 
+    public function instrukturindex()
+    {
+        $data = Tes::whereHas('mapel', function($query){
+            $query->where('instruktur_id',Auth::user()->instruktur->id); 
+        })->with('mapel','tes_siswa')
+        ->get(); 
+        return view('instruktur.hasilTes.index', compact('data'));
+    }
+
     // public function store(Request $req)
     // {
     //     $data = Kelas::create($req->all());

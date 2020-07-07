@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Data Hasil Tes Siswa</span></li>
+                <li><span>Data Hasil Tes Siswa</span></li> 
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -21,9 +21,6 @@
             <div class="card">
                 <!-- <div class="card-header">
                     <div class="text-right">
-                        <button class="btn btn-sm btn-secondary"><i class="fa fa-print"></i> Cetak Data</button>
-                        <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
-                            Data</button>
                     </div>
                 </div> -->
                 <div class="card-body">
@@ -47,7 +44,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$d->siswa->user->nama}}</td>
                                     <td>{{$d->tes->mapel->mapel}}</td>
-                                    <td>{{$d->tes->tanggal_ujian}}</td>
+                                    <td>{{carbon\carbon::parse($d->tes->tanggal_ujian)->translatedFormat('d F Y')}}</td>
                                     <td>@if($d->tes->status == 0)
                                             <p class="text-primary"> Tes Masih Berlangsung</p>
                                         @else

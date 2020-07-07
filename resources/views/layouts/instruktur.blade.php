@@ -129,9 +129,19 @@
 
 							<ul class="nav nav-main">
 								<li>
+
 									<a class="nav-link" href="{{Route('halamanInstrukturIndex')}}">
+
+									<a class="nav-link" href="{{Route('halamanInstrukturIndex')}}"> 
+
 										<i class="fas fa-home" aria-hidden="true"></i>
 										<span>Home</span>
+									</a>
+								</li>
+								<li>
+									<a class="nav-link" href="{{Route('instrukturProfil')}}"> 
+										<i class="fas fa-user" aria-hidden="true"></i>
+										<span>User</span>
 									</a>
 								</li>
 								<li class="nav-parent">
@@ -159,7 +169,7 @@
 											</a>
 										</li>
 										<li>
-											<a class="nav-link" href="{{Route('instrukturMapelIndex')}}">
+											<a class="nav-link" href="{{Route('instrukturHasilTesIndex')}}">
 												Data Hasil Tes
 											</a>
 										</li>

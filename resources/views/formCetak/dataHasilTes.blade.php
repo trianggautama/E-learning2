@@ -16,6 +16,7 @@
         th,
         td {
             border: 1px solid #708090;
+            text-align: center;
         }
         th {
             background-color: darkslategray;
@@ -75,25 +76,44 @@
 
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center;">LAPORAN DATA MATA PELAJARAN</h2>
+            <h2 style="text-align:center;">LAPORAN DATA HASIL TES SISWA </h2>
             <br>            
             <table class="table table-bordered table-striped mb-0" id="datatable-default">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Mata Pelajaran</th>
-                                    <th>Instruktur</th>
+                                    <th>Nama</th>
+                                    <th>Tes</th>
+                                    <th>Periode</th>
+                                    <th>Status Tes</th>
+                                    <th>Nilai</th>
                                     <th>Keterangan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $d)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$d->mapel}}</td>
-                                    <td>{{$d->instruktur->user->nama}}</td>
-                                    <td>{{$d->deskripsi}}</td>
-                                </tr>
+                                @foreach($data as $b)
+                                    @foreach($b->tes_siswa as $d)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$d->siswa->user->nama}}</td>
+                                        <td>{{$d->tes->mapel->mapel}}</td>
+                                        <td>{{carbon\carbon::parse($d->tes->periode->tahun)->translatedFormat('Y')}}</td>
+                                        <td>@if($d->tes->status == 0)
+                                                <p class="text-primary"> Tes Masih Berlangsung</p>
+                                            @else
+                                                <p class="text-primary"> Tes Sudah Selesai</p>
+                                            @endif
+                                        </td>
+                                        <td>{{$d->nilai}}</td>
+                                        <td>
+                                            @if($d->nilai >= 70)
+                                                <p class="text-success"> Lulus</p>
+                                            @else
+                                                <p class="text-danger"> Tidak Lulus</p>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 @endforeach
                             </tbody>
                         </table>

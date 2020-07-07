@@ -153,11 +153,23 @@
 										</li>
 									</ul>
 								</li>
-								<li>
-									<a class="nav-link" href="{{Route('siswaHasilTesIndex')}}">
-										<i class="fas fa-award" aria-hidden="true"></i>
-										<span>hasil Ujian </span>
+								<li class="nav-parent">
+									<a class="nav-link" href="#">
+										<i class="fas fa-book" aria-hidden="true"></i>
+										<span>Hasil Ujian dan Tes</span>
 									</a>
+									<ul class="nav nav-children">
+										<li>
+											<a class="nav-link" href="{{Route('siswaTugasIndex')}}"> 
+												Hasil Tugas Siswa
+											</a>
+										</li>
+										<li>
+											<a class="nav-link" href="{{Route('siswaHasilTesIndex')}}">
+												Hasil Ujian
+											</a>
+										</li>
+									</ul>
 								</li>
 							</ul>
 						</nav>

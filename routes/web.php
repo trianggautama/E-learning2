@@ -134,6 +134,11 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/hasilTes/filter/tes', 'reportController@hasilTesFilterTes')->name('hasilTesFilterTesCetak');
     Route::get('/tugas/cetak', 'reportController@tugas')->name('tugasCetak');
     Route::post('/tugasSiswa/filter', 'reportController@tugasFilter')->name('tugasFilter');
+    Route::get('/modul/cetak', 'reportController@modul')->name('modulCetak');
+    Route::get('/tugas/cetak', 'reportController@dataTugas')->name('dataTugasCetak');
+    Route::get('/dataTes/cetak', 'reportController@dataTes')->name('dataTesCetak');
+
+
 
 });
 
@@ -152,9 +157,13 @@ Route::post('siswa/input/absensi', 'pertemuanController@absensiStore')->name('ab
 Route::get('siswa/input/absensi/verif/{uuid}', 'pertemuanController@absensiVerif')->name('absensiVerif');
 
 Route::get('siswa/hasilTes/index', 'hasilTesController@siswaIndex')->name('siswaHasilTesIndex');
+Route::get('siswa/hasilTugas/index', 'tugasSiswaController@siswaIndex')->name('siswaTugasIndex'); 
+
 
 //halmaan instruktur
 Route::get('halaman/instruktur/index', 'adminController@instrukturIndex')->name('halamanInstrukturIndex');
+Route::get('halaman/instruktur/profil', 'adminController@instrukturProfil')->name('instrukturProfil');
+Route::put('halaman/instruktur/profilUpdate/{uuid}', 'adminController@instrukturProfileUpdate')->name('instrukturProfileUpdate');
 Route::get('intruktur/mapel/index', 'mapelController@instrukturIndex')->name('instrukturMapelIndex');
 Route::get('instruktur/mapel/detail/{uuid}', 'mapelController@instrukturShow')->name('instrukturMapelShow');
 Route::post('instruktur/pertemuan/create', 'pertemuanController@store')->name('instrukturPertemuanStore');
@@ -182,3 +191,9 @@ Route::get('instruktur/tugasSiswa/show/{uuid}', 'tugasSiswaController@tugasSiswa
 Route::get('jadwal/instruktur/index', 'pertemuanController@instrukturIndex')->name('jadwalIndex');
 Route::get('jadwal/instruktur/show/{uuid}', 'pertemuanController@jadwalInstruktur')->name('instrukturJadwalPertemuanShow');
 Route::get('jadwal/absensi/show/{uuid}', 'pertemuanController@absensiPertemuan')->name('instrukturAbsensiPertemuan');
+
+Route::get('instruktur/hasilTes/index', 'hasilTesController@instrukturIndex')->name('instrukturHasilTesIndex'); 
+
+Route::get('/data/hasilTes/cetak', 'reportController@dataHasilTes')->name('dataHasilTesCetak');   
+Route::get('/data/absensi/cetak/{uuid}', 'reportController@absensi')->name('absensiCetak');   
+

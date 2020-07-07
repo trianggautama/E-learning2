@@ -23,4 +23,8 @@ class Tes extends Model
         return $this->belongsTo(Periode::class);
     }
 
+    public function tes_siswa()
+    {
+        return $this->hasMany(Tes_siswa::class);
+    }
 }

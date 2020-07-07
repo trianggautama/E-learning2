@@ -16,6 +16,7 @@
         th,
         td {
             border: 1px solid #708090;
+            text-align: center;
         }
         th {
             background-color: darkslategray;
@@ -75,24 +76,33 @@
 
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center;">LAPORAN DATA MATA PELAJARAN</h2>
+            <h2 style="text-align:center; text-transform:uppercase;">LAPORAN DATA ABSENSI <br> PERTEMUAN {{$data->pertemuan}} - {{carbon\carbon::parse($data->tanggal)->translatedFormat('d F Y')}} </h2>
             <br>            
             <table class="table table-bordered table-striped mb-0" id="datatable-default">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Mata Pelajaran</th>
-                                    <th>Instruktur</th>
-                                    <th>Keterangan</th>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Nama Siswa</th>
+                                    <th class="text-center">NRP</th>
+                                    <th class="text-center">Jam Absen</th>
+                                    <th class="text-center">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($data as $d)
+                                @foreach($data->absensi as $d)
                                 <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$d->mapel}}</td>
-                                    <td>{{$d->instruktur->user->nama}}</td>
-                                    <td>{{$d->deskripsi}}</td>
+                                    <td class="text-center">{{$loop->iteration}}</td>
+                                    <td class="text-center">{{$d->user->nama}}</td>
+                                    <td class="text-center">{{$d->user->nrp}}</td>
+                                    <td class="text-center">{{carbon\carbon::parse($d->created_at)->format('H:i:s')}}
+                                    </td>
+                                    <td class="text-center">
+                                        @if($d->status == 0)
+                                        <span class="badge badge-warning">Belum diverifikasi</span>
+                                        @else
+                                        <span class="badge badge-success">Sudah diverifikasi</span>
+                                        @endif
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
