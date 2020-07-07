@@ -158,6 +158,19 @@ class reportController extends Controller
         return $pdf->stream('Laporan Data Tugas.pdf');
     }
 
+
+    public function dataTes() 
+    {
+        $data         = Tes::all();
+        $tgl          = Carbon::now()->format('d-m-Y');
+        $kepsek       = Periode::latest()->first();
+        $pdf          = PDF::loadView('formCetak.dataTes', ['data'=>$data,'tgl'=>$tgl,'kepsek'=>$kepsek]);
+        $pdf->setPaper('a4', 'portrait');
+
+        return $pdf->stream('Laporan Data Tes.pdf');
+    }
+
+
     public function dataHasilTes() 
     {
         $data         = Tes::all();

@@ -114,7 +114,6 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/tugasSiswa/edit/{uuid}', 'tugasSiswaController@edit')->name('tugasSiswaEdit');
     Route::put('/tugasSiswa/edit/{uuid}', 'tugasSiswaController@update')->name('tugasSiswaUpdate');
     Route::get('/tugasSiswa/delete/{uuid}', 'tugasSiswaController@destroy')->name('tugasSiswaDestroy');
-    Route::get('/tugasSiswa/filter', 'tugasSiswaController@filter')->name('tugasSiswaFilter');
 
 //Nilai Siswa
     Route::get('/nilaiSiswa/index', 'nilaiSiswaController@index')->name('nilaiSiswaIndex');
@@ -132,11 +131,10 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/hasilTes/cetak', 'reportController@hasilTes')->name('hasilTesCetak');
     Route::post('/hasilTes/filter/hasil', 'reportController@hasilTesFilterHasil')->name('hasilTesFilterHasilCetak');
     Route::post('/hasilTes/filter/tes', 'reportController@hasilTesFilterTes')->name('hasilTesFilterTesCetak');
-    Route::get('/tugas/cetak', 'reportController@tugas')->name('tugasCetak');
     Route::post('/tugasSiswa/filter', 'reportController@tugasFilter')->name('tugasFilter');
     Route::get('/modul/cetak', 'reportController@modul')->name('modulCetak');
-    Route::get('/tugas/cetak', 'reportController@dataTugas')->name('dataTugasCetak');
-    Route::get('/dataTes/cetak', 'reportController@dataTes')->name('dataTesCetak');
+    Route::get('/dataTugas/cetak', 'reportController@dataTugas')->name('dataTugasCetak');
+    Route::get('/dataTes/cetak', 'reportController@dataTes')->name('dataTesCetak'); 
 
 
 
@@ -196,4 +194,7 @@ Route::get('instruktur/hasilTes/index', 'hasilTesController@instrukturIndex')->n
 
 Route::get('/data/hasilTes/cetak', 'reportController@dataHasilTes')->name('dataHasilTesCetak');   
 Route::get('/data/absensi/cetak/{uuid}', 'reportController@absensi')->name('absensiCetak');   
+Route::get('/tugas/cetak', 'reportController@tugas')->name('tugasCetak'); 
+Route::get('/tugasSiswa/filter', 'tugasSiswaController@filter')->name('tugasSiswaFilter');
+
 
