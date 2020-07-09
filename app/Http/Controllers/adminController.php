@@ -16,6 +16,11 @@ class adminController extends Controller
         return view('admin.index');
     }
 
+    public function adminProfilEdit()
+    {
+        return view('admin.profilEdit');
+    }
+
     public function siswaIndex()
     {
         $pertemuan = Pertemuan::orderBy('tanggal', 'asc')->paginate(5);

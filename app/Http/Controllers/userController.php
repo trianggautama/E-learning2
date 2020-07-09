@@ -43,8 +43,7 @@ class userController extends Controller
 
     public function edit($uuid)
     {
-        $data = User::where('uuid', $uuid)->first();
-
+        $data = User::findorFail($uuid);
         return view('admin.user.edit', compact('data'));
     }
 

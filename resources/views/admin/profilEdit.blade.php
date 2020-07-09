@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman User Edit</h2>
+        <h2>Halaman Profil Edit</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Edit Data User</span></li>
+                <li><span>Edit Data Profil</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -20,7 +20,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    Edit Data User
+                    Edit Data Profil
                 </div>
                 <div class="card-body">
                     <form action="" enctype="multipart/form-data" method="post">
@@ -29,15 +29,15 @@
                         <input type="hidden" name="role" value="2">
                     <div class="form-group ">
                         <label class="">Nama </label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" value="{{$data->nama}}">
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama">
                     </div>
                     <div class="form-group ">
                         <label class="">NRP</label>
-                        <input type="text" class="form-control" name="nrp" id="nrp" placeholder="NRP" value="{{$data->nrp}}">
+                        <input type="text" class="form-control" name="nrp" id="nrp" placeholder="NRP">
                     </div>
                     <div class="form-group ">
                         <label class="">Username</label>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" value="{{$data->username}}">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username">
                     </div>
                     <div class="form-group ">
                         <label class="">Password</label>

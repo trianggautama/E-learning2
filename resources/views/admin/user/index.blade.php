@@ -45,9 +45,8 @@
                                     <td>{{$d->nama}}</td>
                                     <td>{{$d->username}}</td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-warning m-1 "> <i
-                                                class="fa fa-info-circle"></i></a>
-                                        <a href="" class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                    <a href="{{Route('userEdit',['uuid' => $d->id])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
                                         <button class="btn btn-sm btn-danger"
                                             onclick="Hapus('{{$d->uuid}}','{{$d->nama}}')"> <i
                                                 class="fa fa-trash"></i></button>

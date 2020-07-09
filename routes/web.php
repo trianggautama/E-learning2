@@ -14,6 +14,8 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin/index', 'adminController@adminIndex')->name('adminIndex');
+    Route::get('/admin/profil/edit', 'adminController@adminProfilEdit')->name('adminProfilEdit'); 
+
 
 //user
     Route::get('/user/index', 'userController@index')->name('userIndex');
