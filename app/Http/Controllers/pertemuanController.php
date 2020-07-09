@@ -94,6 +94,12 @@ class pertemuanController extends Controller
         return view('instruktur.pertemuan.jadwalShow', compact('data', 'modul', 'tugas'));
     }
 
+    public function adminAbsensiPertemuan($uuid)
+    {
+        $data = Pertemuan::where('uuid', $uuid)->first();
+        return view('admin.pertemuan.absensi', compact('data'));
+    }
+
     public function absensiPertemuan($uuid)
     {
         $data = Pertemuan::where('uuid', $uuid)->first();

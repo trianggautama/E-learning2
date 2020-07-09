@@ -122,6 +122,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::put('/nilaiSiswa/edit/{uuid}', 'nilaiSiswaController@update')->name('nilaiSiswaUpdate');
     Route::get('/nilaiSiswa/delete/{uuid}', 'nilaiSiswaController@destroy')->name('nilaiSiswaDestroy');
 
+//Absensi Data
+    Route::get('admin/absensi/show/{uuid}', 'pertemuanController@adminAbsensiPertemuan')->name('adminAbsensiPertemuan');
+
 //Cetak Report
     Route::get('/siswa/cetak', 'reportController@siswa')->name('siswaCetak');
     Route::get('/mapel/cetak', 'reportController@mapel')->name('mapelCetak');
@@ -135,6 +138,8 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/modul/cetak', 'reportController@modul')->name('modulCetak');
     Route::get('/dataTugas/cetak', 'reportController@dataTugas')->name('dataTugasCetak');
     Route::get('/dataTes/cetak', 'reportController@dataTes')->name('dataTesCetak'); 
+    Route::get('/nilaiAkhir/cetak', 'reportController@nilaiAkhir')->name('nilaiAkhirCetak'); 
+    Route::get('/absensi/keseluruhan/cetak', 'reportController@absensiKeseluruhan')->name('absensiKeseluruhanCetak'); 
 
 
 

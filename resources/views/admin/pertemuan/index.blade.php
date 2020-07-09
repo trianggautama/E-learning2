@@ -20,7 +20,8 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="text-right"> 
+                    <div class="text-right">
+                    <a href="{{Route('absensiKeseluruhanCetak')}}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-print"></i> Cetak Absensi Keseluruhan</a>  
                     <a href="{{Route('pertemuanCetak')}}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-print"></i> Cetak Data</a>
                     </div>
                 </div>
@@ -44,7 +45,7 @@
                                     <td>{{$d->pertemuan}}</td>
                                     <td>{{carbon\carbon::parse($d->tanggal)->translatedFormat('d F Y')}}</td>
                                     <td>
-                                        <a href="{{Route('instrukturAbsensiPertemuan',['uuid' => $d->uuid])}}" 
+                                        <a href="{{Route('adminAbsensiPertemuan',['uuid' => $d->uuid])}}" 
                                             class="btn btn-sm btn-success m-1 "> <i class="fa fa-calendar"></i></a>
                                         <a href="{{Route('jadwalPertemuan',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-info m-1 "> <i class="fa fa-info-circle"></i></a>

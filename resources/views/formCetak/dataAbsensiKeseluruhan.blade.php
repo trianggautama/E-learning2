@@ -76,32 +76,39 @@
 
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center; text-transform:uppercase;">LAPORAN DATA TUGAS {{$tugas->pertemuan->mapel->mapel}} PERTEMUAN {{$tugas->pertemuan->pertemuan}}</h2>
+            <h2 style="text-align:center; text-transform:uppercase;">LAPORAN DATA ABSENSI KESELURUHAN</h2>
             <br>            
             <table class="table table-bordered table-striped mb-0" id="datatable-default">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Mapel</th>
-                                    <th>Pertemuan</th>
-                                    <th>Tugas</th>
-                                    <th>Nama Siswa</th>
-                                    <th>Waktu Mengumpul</th>
-                                    <th>Nilai</th>
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Mata Pelajaran</th>
+                                    <th class="text-center">Pertemuan</th>
+                                    <th class="text-center">Nama Siswa</th>
+                                    <th class="text-center">NRP</th>
+                                    <th class="text-center">Jam Absen</th>
+                                    <th class="text-center">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($data as $d)
-                              <tr>
-                                  <td>{{$loop->iteration}}</td>
-                                  <td>{{$d->tugas->pertemuan->mapel->mapel}}</td>
-                                  <td>{{$d->tugas->pertemuan->pertemuan}}</td>
-                                  <td>{{$d->tugas->deskripsi}}</td>
-                                  <td>{{$d->siswa->user->nama}}</td>
-                                  <td>{{carbon\carbon::parse($d->created_at)->translatedFormat('H:i')}} WITA</td>
-                                  <td>{{$d->nilai}}</td>
-                              </tr>
-                              @endforeach
+                                <tr>
+                                    <td class="text-center">{{$loop->iteration}}</td>
+                                    <td class="text-center">{{$d->pertemuan->mapel->mapel}}</td>
+                                    <td class="text-center">{{$d->pertemuan->pertemuan}}</td>
+                                    <td class="text-center">{{$d->user->nama}}</td>
+                                    <td class="text-center">{{$d->user->nrp}}</td>
+                                    <td class="text-center">{{carbon\carbon::parse($d->created_at)->format('H:i:s')}}
+                                    </td>
+                                    <td class="text-center">
+                                        @if($d->status == 0)
+                                        <span class="badge badge-warning">Belum diverifikasi</span>
+                                        @else
+                                        <span class="badge badge-success">Sudah diverifikasi</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
             <br>

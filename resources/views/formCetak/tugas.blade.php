@@ -87,7 +87,7 @@
                                     <th>Tugas</th>
                                     <th>Nama Siswa</th>
                                     <th>Waktu Mengumpul</th>
-                                    <th>File</th>
+                                    <th>Nilai</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -99,7 +99,7 @@
                                   <td>{{$d->tugas->deskripsi}}</td>
                                   <td>{{$d->siswa->user->nama}}</td>
                                   <td>{{carbon\carbon::parse($d->created_at)->translatedFormat('H:i')}} WITA</td>
-                                  <td> <a href="{{asset('tugas/'.$d->file)}}" class="btn btn-warning" download><i class="fa fa-file-download"></i> {{$d->file}}</a></td>
+                                  <td> {{$d->nilai}}</td>
                               </tr>
                               @endforeach
                             </tbody>
