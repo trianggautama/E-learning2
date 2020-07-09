@@ -92,7 +92,7 @@
 						<div class="form-group mb-3">
 							<div class="clearfix">
 								<label class="float-left">Password</label>
-								<a href="pages-recover-password.html" class="float-right">Lost Password?</a>
+								<!-- <a href="pages-recover-password.html" class="float-right">Lost Password?</a> -->
 							</div>
 							<div class="input-group">
                             <input id="password" type="password"
@@ -113,17 +113,17 @@
 						</div>
 
 						<div class="row">
-							<div class="col-sm-8">
+							<!-- <div class="col-sm-8">
 								<div class="checkbox-custom checkbox-default">
 									<input id="RememberMe" name="rememberme" type="checkbox" />
 									<label for="RememberMe">Remember Me</label>
 								</div>
-							</div>
-							<div class="col-sm-4 text-right">
+							</div> -->
+							<div class="col-sm-7 text-right">
 								<button type="submit" class="btn btn-warning mt-2">login</button>
 							</div>
 						</div>
-						<p class="text-center">Don't have an account yet? <a href="pages-signup.html">Sign Up!</a></p>
+						<!-- <p class="text-center">Don't have an account yet? <a href="pages-signup.html">Sign Up!</a></p> -->
 
 					</form>
 				</div>

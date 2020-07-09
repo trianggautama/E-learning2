@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Daftar Tes</h2>
+        <h2>Daftar Kuis</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Daftar Tes </span></li>
+                <li><span>Daftar Kuis </span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -20,7 +20,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Daftar Tes </h3>
+                    <h3>Daftar Kuis </h3>
                     <div class="text-right">
                     </div>
                 </div>

@@ -19,10 +19,10 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
+                <!-- <div class="card-header">
                     <div class="text-right">
                     </div>
-                </div>
+                </div> -->
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped mb-0" id="datatable-default">
@@ -35,7 +35,7 @@
                                     <th>Status Tes</th>
                                     <th>Nilai</th>
                                     <th>Keterangan</th>
-                                    <th>Aksi</th>
+                                    <!-- <th>Aksi</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,9 +59,9 @@
                                             <p class="text-danger"> Tidak Lulus</p>
                                         @endif
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <a href="" class="btn btn-sm btn-warning m-1 "> <i class="fa fa-file"></i></a>
-                                    </td>
+                                    </td> -->
                                 </tr>
                                 @endforeach
                             </tbody>

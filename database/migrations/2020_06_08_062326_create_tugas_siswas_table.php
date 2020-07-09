@@ -19,7 +19,7 @@ class CreateTugasSiswasTable extends Migration
             $table->foreignId('siswa_id')->onDelete('cascade');
             $table->foreignId('tugas_id')->onDelete('cascade');
             $table->string('file', 100)->nullable();
-            $table->integer('nilai', 100)->default(0);
+            $table->integer('nilai')->default(0);
             $table->timestamps();
         });
     }

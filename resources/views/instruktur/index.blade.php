@@ -5,7 +5,7 @@
      <section role="main" class="content-body">
         
 <header class="page-header">
-  <h2>Beranda Admin</h2>
+  <h2>Beranda Instruktur</h2>
   <div class="right-wrapper text-right">
     <ol class="breadcrumbs">
       <li>

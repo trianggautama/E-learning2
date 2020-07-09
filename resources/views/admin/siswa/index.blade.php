@@ -53,8 +53,8 @@
                                     <td>{{$d->email}}</td>
                                     <td>{{$d->asal}}</td>
                                     <td>
-                                        <a href="{{Route('siswaShow',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
+                                        <!-- <a href="{{Route('siswaShow',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a> -->
                                         <a href="{{Route('siswaEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
                                             <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}','{{$d->user->nama}}')"> <i

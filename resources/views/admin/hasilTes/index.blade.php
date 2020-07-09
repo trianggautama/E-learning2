@@ -24,6 +24,11 @@
                         <a href="{{Route('hasilTesFilterTes')}}" class="btn btn-sm btn-secondary"><i class="fa fa-filter"></i> Filter Tes</a>
                         <a href="{{Route('hasilTesFilterHasil')}}" class="btn btn-sm btn-secondary"><i class="fa fa-filter"></i> Filter Hasil</a>
                         <a href="{{Route('hasilTesCetak')}}" class="btn btn-sm btn-secondary" target="_blank"><i class="fa fa-print"></i> Cetak Data</a>
+<!-- <<<<<<< HEAD -->
+                        <!-- <button class="btn btn-sm btn-success" id="tambah"><i class="fa fa-plus"></i> Tambah
+                            Data</button> -->
+<!-- =======
+>>>>>>> d5b718931ac67862e1f277b1371337cd9e956b8e -->
                     </div>
                 </div>
                 <div class="card-body">
@@ -38,7 +43,7 @@
                                     <th>Status Tes</th>
                                     <th>Nilai</th>
                                     <th>Keterangan</th>
-                                    <th>Aksi</th>
+                                    <!-- <th>Aksi</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,9 +67,9 @@
                                             <p class="text-danger"> Tidak Lulus</p>
                                         @endif
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <a href="" class="btn btn-sm btn-warning m-1 "> <i class="fa fa-file"></i></a>
-                                    </td>
+                                    </td> -->
                                 </tr>
                                 @endforeach
                             </tbody>

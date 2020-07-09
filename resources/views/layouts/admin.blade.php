@@ -76,7 +76,7 @@
 				<div id="userbox" class="userbox">
 					<a href="#" data-toggle="dropdown">
 						<figure class="profile-picture">
-							<img src="{{asset('images/user/'. Auth::user()->foto)}}" alt="Joseph Doe" class="rounded-circle"
+							<img src="{{asset('images/user/'. Auth::user()->foto)}}" alt="Joseph Doe" class="rounded-circle" width="40px" height="40px"
 								data-lock-picture="img/!logged-user.jpg" />
 						</figure>
 						<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
@@ -163,12 +163,12 @@
 										</li>
 										<li>
 											<a class="nav-link" href="{{Route('pertemuanIndex')}}">
-												Pertemuan
+											Manajemen Pertemuan
 											</a>
 										</li>
 										<li>
 											<a class="nav-link" href="{{Route('modulIndex')}}">
-												Materi
+											Manajemen Materi
 											</a>
 										</li>
 									</ul>
@@ -186,12 +186,12 @@
 										</li>
 										<li>
 											<a class="nav-link" href="{{Route('tugasIndex')}}">
-												Tugas
+											Manajemen Tugas
 											</a>
 										</li>
 										<li>
 											<a class="nav-link" href="{{Route('tesIndex')}}">
-												Tes
+											Manajemen Kuis
 											</a>
 										</li>
 									</ul>

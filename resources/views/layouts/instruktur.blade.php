@@ -78,8 +78,8 @@
 				<div id="userbox" class="userbox">
 					<a href="#" data-toggle="dropdown">
 						<figure class="profile-picture">
-						<img src="{{asset('images/user/'. Auth::user()->foto)}}" 
-                                        class="rounded-circle" width="30px" height="30px">
+						<img src="{{asset('images/user/'. Auth::user()->foto)}}" alt="Joseph Doe" class="rounded-circle" width="40px" height="40px"
+								data-lock-picture="img/!logged-user.jpg">
 						</figure>
 						<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
 							<span class="name">{{Auth::user()->nama}}</span>
@@ -129,7 +129,11 @@
 
 							<ul class="nav nav-main">
 								<li>
+
+									<a class="nav-link" href="{{Route('halamanInstrukturIndex')}}">
+
 									<a class="nav-link" href="{{Route('halamanInstrukturIndex')}}"> 
+
 										<i class="fas fa-home" aria-hidden="true"></i>
 										<span>Home</span>
 									</a>

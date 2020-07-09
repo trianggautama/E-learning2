@@ -41,7 +41,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$d->nama_kelas}}</td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-warning m-1 "> <i class="fa fa-file"></i></a>
+                                        <!-- <a href="" class="btn btn-sm btn-warning m-1 "> <i class="fa fa-file"></i></a> -->
                                         <a href="{{Route('kelasEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
                                         <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}','{{$d->nama_kelas}}')"> <i
