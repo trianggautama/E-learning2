@@ -37,21 +37,20 @@ class userController extends Controller
 
     public function show($uuid)
     {
-        $data = User::where('uuid', $uuid)->first();
+        $data = User::findOrFail($uuid);
         return view('admin.user.show', compact('data'));
     }
 
     public function edit($uuid)
     {
-        $data = User::where('uuid', $uuid)->first();
-
+        $data = User::findorFail($uuid);
         return view('admin.user.edit', compact('data'));
     }
 
     public function update(Request $req, $uuid)
     {
         $userData = $req->except('password');
-        $user = User::where('uuid', $uuid)->first();
+        $user = User::findOrFail($uuid);
         $user->fill($userData)->save();
         if (isset($req->password)) {
             $user->password = Hash::make($req->password);
@@ -78,7 +77,7 @@ class userController extends Controller
 
     public function destroy($uuid)
     {
-        $data = user::where('uuid', $uuid)->first();
+        $data = user::findOrFail($uuid);
         if (File::exists(public_path('user/' . $data->user))) {
             File::delete(public_path('user/' . $data->user));
         }

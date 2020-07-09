@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 class nilaiSiswaController extends Controller
 {
-    public function index()
+    public function index() 
     {
         $siswa = Siswa::latest()->get();
         $data = Nilai_siswa::latest()->get();

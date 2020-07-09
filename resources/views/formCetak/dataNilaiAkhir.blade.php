@@ -76,32 +76,30 @@
 
     <div class="container">
         <div class="isi">
-            <h2 style="text-align:center; text-transform:uppercase;">LAPORAN DATA TUGAS {{$tugas->pertemuan->mapel->mapel}} PERTEMUAN {{$tugas->pertemuan->pertemuan}}</h2>
+            <h2 style="text-align:center;">LAPORAN DATA NILAI AKHIR SISWA </h2>
             <br>            
             <table class="table table-bordered table-striped mb-0" id="datatable-default">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Mapel</th>
-                                    <th>Pertemuan</th>
-                                    <th>Tugas</th>
                                     <th>Nama Siswa</th>
-                                    <th>Waktu Mengumpul</th>
-                                    <th>Nilai</th>
+                                    <th>Absensi</th>
+                                    <th>Rata - rata Tugas</th>
+                                    <th>Rata - rata tes</th>
+                                    <th>Nilai Akhir</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($data as $d)
-                              <tr>
-                                  <td>{{$loop->iteration}}</td>
-                                  <td>{{$d->tugas->pertemuan->mapel->mapel}}</td>
-                                  <td>{{$d->tugas->pertemuan->pertemuan}}</td>
-                                  <td>{{$d->tugas->deskripsi}}</td>
-                                  <td>{{$d->siswa->user->nama}}</td>
-                                  <td>{{carbon\carbon::parse($d->created_at)->translatedFormat('H:i')}} WITA</td>
-                                  <td>{{$d->nilai}}</td>
-                              </tr>
-                              @endforeach
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$d->user->nama}}</td>
+                                    <td>{{$d->absensi}} %</td>
+                                    <td>{{$d->tugas}}</td>
+                                    <td>{{$d->tes}}</td>
+                                    <td>{{$d->nilai_akhir}}</td>
+                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
             <br>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Absensi;
 use App\Mapel;
 use App\Modul;
+use App\Nilai_siswa;
 use App\Periode;
 use PDF;
 use Carbon\Carbon;
@@ -191,6 +193,28 @@ class reportController extends Controller
         $pdf->setPaper('a4', 'portrait');
 
         return $pdf->stream('Laporan Data Absensi.pdf');
+    }
+
+    public function nilaiAkhir() 
+    {
+        $data         = Nilai_siswa::latest()->get();
+        $tgl          = Carbon::now()->format('d-m-Y');
+        $kepsek       = Periode::latest()->first();
+        $pdf          = PDF::loadView('formCetak.dataNilaiAkhir', ['data'=>$data,'tgl'=>$tgl,'kepsek'=>$kepsek]);
+        $pdf->setPaper('a4', 'portrait');
+
+        return $pdf->stream('Laporan Data Nilai Akhir.pdf');
+    }
+
+    public function absensiKeseluruhan() 
+    {
+        $data         = Absensi::latest('pertemuan_id')->get();
+        $tgl          = Carbon::now()->format('d-m-Y');
+        $kepsek       = Periode::latest()->first();
+        $pdf          = PDF::loadView('formCetak.dataAbsensiKeseluruhan', ['data'=>$data,'tgl'=>$tgl,'kepsek'=>$kepsek]);
+        $pdf->setPaper('a4', 'portrait');
+
+        return $pdf->stream('Laporan Data Absensi Keseluruhan.pdf');
     }
 
 }

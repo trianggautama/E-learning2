@@ -89,6 +89,9 @@
 						<ul class="list-unstyled mb-2">
 							<li class="divider"></li>
 							<li>
+								<a role="menuitem" tabindex="-1" href="{{Route('adminProfilEdit')}}">Edit Profil</a>
+							</li>
+							<li>
 								<a role="menuitem" tabindex="-1" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
