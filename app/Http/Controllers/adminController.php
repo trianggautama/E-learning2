@@ -18,7 +18,36 @@ class adminController extends Controller
 
     public function adminProfilEdit()
     {
-        return view('admin.profilEdit');
+        $data = User::findOrFail(Auth::id());
+        return view('admin.profilEdit', compact('data'));
+    }
+
+    public function adminProfilUpdate(Request $req)
+    {
+        $userData = $req->except('password');
+        $user = User::findOrFail(Auth::id());
+        $user->fill($userData)->save();
+        if (isset($req->password)) {
+            $user->password = Hash::make($req->password);
+        } else {
+            $user->password = $user->password;
+        }
+
+        if ($req->foto != null) {
+            $img = $req->file('foto');
+            $FotoExt = $img->getClientOriginalExtension();
+            $FotoName = $user->id;
+            $foto = $FotoName . '.' . $FotoExt;
+            $img->move('images/user', $foto);
+            $user->foto = $foto;
+        } else {
+            $user->foto = $user->foto;
+        }
+
+        $user->update();
+
+        return redirect()->route('adminIndex')->withSuccess('Profil berhasil diubah');
+
     }
 
     public function siswaIndex()

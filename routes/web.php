@@ -14,8 +14,8 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin/index', 'adminController@adminIndex')->name('adminIndex');
-    Route::get('/admin/profil/edit', 'adminController@adminProfilEdit')->name('adminProfilEdit'); 
-
+    Route::get('/admin/profil/edit', 'adminController@adminProfilEdit')->name('adminProfilEdit');
+    Route::put('/admin/profil/update', 'adminController@adminProfilUpdate')->name('adminProfilUpdate');
 
 //user
     Route::get('/user/index', 'userController@index')->name('userIndex');
@@ -139,11 +139,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/tugasSiswa/filter', 'reportController@tugasFilter')->name('tugasFilter');
     Route::get('/modul/cetak', 'reportController@modul')->name('modulCetak');
     Route::get('/dataTugas/cetak', 'reportController@dataTugas')->name('dataTugasCetak');
-    Route::get('/dataTes/cetak', 'reportController@dataTes')->name('dataTesCetak'); 
-    Route::get('/nilaiAkhir/cetak', 'reportController@nilaiAkhir')->name('nilaiAkhirCetak'); 
-    Route::get('/absensi/keseluruhan/cetak', 'reportController@absensiKeseluruhan')->name('absensiKeseluruhanCetak'); 
-
-
+    Route::get('/dataTes/cetak', 'reportController@dataTes')->name('dataTesCetak');
+    Route::get('/nilaiAkhir/cetak', 'reportController@nilaiAkhir')->name('nilaiAkhirCetak');
+    Route::get('/absensi/keseluruhan/cetak', 'reportController@absensiKeseluruhan')->name('absensiKeseluruhanCetak');
 
 });
 
@@ -162,8 +160,7 @@ Route::post('siswa/input/absensi', 'pertemuanController@absensiStore')->name('ab
 Route::get('siswa/input/absensi/verif/{uuid}', 'pertemuanController@absensiVerif')->name('absensiVerif');
 
 Route::get('siswa/hasilTes/index', 'hasilTesController@siswaIndex')->name('siswaHasilTesIndex');
-Route::get('siswa/hasilTugas/index', 'tugasSiswaController@siswaIndex')->name('siswaTugasIndex'); 
-
+Route::get('siswa/hasilTugas/index', 'tugasSiswaController@siswaIndex')->name('siswaTugasIndex');
 
 //halmaan instruktur
 Route::get('halaman/instruktur/index', 'adminController@instrukturIndex')->name('halamanInstrukturIndex');
@@ -197,11 +194,9 @@ Route::get('jadwal/instruktur/index', 'pertemuanController@instrukturIndex')->na
 Route::get('jadwal/instruktur/show/{uuid}', 'pertemuanController@jadwalInstruktur')->name('instrukturJadwalPertemuanShow');
 Route::get('jadwal/absensi/show/{uuid}', 'pertemuanController@absensiPertemuan')->name('instrukturAbsensiPertemuan');
 
-Route::get('instruktur/hasilTes/index', 'hasilTesController@instrukturIndex')->name('instrukturHasilTesIndex'); 
+Route::get('instruktur/hasilTes/index', 'hasilTesController@instrukturIndex')->name('instrukturHasilTesIndex');
 
-Route::get('/data/hasilTes/cetak', 'reportController@dataHasilTes')->name('dataHasilTesCetak');   
-Route::get('/data/absensi/cetak/{uuid}', 'reportController@absensi')->name('absensiCetak');   
-Route::get('/tugas/cetak', 'reportController@tugas')->name('tugasCetak'); 
+Route::get('/data/hasilTes/cetak', 'reportController@dataHasilTes')->name('dataHasilTesCetak');
+Route::get('/data/absensi/cetak/{uuid}', 'reportController@absensi')->name('absensiCetak');
+Route::get('/tugas/cetak', 'reportController@tugas')->name('tugasCetak');
 Route::get('/tugasSiswa/filter', 'tugasSiswaController@filter')->name('tugasSiswaFilter');
-
-
