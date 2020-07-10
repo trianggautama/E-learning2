@@ -15,10 +15,11 @@
         table,
         th,
         td {
-            border: 1px solid #708090;
+            border: 1px solid #000000;
+            text-align: center;
         }
         th {
-            background-color: darkslategray;
+            background-color: 	#000000;
             text-align: center;
             color: aliceblue;
         }

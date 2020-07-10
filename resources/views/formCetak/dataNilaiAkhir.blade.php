@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>DATA NILAI AKHIR SISWA</title>
     <style>
         body {}
         table {
@@ -15,11 +15,11 @@
         table,
         th,
         td {
-            border: 1px solid #708090;
+            border: 1px solid #000000;
             text-align: center;
         }
         th {
-            background-color: darkslategray;
+            background-color: 	#000000;
             text-align: center;
             color: aliceblue;
         }
