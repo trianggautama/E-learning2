@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mapel;
 use App\Soal;
+use File;
 use Illuminate\Http\Request;
 
 class soalController extends Controller
