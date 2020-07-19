@@ -207,7 +207,7 @@
 									<ul class="nav nav-children">
 										<li>
 											<a class="nav-link" href="{{Route('hasilTesIndex')}}">
-												Hasil Tes
+												Hasil Kuis
 											</a>
 										</li>
 										<li>
