@@ -212,7 +212,7 @@
 										</li>
 										<li>
 											<a class="nav-link" href="{{Route('tugasSiswaIndex')}}">
-												tugas Siswa
+												Tugas Siswa
 											</a>
 										</li>
 										<li>
