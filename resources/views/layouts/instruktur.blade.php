@@ -160,7 +160,7 @@
 								<li class="nav-parent">
 									<a class="nav-link" href="#">
 										<i class="fas fa-book" aria-hidden="true"></i>
-										<span>Tugas dan Tes</span>
+										<span>Tugas dan Kuis</span>
 									</a>
 									<ul class="nav nav-children">
 										<li>
@@ -170,7 +170,7 @@
 										</li>
 										<li>
 											<a class="nav-link" href="{{Route('instrukturHasilTesIndex')}}">
-												Data Hasil Tes
+												Data Hasil Kuis
 											</a>
 										</li>
 									</ul>
