@@ -16,7 +16,7 @@ class CreateSoalsTable extends Migration
         Schema::create('soals', function (Blueprint $table) {
             $table->id();
             $table->string('uuid', 36);
-            $table->foreignId('mapel_id')->onDelete('restrict');
+            $table->foreignId('mapel_id')->onDelete('cascade');
             $table->string('kode_soal', 25);
             $table->string('soal', 100);
             $table->string('a', 50);

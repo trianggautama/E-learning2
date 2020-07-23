@@ -16,8 +16,8 @@ class CreateTesSiswasTable extends Migration
         Schema::create('tes_siswas', function (Blueprint $table) {
             $table->id();
             $table->string('uuid', 36);
-            $table->foreignId('siswa_id')->onDelete('restrict');
-            $table->foreignId('tes_id')->onDelete('restrict');
+            $table->foreignId('siswa_id')->onDelete('cascade');
+            $table->foreignId('tes_id')->onDelete('cascade');
             $table->string('nilai', 100)->nullable();
             $table->timestamps();
         });
