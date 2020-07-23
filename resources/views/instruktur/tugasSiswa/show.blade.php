@@ -62,7 +62,7 @@
                                         @php
                                         $file = $d->tugas_siswa->where('tugas_id',$tugas->id)->first();
                                         @endphp
-                                        <a href="{{asset('tugas/'.$file)}}" class="btn btn-warning" download><i
+                                        <a href="{{asset('tugas/'.$file->file)}}" class="btn btn-warning" download><i
                                                 class="fa fa-file-download"></i> {{$d->file}}</a>
                                         @else
                                         -
