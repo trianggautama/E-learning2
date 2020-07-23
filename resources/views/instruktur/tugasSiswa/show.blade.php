@@ -62,7 +62,7 @@
                                         @php
                                         $file = $d->tugas_siswa->where('tugas_id',$tugas->id)->first();
                                         @endphp
-                                        <a href="{{asset('tugas/'.$file)}}" class="btn btn-warning" download><i
+                                        <a href="{{asset('tugas/'.$file->file)}}" class="btn btn-warning" download><i
                                                 class="fa fa-file-download"></i> {{$d->file}}</a>
                                         @else
                                         -
@@ -71,7 +71,7 @@
                                     @if($d->tugas_siswa->where('tugas_id',$tugas->id)->first())
                                     <td>{{$d->tugas_siswa->where('tugas_id',$tugas->id)->first()->nilai}}</td>
                                     <td>
-                                        <button id="tambahModal" data-id="{{$d->tugas_siswa->where('tugas_id',$tugas->id)->first()->id}}" class="btn btn-sm btn-primary"><i
+                                        <button data-id="{{$d->tugas_siswa->where('tugas_id',$tugas->id)->first()->id}}" class="btn btn-sm btn-primary tambahVerif"><i
                                                 class="fa fa-edit"></i> Input Nilai</button>
                                     </td>
                                     @else
@@ -122,7 +122,7 @@
 @endsection
 @section('scripts')
 <script>
-    $("#tambahModal").click(function(){
+    $(".tambahVerif").click(function(){
         var id = $(this).data("id");
         $('#modal').modal('show');
         $('#id').val(id);

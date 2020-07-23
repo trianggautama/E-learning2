@@ -130,7 +130,7 @@
 
 							<ul class="nav nav-main">
 								<li>
-									<a class="nav-link" href="layouts-default.html">
+									<a class="nav-link" href="{{Route('adminIndex')}}">
 										<i class="fas fa-home" aria-hidden="true"></i>
 										<span>Home</span>
 									</a>
@@ -207,12 +207,12 @@
 									<ul class="nav nav-children">
 										<li>
 											<a class="nav-link" href="{{Route('hasilTesIndex')}}">
-												Hasil Tes
+												Hasil Kuis
 											</a>
 										</li>
 										<li>
 											<a class="nav-link" href="{{Route('tugasSiswaIndex')}}">
-												tugas Siswa
+												Tugas Siswa
 											</a>
 										</li>
 										<li>

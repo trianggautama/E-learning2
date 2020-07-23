@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Tes</h2>
+        <h2>Halaman Kuis</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
@@ -11,7 +11,7 @@
                         <i class="fas fa-home"></i>
                     </a>
                 </li>
-                <li><span>Data Tes</span></li>
+                <li><span>Data Kuis</span></li>
             </ol>
             <a class="sidebar-right-toggle"><i class="fas fa-chevron-left"></i></a>
         </div>
@@ -60,7 +60,7 @@
                                             class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
                                         <a href="{{Route('tesEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}')"> <i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -146,7 +146,7 @@
 			cancelButtonText: 'Batal'
 		}).then((result) => {
 			if (result.value) {
-				url = '';
+				url = "{{Route('tesDestroy','')}}";
 				window.location.href =  url+'/'+uuid ;			
 			}
 		})

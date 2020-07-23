@@ -65,7 +65,7 @@
                                             class="btn btn-sm btn-warning m-1 "> <i class="fa fa-info-circle"></i></a>
                                         <a href="{{Route('soalEdit',['uuid' => $d->uuid])}}"
                                             class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
-                                        <button class="btn btn-sm btn-danger" onclick="Hapus()"> <i
+                                        <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}')"> <i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -172,16 +172,16 @@
         function Hapus(uuid) {
 			Swal.fire({
 			title: 'Anda Yakin?',
-			text: " Menghapus Haul " ,        
+			text: " Menghapus Soal " ,        
 			icon: 'warning',
-			showCancelButton: true,
+			showCancelButton: true, 
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
 			confirmButtonText: 'Hapus',
 			cancelButtonText: 'Batal'
 		}).then((result) => {
 			if (result.value) {
-				url = '';
+				url = "{{Route('soalDestroy','')}}";
 				window.location.href =  url+'/'+uuid ;			
 			}
 		})

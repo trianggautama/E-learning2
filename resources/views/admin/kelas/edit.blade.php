@@ -3,7 +3,7 @@
 @section('content')
 <section role="main" class="content-body">
     <header class="page-header">
-        <h2>Halaman Haul</h2>
+        <h2>Halaman Kelas</h2>
         <div class="right-wrapper text-right">
             <ol class="breadcrumbs">
                 <li>
