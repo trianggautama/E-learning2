@@ -16,7 +16,7 @@ class CreateMapelsTable extends Migration
         Schema::create('mapels', function (Blueprint $table) {
             $table->id();
             $table->string('uuid', 36);
-            $table->foreignId('instruktur_id')->constrained()->onDelete('restrict');
+            $table->foreignId('instruktur_id')->onDelete('cascade');
             $table->string('mapel', 50);
             $table->text('deskripsi');
             $table->timestamps();

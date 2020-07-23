@@ -16,7 +16,7 @@ class CreateTugasTable extends Migration
         Schema::create('tugas', function (Blueprint $table) {
             $table->id();
             $table->string('uuid', 36);
-            $table->foreignId('pertemuan_id')->constrained()->onDelete('restrict');
+            $table->foreignId('pertemuan_id')->constrained()->onDelete('cascade');
             $table->text('deskripsi');
             $table->date('batas_waktu');
             $table->timestamps();

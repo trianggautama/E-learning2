@@ -16,7 +16,7 @@ class CreateModulsTable extends Migration
         Schema::create('moduls', function (Blueprint $table) {
             $table->id();
             $table->string('uuid', 36);
-            $table->foreignId('pertemuan_id')->constrained()->onDelete('restrict');
+            $table->foreignId('pertemuan_id')->onDelete('cascade');
             $table->string('judul', 100);
             $table->string('file', 50)->nullable();
             $table->timestamps();
