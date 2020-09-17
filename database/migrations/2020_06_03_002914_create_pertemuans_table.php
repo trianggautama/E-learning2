@@ -16,7 +16,7 @@ class CreatePertemuansTable extends Migration
         Schema::create('pertemuans', function (Blueprint $table) {
             $table->id();
             $table->string('uuid', 36);
-            $table->foreignId('mapel_id')->constrained()->onDelete('restrict');
+            $table->foreignId('mapel_id')->onDelete('cascade');
             $table->string('pertemuan', 50);
             $table->date('tanggal');
             $table->timestamps();

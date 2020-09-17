@@ -21,7 +21,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    Modul Pertemuan cacaacx
+                    Modul Pertemuan
                     <div class="text-right">
                     </div>
                 </div>

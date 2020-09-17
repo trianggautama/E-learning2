@@ -16,7 +16,7 @@ class CreateInstruktursTable extends Migration
         Schema::create('instrukturs', function (Blueprint $table) {
             $table->id();
             $table->string('uuid', 36);
-            $table->foreignId('user_id')->onDelete('restrict');
+            $table->foreignId('user_id')->onDelete('cascade');
             $table->string('tempat_lahir', 50);
             $table->date('tanggal_lahir');
             $table->string('email', 100);

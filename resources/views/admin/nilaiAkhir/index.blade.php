@@ -50,8 +50,8 @@
                                     <td>{{$d->tes}}</td>
                                     <td>{{$d->nilai_akhir}}</td>
                                     <td>
-                                        <a href="{{Route('nilaiSiswaEdit',['uuid' => $d->uuid])}}"
-                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a>
+                                        <!-- <a href="{{Route('nilaiSiswaEdit',['uuid' => $d->uuid])}}"
+                                            class="btn btn-sm btn-primary m-1 "> <i class="fa fa-edit"></i></a> -->
                                         <button class="btn btn-sm btn-danger" onclick="Hapus('{{$d->uuid}}')"> <i
                                                 class="fa fa-trash"></i></button>
                                     </td>

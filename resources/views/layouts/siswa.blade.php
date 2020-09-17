@@ -156,7 +156,7 @@
 								<li class="nav-parent">
 									<a class="nav-link" href="#">
 										<i class="fas fa-book" aria-hidden="true"></i>
-										<span>Hasil Ujian dan Tes</span>
+										<span>Hasil Tugas dan Kuis</span>
 									</a>
 									<ul class="nav nav-children">
 										<li>
@@ -166,7 +166,7 @@
 										</li>
 										<li>
 											<a class="nav-link" href="{{Route('siswaHasilTesIndex')}}">
-												Hasil Ujian
+												Hasil Kuis
 											</a>
 										</li>
 									</ul>

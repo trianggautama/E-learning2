@@ -15,8 +15,8 @@ class CreateSiswasTable extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('restrict');
-            $table->foreignId('kelas_id')->constrained()->onDelete('restrict');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('kelas_id')->constrained()->onDelete('cascade');
             $table->string('uuid', 50);
             $table->tinyInteger('jk');
             $table->string('tempat_lahir', 50);

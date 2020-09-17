@@ -16,8 +16,8 @@ class CreateTesTable extends Migration
         Schema::create('tes', function (Blueprint $table) {
             $table->id();
             $table->string('uuid', 36);
-            $table->foreignId('mapel_id')->onDelete('restrict');
-            $table->foreignId('periode_id')->onDelete('restrict');
+            $table->foreignId('mapel_id')->onDelete('cascade');
+            $table->foreignId('periode_id')->onDelete('cascade');
             $table->date('tanggal_ujian');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
